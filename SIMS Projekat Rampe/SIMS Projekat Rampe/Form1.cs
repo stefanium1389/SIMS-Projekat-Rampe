@@ -17,5 +17,9 @@ namespace SIMS_Projekat_Rampe
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
