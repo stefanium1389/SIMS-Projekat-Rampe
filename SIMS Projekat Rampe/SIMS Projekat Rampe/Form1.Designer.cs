@@ -41,7 +41,7 @@ namespace SIMS_Projekat_Rampe
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 66);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "LOG IN";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
@@ -62,11 +62,11 @@ namespace SIMS_Projekat_Rampe
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(320, 32);
+            this.label1.Location = new System.Drawing.Point(268, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 62);
+            this.label1.Size = new System.Drawing.Size(266, 62);
             this.label1.TabIndex = 3;
-            this.label1.Text = "LOGIN";
+            this.label1.Text = "WELLCOME";
             // 
             // Form1
             // 
