@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "2wob8uGf+AXDQ4a2qxEeiFlhS9d5I4zdQPqznzYP78KeTGwR5Zh0JT52CfpM5ez/I51bSOdLf4UD3SyD/DmXrg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Stefan\\Desktop\\SIMS-Projekat-Rampe\\SIMS Projekat Rampe\\SIMS Projekat Rampe\\SIMS Projekat Rampe.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Stefan\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512"
+  ],
+  "logs": []
+}
