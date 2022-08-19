@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Models;
+using SIMS_Projekat_Rampe.Controlers;
 
 
 namespace SIMS_Projekat_Rampe

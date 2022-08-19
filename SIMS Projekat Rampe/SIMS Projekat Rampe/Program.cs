@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MongoDB.Driver;
-using SIMS_Projekat_Rampe.Models;
+using SIMS_Projekat_Rampe.MongolDb;
 
 namespace SIMS_Projekat_Rampe
 {
@@ -22,7 +22,7 @@ namespace SIMS_Projekat_Rampe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MongolDb.MongolDB.generatexD();
+            MongolDB.generatexD();
             foreach(var k in korisnikRepo.GetAll())
             {
                 Debug.WriteLine($"{k.Ime}, {k.Prezime}");

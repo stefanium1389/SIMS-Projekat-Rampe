@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Models;
 
@@ -8,8 +6,8 @@ namespace SIMS_Projekat_Rampe.MongolDb
 {
     public class MongolDB
     {
-        const string connectionString = "mongodb://localhost:27017";
-        const string databaseName = "rampa_projekat_db";
+        public const string connectionString = "mongodb://localhost:27017";
+        public const string databaseName = "rampa_projekat_db";
 
         public static void generatexD()
         {
@@ -27,6 +25,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             collection.InsertOne(korisnik);
             
         }
-        
+
+        public static IMongoCollection<T> ConnectToMongol<T>(string collection)
+        {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase(databaseName);
+            return db.GetCollection<T>(collection);
+        }
+
     }
 }
