@@ -1,9 +1,3 @@
 is_global = true
-build_property.ApplicationManifest = 
-build_property.StartupObject = 
-build_property.ApplicationDefaultFont = 
-build_property.ApplicationHighDpiMode = 
-build_property.ApplicationUseCompatibleTextRendering = 
-build_property.ApplicationVisualStyles = 
 build_property.RootNamespace = SIMS_Projekat_Rampe
-build_property.ProjectDir = C:\Users\Stefan\Desktop\FAX\2 godina\2 semestar\Specifikacija i modeliranje softvera\PROJEKAT\git\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\
+build_property.ProjectDir = E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\
