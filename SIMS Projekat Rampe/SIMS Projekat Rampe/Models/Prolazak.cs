@@ -3,6 +3,17 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace SIMS_Projekat_Rampe.Models
 {
+    public class TipVozila
+    {
+        public enum Tip
+        {
+            Auto,
+            Motor,
+            Kamion,
+            Autobus,
+            Kombi
+        }
+    }
     public class Prolazak
     {
         [BsonId]

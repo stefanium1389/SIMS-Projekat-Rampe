@@ -51,7 +51,6 @@ E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projeka
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.AssemblyInfoInputs.cache
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.AssemblyInfo.cs
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.CoreCompileInputs.cache
-E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.CopyComplete
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.dll
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.pdb
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.genruntimeconfig.cache

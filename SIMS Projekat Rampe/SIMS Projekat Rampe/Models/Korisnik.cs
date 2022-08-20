@@ -22,7 +22,7 @@ namespace SIMS_Projekat_Rampe.Models
     public enum TipKorisnika
     {
         Admin,
-        Referent,
+        SefStanice,
         Radnik,
         Menadzer,
         ProdavacENP
