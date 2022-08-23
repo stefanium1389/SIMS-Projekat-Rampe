@@ -11,7 +11,7 @@ namespace SIMS_Projekat_Rampe.Models
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string Id { get; set; }
         public int Stanje { get; set; }
-        public TipVozila.Tip TipVozila { get; set; }
+        public TipVozila TipVozila { get; set; }
 
     }
 }

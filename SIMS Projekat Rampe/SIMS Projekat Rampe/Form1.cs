@@ -29,8 +29,12 @@ namespace SIMS_Projekat_Rampe
             if (KorisnikController.CheckLogin(textBox1.Text, textBox2.Text) == true)
             {
                 button1.Text = "xdddd";
+                
             }
             else button1.Text = "yuluz";
+            {
+               
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

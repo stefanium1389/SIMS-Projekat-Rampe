@@ -6,9 +6,7 @@ namespace SIMS_Projekat_Rampe.Models
 { 
     public class NaplatnoMesto
     {
-        [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string Id { get; set; }
+        public int RedniBr { get; set; }
         public bool Elektronsko { get; set; }
         public bool Aktivno { get; set; }
         public Uredjaj Displej { get; set; }
@@ -16,10 +14,10 @@ namespace SIMS_Projekat_Rampe.Models
         public Uredjaj CitacTagova { get; set; }
         public Semafor Semafor { get; set; }
         public Rampa Rampa { get; set; }
-        public NaplatnaStanica NaplatnaStanica { set; get; }
 
-        public NaplatnoMesto(bool elektronsko, bool aktivno)  
+        public NaplatnoMesto(int redniBr, bool elektronsko, bool aktivno)  
         {
+            RedniBr = redniBr;
             Elektronsko = elektronsko;
             Aktivno = aktivno;
             Displej = new Uredjaj(TipUredjaja.Displej);
@@ -27,7 +25,6 @@ namespace SIMS_Projekat_Rampe.Models
             CitacTagova = new Uredjaj(TipUredjaja.CitacTagova);
             Semafor = new Semafor(TipUredjaja.Semafor);
             Rampa = new Rampa(TipUredjaja.Rampa);
-
         }
 
         

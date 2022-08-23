@@ -5,9 +5,17 @@ namespace SIMS_Projekat_Rampe.Models
     public class Deonica
     {
         [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string Id { get; set; }
-        public NaplatnaStanica Ulazak { get; set; }
-        public NaplatnaStanica Izlazak { get; set; }
+        public float Duzina { get; set; }
+        public string UlazakId { get; set; }
+        public string IzlazakId { get; set; }
+
+        public Deonica (string id,float duzina,string ulaz, string izlaz) 
+        {
+            Id = id;
+            Duzina = duzina;
+            UlazakId = ulaz;
+            IzlazakId = izlaz;
+        }
     }
 }

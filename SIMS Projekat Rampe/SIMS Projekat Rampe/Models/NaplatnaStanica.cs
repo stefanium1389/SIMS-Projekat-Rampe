@@ -40,19 +40,28 @@ namespace SIMS_Projekat_Rampe.Models
     public class NaplatnaStanica
     {
         [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string Id { get; set; }
         public string Naziv { get; set; }
-        public Korisnik? SefStanice { get; set; }
-        public List<Korisnik> Radnici { get; set; }
-        public List<Korisnik> ProdavciENP { get; set; }
+        public string? SefStaniceUsername { get; set; }
+        public List<string> RadniciUsernames { get; set; }
+        public List<string> ProdavciENPUsernames { get; set; }
         public List<NaplatnoMesto> NaplatnaMesta { get; set; }
+
+        public NaplatnaStanica( string id, string naziv, string? sef, List<string> radnici, List<string> prodavciENP, List<NaplatnoMesto> naplatnaMesta) 
+        {
+            Id = id;
+            Naziv = naziv;
+            SefStaniceUsername = sef;
+            RadniciUsernames = radnici;
+            ProdavciENPUsernames = prodavciENP;
+            NaplatnaMesta = naplatnaMesta;
+        }
 
         public void DodeliRadnika(Korisnik radnik)
         {
             if (radnik.Tip == TipKorisnika.Radnik)
             {
-                Radnici.Add(radnik);
+                RadniciUsernames.Add(radnik.UserName);
             }
             else throw new WrongWorkerTypeException("Uneti korisnik nije radnik!");
         }
@@ -61,7 +70,7 @@ namespace SIMS_Projekat_Rampe.Models
         {
             if (prodavac.Tip == TipKorisnika.ProdavacENP)
             {
-                ProdavciENP.Add(prodavac);
+                ProdavciENPUsernames.Add(prodavac.UserName);
             }
             else throw new WrongWorkerTypeException("Uneti korisnik nije prodavacENP!");
         }
@@ -70,9 +79,9 @@ namespace SIMS_Projekat_Rampe.Models
         {
             if (sef.Tip == TipKorisnika.SefStanice)
             {
-                if (SefStanice is null)
+                if (SefStaniceUsername is null)
                 {
-                    this.SefStanice = sef;
+                    this.SefStaniceUsername = sef.UserName;
                 }
                 else throw new UserAlreadyPresentException("Sef stanice već postoji! Za promenu sefa, prvo uklonite starog.");
             }

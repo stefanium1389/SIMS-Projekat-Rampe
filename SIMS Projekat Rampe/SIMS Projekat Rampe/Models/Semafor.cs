@@ -11,6 +11,7 @@ namespace SIMS_Projekat_Rampe.Models
         
         public Semafor (TipUredjaja tip) :base( tip)
         {
+            DozvoljenProlazak = true;
         }
     }
     

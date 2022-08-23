@@ -6,13 +6,18 @@ namespace SIMS_Projekat_Rampe.Models
 {
     public class Cenovnik
     {
-        [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string Id { get; set; }
+        //[BsonId]
+        //public string Id { get; set; }
         public DateTime VaziOd { get; set; }
         public List<StavkaCenovnika> Stavke { get; set; }
 
-        public StavkaCenovnika? PronadjiStavku(Deonica deonica, TipVozila.Tip tipVozila)
+        public Cenovnik(DateTime vaziOd, List<StavkaCenovnika> stavke) 
+        {
+            VaziOd = vaziOd;
+            Stavke = stavke;
+        }
+
+        /*public StavkaCenovnika? PronadjiStavku(Deonica deonica, TipVozila.Tip tipVozila)
         {
             foreach (StavkaCenovnika s in Stavke)
             {
@@ -22,6 +27,6 @@ namespace SIMS_Projekat_Rampe.Models
                 }
             }
             return null;
-        }
+        }*/
     }
 }

@@ -22,8 +22,10 @@ namespace SIMS_Projekat_Rampe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MongolDB.generatexD();
-            foreach(var k in korisnikRepo.GetAll())
+            Debug.WriteLine("heloooo");
+            MongolDB.generateTest();
+            Debug.WriteLine("zavrsio sammm");
+            foreach (var k in korisnikRepo.GetAll())
             {
                 Debug.WriteLine($"{k.Ime}, {k.Prezime}");
             }
