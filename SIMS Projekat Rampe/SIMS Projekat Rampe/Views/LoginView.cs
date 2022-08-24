@@ -16,6 +16,7 @@ namespace SIMS_Projekat_Rampe
 {
     public partial class LoginView : Form
     {
+        
         private LoginController loginController;
         public LoginView()
         {
@@ -32,18 +33,18 @@ namespace SIMS_Projekat_Rampe
         {
             label_error.Visible = false;
             Korisnik ulogovani;
+            
             try
             {
+                loginController.ProveriSpam(textBox1.Text);
                 ulogovani = loginController.CheckLogin(textBox1.Text, textBox2.Text);
                 if (ulogovani.Tip == TipKorisnika.Radnik) 
                 {
                     OdabirMestaView odabir = new OdabirMestaView(ulogovani, this);
                     odabir.Show();
                     this.Visible = false;
-                    
-
                 }
-                
+
             }
             catch (LoginException exp)
             {

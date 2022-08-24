@@ -56,7 +56,9 @@ namespace SIMS_Projekat_Rampe.Views
             }
             else 
             {
-                NaplatnoMestoView nmv = new NaplatnoMestoView();
+                string rednibr = comboBox1.Text.Replace("naplatno mesto ","");
+                int rednibrint = Int32.Parse(rednibr);
+                NaplatnoMestoView nmv = new NaplatnoMestoView(this,OdabirController.DobaviStanicu(),rednibrint);
                 nmv.Show();
             }
         }

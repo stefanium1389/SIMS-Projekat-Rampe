@@ -29,37 +29,38 @@ namespace SIMS_Projekat_Rampe.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btn_ucitaj = new System.Windows.Forms.Button();
+            this.tbx_vreme = new System.Windows.Forms.TextBox();
+            this.tbx_mesto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cbx_kategorije = new System.Windows.Forms.ComboBox();
+            this.btn_potvrdi = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbx_iznos = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbx_uplata = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbx_povracaj = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.lab_greska = new System.Windows.Forms.Label();
+            this.tbx_reg = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.lab_prekoracena = new System.Windows.Forms.Label();
+            this.tbx_prosek = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbx_rampa = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btn_akcija = new System.Windows.Forms.Button();
+            this.lab_citac_tagova = new System.Windows.Forms.Label();
+            this.lab_semafor = new System.Windows.Forms.Label();
+            this.lab_citac_tablica = new System.Windows.Forms.Label();
+            this.lab_displej = new System.Windows.Forms.Label();
+            this.btn_prijavi = new System.Windows.Forms.Button();
+            this.cbx_uredjaj = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,30 +69,31 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_ucitaj
             // 
-            this.button1.Location = new System.Drawing.Point(15, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 65);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Učitaj Kod (QR)";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_ucitaj.Location = new System.Drawing.Point(15, 14);
+            this.btn_ucitaj.Name = "btn_ucitaj";
+            this.btn_ucitaj.Size = new System.Drawing.Size(108, 65);
+            this.btn_ucitaj.TabIndex = 0;
+            this.btn_ucitaj.Text = "Učitaj Kod (QR)";
+            this.btn_ucitaj.UseVisualStyleBackColor = true;
+            this.btn_ucitaj.Click += new System.EventHandler(this.btn_ucitaj_Click);
             // 
-            // textBox1
+            // tbx_vreme
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 109);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.tbx_vreme.Location = new System.Drawing.Point(123, 109);
+            this.tbx_vreme.Name = "tbx_vreme";
+            this.tbx_vreme.ReadOnly = true;
+            this.tbx_vreme.Size = new System.Drawing.Size(100, 23);
+            this.tbx_vreme.TabIndex = 1;
             // 
-            // textBox2
+            // tbx_mesto
             // 
-            this.textBox2.Location = new System.Drawing.Point(123, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 2;
+            this.tbx_mesto.Location = new System.Drawing.Point(123, 151);
+            this.tbx_mesto.Name = "tbx_mesto";
+            this.tbx_mesto.ReadOnly = true;
+            this.tbx_mesto.Size = new System.Drawing.Size(100, 23);
+            this.tbx_mesto.TabIndex = 2;
             // 
             // label1
             // 
@@ -120,116 +122,116 @@ namespace SIMS_Projekat_Rampe.Views
             this.label3.TabIndex = 5;
             this.label3.Text = "Odabir kategorije vozila";
             // 
-            // comboBox1
+            // cbx_kategorije
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 194);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 6;
+            this.cbx_kategorije.FormattingEnabled = true;
+            this.cbx_kategorije.Location = new System.Drawing.Point(153, 194);
+            this.cbx_kategorije.Name = "cbx_kategorije";
+            this.cbx_kategorije.Size = new System.Drawing.Size(121, 23);
+            this.cbx_kategorije.TabIndex = 6;
             // 
-            // button2
+            // btn_potvrdi
             // 
-            this.button2.Location = new System.Drawing.Point(18, 237);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Potvrdi";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_potvrdi.Location = new System.Drawing.Point(15, 353);
+            this.btn_potvrdi.Name = "btn_potvrdi";
+            this.btn_potvrdi.Size = new System.Drawing.Size(75, 23);
+            this.btn_potvrdi.TabIndex = 7;
+            this.btn_potvrdi.Text = "Potvrdi";
+            this.btn_potvrdi.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 287);
+            this.label4.Location = new System.Drawing.Point(16, 240);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Iznos :";
             // 
-            // textBox3
+            // tbx_iznos
             // 
-            this.textBox3.Location = new System.Drawing.Point(90, 287);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 9;
+            this.tbx_iznos.Location = new System.Drawing.Point(95, 237);
+            this.tbx_iznos.Name = "tbx_iznos";
+            this.tbx_iznos.Size = new System.Drawing.Size(100, 23);
+            this.tbx_iznos.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 323);
+            this.label5.Location = new System.Drawing.Point(16, 276);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Uplata:";
             // 
-            // textBox4
+            // tbx_uplata
             // 
-            this.textBox4.Location = new System.Drawing.Point(90, 323);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 11;
+            this.tbx_uplata.Location = new System.Drawing.Point(95, 273);
+            this.tbx_uplata.Name = "tbx_uplata";
+            this.tbx_uplata.Size = new System.Drawing.Size(100, 23);
+            this.tbx_uplata.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 362);
+            this.label6.Location = new System.Drawing.Point(15, 315);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 15);
             this.label6.TabIndex = 12;
             this.label6.Text = "Povraćaj:";
             // 
-            // textBox5
+            // tbx_povracaj
             // 
-            this.textBox5.Location = new System.Drawing.Point(90, 362);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 23);
-            this.textBox5.TabIndex = 13;
+            this.tbx_povracaj.Location = new System.Drawing.Point(95, 312);
+            this.tbx_povracaj.Name = "tbx_povracaj";
+            this.tbx_povracaj.ReadOnly = true;
+            this.tbx_povracaj.Size = new System.Drawing.Size(100, 23);
+            this.tbx_povracaj.TabIndex = 13;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.lab_greska);
+            this.panel1.Controls.Add(this.tbx_reg);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.lab_prekoracena);
+            this.panel1.Controls.Add(this.tbx_prosek);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btn_ucitaj);
+            this.panel1.Controls.Add(this.tbx_povracaj);
+            this.panel1.Controls.Add(this.tbx_vreme);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.tbx_mesto);
+            this.panel1.Controls.Add(this.tbx_uplata);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.tbx_iznos);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.cbx_kategorije);
+            this.panel1.Controls.Add(this.btn_potvrdi);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 425);
+            this.panel1.Size = new System.Drawing.Size(626, 425);
             this.panel1.TabIndex = 14;
             // 
-            // label10
+            // lab_greska
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(15, 397);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 15);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "greska";
+            this.lab_greska.ForeColor = System.Drawing.Color.Red;
+            this.lab_greska.Location = new System.Drawing.Point(16, 394);
+            this.lab_greska.Name = "lab_greska";
+            this.lab_greska.Size = new System.Drawing.Size(434, 15);
+            this.lab_greska.TabIndex = 19;
+            this.lab_greska.Text = "greska";
+            this.lab_greska.Visible = false;
             // 
-            // textBox7
+            // tbx_reg
             // 
-            this.textBox7.Location = new System.Drawing.Point(436, 106);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(100, 23);
-            this.textBox7.TabIndex = 18;
+            this.tbx_reg.Location = new System.Drawing.Point(436, 106);
+            this.tbx_reg.Name = "tbx_reg";
+            this.tbx_reg.ReadOnly = true;
+            this.tbx_reg.Size = new System.Drawing.Size(100, 23);
+            this.tbx_reg.TabIndex = 18;
             // 
             // label9
             // 
@@ -240,28 +242,28 @@ namespace SIMS_Projekat_Rampe.Views
             this.label9.TabIndex = 17;
             this.label9.Text = "Registarska oznaka:";
             // 
-            // label8
+            // lab_prekoracena
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(235, 322);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 15);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "prekoracena brzina";
+            this.lab_prekoracena.ForeColor = System.Drawing.Color.Red;
+            this.lab_prekoracena.Location = new System.Drawing.Point(240, 272);
+            this.lab_prekoracena.Name = "lab_prekoracena";
+            this.lab_prekoracena.Size = new System.Drawing.Size(479, 16);
+            this.lab_prekoracena.TabIndex = 16;
+            this.lab_prekoracena.Text = "prekoracena brzina";
+            this.lab_prekoracena.Visible = false;
             // 
-            // textBox6
+            // tbx_prosek
             // 
-            this.textBox6.Location = new System.Drawing.Point(334, 284);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 15;
+            this.tbx_prosek.Location = new System.Drawing.Point(339, 234);
+            this.tbx_prosek.Name = "tbx_prosek";
+            this.tbx_prosek.ReadOnly = true;
+            this.tbx_prosek.Size = new System.Drawing.Size(100, 23);
+            this.tbx_prosek.TabIndex = 15;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(235, 287);
+            this.label7.Location = new System.Drawing.Point(240, 237);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 15);
             this.label7.TabIndex = 14;
@@ -276,105 +278,112 @@ namespace SIMS_Projekat_Rampe.Views
             this.label11.TabIndex = 20;
             this.label11.Text = "Rampa:";
             // 
-            // textBox8
+            // tbx_rampa
             // 
-            this.textBox8.Location = new System.Drawing.Point(81, 21);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(100, 23);
-            this.textBox8.TabIndex = 21;
+            this.tbx_rampa.Location = new System.Drawing.Point(81, 21);
+            this.tbx_rampa.Name = "tbx_rampa";
+            this.tbx_rampa.ReadOnly = true;
+            this.tbx_rampa.Size = new System.Drawing.Size(100, 23);
+            this.tbx_rampa.TabIndex = 21;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.btn_akcija);
+            this.panel2.Controls.Add(this.lab_citac_tagova);
+            this.panel2.Controls.Add(this.lab_semafor);
+            this.panel2.Controls.Add(this.lab_citac_tablica);
+            this.panel2.Controls.Add(this.lab_displej);
+            this.panel2.Controls.Add(this.btn_prijavi);
+            this.panel2.Controls.Add(this.cbx_uredjaj);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.textBox8);
+            this.panel2.Controls.Add(this.tbx_rampa);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Location = new System.Drawing.Point(12, 443);
+            this.panel2.Location = new System.Drawing.Point(12, 487);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(777, 140);
+            this.panel2.Size = new System.Drawing.Size(816, 150);
             this.panel2.TabIndex = 15;
             // 
-            // button4
+            // label20
             // 
-            this.button4.Location = new System.Drawing.Point(16, 68);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "Akcija";
-            this.button4.UseVisualStyleBackColor = true;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(593, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 15);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Tip uredjaja:";
             // 
-            // label19
+            // btn_akcija
             // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label19.Location = new System.Drawing.Point(467, 53);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 15);
-            this.label19.TabIndex = 32;
-            this.label19.Text = "stanje";
+            this.btn_akcija.Location = new System.Drawing.Point(16, 68);
+            this.btn_akcija.Name = "btn_akcija";
+            this.btn_akcija.Size = new System.Drawing.Size(107, 38);
+            this.btn_akcija.TabIndex = 33;
+            this.btn_akcija.Text = "Akcija";
+            this.btn_akcija.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // lab_citac_tagova
             // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(457, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(38, 15);
-            this.label18.TabIndex = 31;
-            this.label18.Text = "stanje";
+            this.lab_citac_tagova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lab_citac_tagova.Location = new System.Drawing.Point(501, 53);
+            this.lab_citac_tagova.Name = "lab_citac_tagova";
+            this.lab_citac_tagova.Size = new System.Drawing.Size(79, 15);
+            this.lab_citac_tagova.TabIndex = 32;
+            this.lab_citac_tagova.Text = "stanje";
             // 
-            // label17
+            // lab_semafor
             // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label17.Location = new System.Drawing.Point(341, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 15);
-            this.label17.TabIndex = 30;
-            this.label17.Text = "stanje";
+            this.lab_semafor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lab_semafor.Location = new System.Drawing.Point(501, 21);
+            this.lab_semafor.Name = "lab_semafor";
+            this.lab_semafor.Size = new System.Drawing.Size(79, 15);
+            this.lab_semafor.TabIndex = 31;
+            this.lab_semafor.Text = "stanje";
             // 
-            // label16
+            // lab_citac_tablica
             // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label16.Location = new System.Drawing.Point(309, 24);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 15);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "stanje";
+            this.lab_citac_tablica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lab_citac_tablica.Location = new System.Drawing.Point(341, 53);
+            this.lab_citac_tablica.Name = "lab_citac_tablica";
+            this.lab_citac_tablica.Size = new System.Drawing.Size(74, 15);
+            this.lab_citac_tablica.TabIndex = 30;
+            this.lab_citac_tablica.Text = "stanje";
             // 
-            // button3
+            // lab_displej
             // 
-            this.button3.Location = new System.Drawing.Point(564, 49);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Prijavi kvar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.lab_displej.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.lab_displej.Location = new System.Drawing.Point(309, 24);
+            this.lab_displej.Name = "lab_displej";
+            this.lab_displej.Size = new System.Drawing.Size(84, 15);
+            this.lab_displej.TabIndex = 29;
+            this.lab_displej.Text = "stanje";
             // 
-            // comboBox2
+            // btn_prijavi
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(564, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 27;
+            this.btn_prijavi.Location = new System.Drawing.Point(727, 68);
+            this.btn_prijavi.Name = "btn_prijavi";
+            this.btn_prijavi.Size = new System.Drawing.Size(75, 23);
+            this.btn_prijavi.TabIndex = 28;
+            this.btn_prijavi.Text = "Prijavi kvar";
+            this.btn_prijavi.UseVisualStyleBackColor = true;
+            this.btn_prijavi.Click += new System.EventHandler(this.btn_prijavi_Click);
+            // 
+            // cbx_uredjaj
+            // 
+            this.cbx_uredjaj.FormattingEnabled = true;
+            this.cbx_uredjaj.Location = new System.Drawing.Point(681, 21);
+            this.cbx_uredjaj.Name = "cbx_uredjaj";
+            this.cbx_uredjaj.Size = new System.Drawing.Size(121, 23);
+            this.cbx_uredjaj.TabIndex = 27;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(399, 21);
+            this.label15.Location = new System.Drawing.Point(421, 21);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(51, 15);
             this.label15.TabIndex = 25;
@@ -383,11 +392,11 @@ namespace SIMS_Projekat_Rampe.Views
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(399, 53);
+            this.label14.Location = new System.Drawing.Point(421, 53);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 15);
+            this.label14.Size = new System.Drawing.Size(74, 15);
             this.label14.TabIndex = 24;
-            this.label14.Text = "Čitač Taga";
+            this.label14.Text = "Čitač Tagova";
             // 
             // label13
             // 
@@ -411,11 +420,13 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 586);
+            this.ClientSize = new System.Drawing.Size(840, 640);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "NaplatnoMestoView";
-            this.Text = "NaplatnoMesto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Naplatno Mesto X";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -426,40 +437,41 @@ namespace SIMS_Projekat_Rampe.Views
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btn_ucitaj;
+        private System.Windows.Forms.TextBox tbx_vreme;
+        private System.Windows.Forms.TextBox tbx_mesto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbx_kategorije;
+        private System.Windows.Forms.Button btn_potvrdi;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbx_iznos;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbx_uplata;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbx_povracaj;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label lab_greska;
+        private System.Windows.Forms.TextBox tbx_reg;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label lab_prekoracena;
+        private System.Windows.Forms.TextBox tbx_prosek;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tbx_rampa;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button btn_akcija;
+        private System.Windows.Forms.Label lab_citac_tagova;
+        private System.Windows.Forms.Label lab_semafor;
+        private System.Windows.Forms.Label lab_citac_tablica;
+        private System.Windows.Forms.Label lab_displej;
+        private System.Windows.Forms.Button btn_prijavi;
+        private System.Windows.Forms.ComboBox cbx_uredjaj;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label20;
     }
 }

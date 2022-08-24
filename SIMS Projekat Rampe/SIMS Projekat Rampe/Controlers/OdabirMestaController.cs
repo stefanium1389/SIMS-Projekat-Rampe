@@ -23,6 +23,12 @@ namespace SIMS_Projekat_Rampe.Controlers
             return stanicaRepo.GetByRadnik(Ulogovani.UserName)[0].Naziv;
         }
 
+        public NaplatnaStanica DobaviStanicu()
+        {
+            StanicaRepo stanicaRepo = new StanicaRepo();
+            return stanicaRepo.GetByRadnik(Ulogovani.UserName)[0];
+        }
+
         //ignorise elektronska
         public List<string> DobaviImenaMesta() 
         {

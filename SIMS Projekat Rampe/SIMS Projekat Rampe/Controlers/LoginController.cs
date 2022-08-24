@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
+using System.Diagnostics;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
@@ -23,12 +24,14 @@ namespace SIMS_Projekat_Rampe.Controlers
 
     class LoginController
     {
-        public Korisnik CheckLogin(string username, string password)
+        private Dictionary<string, List<DateTime>> pokusaji = new Dictionary<string, List<DateTime>>();
+        public Korisnik CheckLogin(string username, string password) 
         {
             KorisnikRepo korisnikRepo = new KorisnikRepo();
             var korisnik = korisnikRepo.GetByUsername(username);
             if (korisnik.Count == 1)
             {
+                ZabeleziLogin(username);
                 if (korisnik[0].PassWord == password)
                 {
                     return korisnik[0];
@@ -41,6 +44,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             else if (korisnik.Count == 0) 
             {
+                ZabeleziLogin(username);
                 throw new LoginException("Korisničko ime ili lozinka nisu ispravni, pokušajte ponovo");
             }
             else
@@ -48,6 +52,50 @@ namespace SIMS_Projekat_Rampe.Controlers
                 throw new LoginException("Greška u prijavi");
             }
             
+        }
+
+        public void ProveriSpam(string user) 
+        {
+            if (pokusaji.ContainsKey(user))
+            {
+                
+                List<DateTime> vremena = pokusaji[user];
+                Debug.WriteLine(vremena.Count);
+                int brPokusaja = 0;
+                for (int i = 0; i < vremena.Count; i++)
+                {
+                    if (vremena[i] > DateTime.Now.AddMinutes(-15))
+                    {
+                        brPokusaja += 1;
+                    }
+                }
+
+                if (brPokusaja > 5)
+                {
+                    throw new LoginException("Prekoračen broj pokušaja u 15 minuta, molimo sačekajte.");
+                }
+
+            }
+        }
+
+        public void ZabeleziLogin(string user) 
+        {
+            if (pokusaji.ContainsKey(user))
+            {
+                System.Diagnostics.Debug.Write("aaaa");
+                List<DateTime> vremena = pokusaji[user];
+                System.Diagnostics.Debug.Write(vremena.Count);
+                vremena.Add(DateTime.Now);
+                System.Diagnostics.Debug.Write(vremena.Count);
+                pokusaji[user] = vremena;
+            }
+            else
+            {
+                System.Diagnostics.Debug.Write("bbbb");
+                List<DateTime> lista = new List<DateTime>();
+                lista.Add(DateTime.Now);
+                pokusaji[user] = lista;
+            }
         }
     }
 }
