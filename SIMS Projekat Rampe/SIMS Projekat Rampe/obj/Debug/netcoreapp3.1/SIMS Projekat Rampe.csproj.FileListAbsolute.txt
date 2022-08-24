@@ -80,3 +80,4 @@ E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projeka
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.genruntimeconfig.cache
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.LoginView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.OdabirMestaView.resources
+E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnoMestoView.resources

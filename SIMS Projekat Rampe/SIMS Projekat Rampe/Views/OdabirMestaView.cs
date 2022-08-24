@@ -47,5 +47,18 @@ namespace SIMS_Projekat_Rampe.Views
             Predak.Visible = true;
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.comboBox1.SelectedIndex == -1) 
+            {
+                //todo: prikazi neku poruku
+            }
+            else 
+            {
+                NaplatnoMestoView nmv = new NaplatnoMestoView();
+                nmv.Show();
+            }
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.labelStanica.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelStanica.Location = new System.Drawing.Point(25, 59);
             this.labelStanica.Name = "labelStanica";
-            this.labelStanica.Size = new System.Drawing.Size(0, 21);
+            this.labelStanica.Size = new System.Drawing.Size(59, 21);
             this.labelStanica.TabIndex = 5;
             this.labelStanica.Text = "Stanica";
             // 
@@ -72,6 +72,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.button2.TabIndex = 4;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
