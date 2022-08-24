@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
+using SIMS_Projekat_Rampe.Views;
 
 
 namespace SIMS_Projekat_Rampe
@@ -34,6 +35,15 @@ namespace SIMS_Projekat_Rampe
             try
             {
                 ulogovani = loginController.CheckLogin(textBox1.Text, textBox2.Text);
+                if (ulogovani.Tip == TipKorisnika.Radnik) 
+                {
+                    OdabirMestaView odabir = new OdabirMestaView(ulogovani, this);
+                    odabir.Show();
+                    this.Visible = false;
+                    
+
+                }
+                
             }
             catch (LoginException exp)
             {
