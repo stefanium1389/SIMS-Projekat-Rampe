@@ -21,20 +21,10 @@ namespace SIMS_Projekat_Rampe
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Debug.WriteLine("heloooo");
+            //ovo obara proslu bazu!!
             MongolDB.generateTest();
-            Debug.WriteLine("zavrsio sammm");
-            foreach (var k in korisnikRepo.GetAll())
-            {
-                Debug.WriteLine($"{k.Ime}, {k.Prezime}");
-            }
-            foreach (var k in korisnikRepo.GetByUsername("biban"))
-            {
-                Debug.WriteLine($"{k.Ime}, {k.Prezime}");
-            }
 
-            Application.Run(new Form1());
+            Application.Run(new LoginView());
 
         }
     }

@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SIMS_Projekat_Rampe.Controlers;
+using SIMS_Projekat_Rampe.Models;
 
 
 namespace SIMS_Projekat_Rampe
 {
-    public partial class Form1 : Form
+    public partial class LoginView : Form
     {
-        public Form1()
+        private LoginController loginController;
+        public LoginView()
         {
             InitializeComponent();
+            loginController = new LoginController();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,20 +29,19 @@ namespace SIMS_Projekat_Rampe
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (KorisnikController.CheckLogin(textBox1.Text, textBox2.Text) == true)
+            label_error.Visible = false;
+            Korisnik ulogovani;
+            try
             {
-                button1.Text = "xdddd";
+                ulogovani = loginController.CheckLogin(textBox1.Text, textBox2.Text);
+            }
+            catch (LoginException exp)
+            {
+                label_error.Text = exp.Message;
+                label_error.Visible = true;
                 
             }
-            else button1.Text = "yuluz";
-            {
-               
-            }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
