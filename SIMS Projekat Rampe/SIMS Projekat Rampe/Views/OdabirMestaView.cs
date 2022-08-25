@@ -60,6 +60,7 @@ namespace SIMS_Projekat_Rampe.Views
                 int rednibrint = Int32.Parse(rednibr);
                 NaplatnoMestoView nmv = new NaplatnoMestoView(this,OdabirController.DobaviStanicu(),rednibrint);
                 nmv.Show();
+                this.Visible = false;
             }
         }
     }

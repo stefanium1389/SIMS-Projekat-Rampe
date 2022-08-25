@@ -17,6 +17,7 @@ namespace SIMS_Projekat_Rampe.Views
         public Form Predak { get; set; }
         public NaplatnoMestoView(Form predak, NaplatnaStanica ns, int rednibr)
         {
+            Predak = predak;
             Kontroler = new NaplatnoMestoController(ns, rednibr);
             InitializeComponent();
             Inicijalizuj();
@@ -24,7 +25,12 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void btn_ucitaj_Click(object sender, EventArgs e)
         {
-
+            Kontroler.NapraviNoviProlazak();
+            Kontroler.SelektovaniTip = (TipVozila)cbx_kategorije.SelectedIndex;
+            cbx_kategorije.Enabled = true;
+            btn_potvrdi.Enabled = true;
+            lab_uspeh.Visible = false;
+            OsveziProlazak();
         }
 
         private void Inicijalizuj() 
@@ -35,7 +41,7 @@ namespace SIMS_Projekat_Rampe.Views
             lab_citac_tablica.Text = Kontroler.DobaviStanjeCitacaTablica();
             lab_citac_tagova.Text = Kontroler.DobaviStanjeCitacaTagova();
             lab_semafor.Text = Kontroler.DobaviStanjeSemafora();
-            osveziUredjaje();
+            OsveziUredjaje();
             
             foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila)))
             {
@@ -59,10 +65,22 @@ namespace SIMS_Projekat_Rampe.Views
             lab_citac_tagova.Text = Kontroler.DobaviStanjeCitacaTagova();
             lab_semafor.Text = Kontroler.DobaviStanjeSemafora();
             tbx_rampa.Text = Kontroler.DobaviStanjeRampe();
-            osveziUredjaje();
+            OsveziUredjaje();
         }
-
-        private void osveziUredjaje() 
+        private void OsveziProlazak() 
+        {
+            lab_prekoracena.Visible = false;
+            tbx_vreme.Text = Kontroler.TrenutniProlazak.VremeUlaska.ToString("dd.MM.yyyy HH:mm:ss");
+            tbx_mesto.Text = Kontroler.DobaviImeUlazneStanice();
+            tbx_reg.Text = Kontroler.TrenutneTablice;
+            tbx_prosek.Text = Kontroler.TrenutnaProsecnaBrzina.ToString();
+            if (Kontroler.KaznaIzdata) 
+            {
+                lab_prekoracena.Visible = true;
+            }
+            tbx_iznos.Text = Kontroler.TrenutniIznos.ToString();
+        }
+        private void OsveziUredjaje() 
         {
             if (lab_displej.Text == "pokvaren")
             {
@@ -99,6 +117,55 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 lab_citac_tagova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             }
+        }
+
+        private void NaplatnoMestoView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Predak.Visible = true;
+        }
+
+        private void NaplatnoMestoView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_potvrdi_Click(object sender, EventArgs e)
+        {
+            lab_greska.Visible = false;
+            
+            if (Kontroler.TrenutniProlazak is null) 
+            {
+                lab_greska.Text = "Greška - prolazak nije učitan";
+                lab_greska.Visible = true;
+            }
+
+            float razlika = -1;
+            try
+            {
+                razlika = Kontroler.ProveriUplatu(tbx_uplata.Text);
+            }
+            catch (NaplatnoMestoException exp)
+            {
+                lab_greska.Text = exp.Message;
+                lab_greska.Visible = true;
+            }
+            
+            if (razlika >= 0) 
+            {
+                tbx_povracaj.Text = razlika.ToString();
+                Kontroler.FinalizujProlazak();
+                cbx_kategorije.Enabled = false;
+                btn_potvrdi.Enabled = false;
+                lab_uspeh.Visible = true;
+            }
+
+            
+        }
+
+        private void cbx_kategorije_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Kontroler.PrimeniNovTip((TipVozila)cbx_kategorije.SelectedItem);
+            tbx_iznos.Text = Kontroler.TrenutniIznos.ToString();
         }
     }
 }

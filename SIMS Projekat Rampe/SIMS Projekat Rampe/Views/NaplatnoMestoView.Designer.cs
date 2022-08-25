@@ -65,6 +65,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lab_uspeh = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +85,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.tbx_vreme.Location = new System.Drawing.Point(123, 109);
             this.tbx_vreme.Name = "tbx_vreme";
             this.tbx_vreme.ReadOnly = true;
-            this.tbx_vreme.Size = new System.Drawing.Size(100, 23);
+            this.tbx_vreme.Size = new System.Drawing.Size(165, 23);
             this.tbx_vreme.TabIndex = 1;
             // 
             // tbx_mesto
@@ -92,7 +93,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.tbx_mesto.Location = new System.Drawing.Point(123, 151);
             this.tbx_mesto.Name = "tbx_mesto";
             this.tbx_mesto.ReadOnly = true;
-            this.tbx_mesto.Size = new System.Drawing.Size(100, 23);
+            this.tbx_mesto.Size = new System.Drawing.Size(165, 23);
             this.tbx_mesto.TabIndex = 2;
             // 
             // label1
@@ -129,15 +130,17 @@ namespace SIMS_Projekat_Rampe.Views
             this.cbx_kategorije.Name = "cbx_kategorije";
             this.cbx_kategorije.Size = new System.Drawing.Size(121, 23);
             this.cbx_kategorije.TabIndex = 6;
+            this.cbx_kategorije.SelectedIndexChanged += new System.EventHandler(this.cbx_kategorije_SelectedIndexChanged);
             // 
             // btn_potvrdi
             // 
-            this.btn_potvrdi.Location = new System.Drawing.Point(15, 353);
+            this.btn_potvrdi.Location = new System.Drawing.Point(18, 311);
             this.btn_potvrdi.Name = "btn_potvrdi";
             this.btn_potvrdi.Size = new System.Drawing.Size(75, 23);
             this.btn_potvrdi.TabIndex = 7;
             this.btn_potvrdi.Text = "Potvrdi";
             this.btn_potvrdi.UseVisualStyleBackColor = true;
+            this.btn_potvrdi.Click += new System.EventHandler(this.btn_potvrdi_Click);
             // 
             // label4
             // 
@@ -152,6 +155,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.tbx_iznos.Location = new System.Drawing.Point(95, 237);
             this.tbx_iznos.Name = "tbx_iznos";
+            this.tbx_iznos.ReadOnly = true;
             this.tbx_iznos.Size = new System.Drawing.Size(100, 23);
             this.tbx_iznos.TabIndex = 9;
             // 
@@ -174,7 +178,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 315);
+            this.label6.Location = new System.Drawing.Point(16, 354);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 15);
             this.label6.TabIndex = 12;
@@ -182,7 +186,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // tbx_povracaj
             // 
-            this.tbx_povracaj.Location = new System.Drawing.Point(95, 312);
+            this.tbx_povracaj.Location = new System.Drawing.Point(95, 351);
             this.tbx_povracaj.Name = "tbx_povracaj";
             this.tbx_povracaj.ReadOnly = true;
             this.tbx_povracaj.Size = new System.Drawing.Size(100, 23);
@@ -190,6 +194,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lab_uspeh);
             this.panel1.Controls.Add(this.lab_greska);
             this.panel1.Controls.Add(this.tbx_reg);
             this.panel1.Controls.Add(this.label9);
@@ -245,11 +250,11 @@ namespace SIMS_Projekat_Rampe.Views
             // lab_prekoracena
             // 
             this.lab_prekoracena.ForeColor = System.Drawing.Color.Red;
-            this.lab_prekoracena.Location = new System.Drawing.Point(240, 272);
+            this.lab_prekoracena.Location = new System.Drawing.Point(240, 280);
             this.lab_prekoracena.Name = "lab_prekoracena";
             this.lab_prekoracena.Size = new System.Drawing.Size(479, 16);
             this.lab_prekoracena.TabIndex = 16;
-            this.lab_prekoracena.Text = "prekoracena brzina";
+            this.lab_prekoracena.Text = "Prosečna brzina prekoračena - kazna poslata";
             this.lab_prekoracena.Visible = false;
             // 
             // tbx_prosek
@@ -416,6 +421,17 @@ namespace SIMS_Projekat_Rampe.Views
             this.label12.TabIndex = 22;
             this.label12.Text = "Displej";
             // 
+            // lab_uspeh
+            // 
+            this.lab_uspeh.AutoSize = true;
+            this.lab_uspeh.ForeColor = System.Drawing.Color.Blue;
+            this.lab_uspeh.Location = new System.Drawing.Point(456, 394);
+            this.lab_uspeh.Name = "lab_uspeh";
+            this.lab_uspeh.Size = new System.Drawing.Size(153, 15);
+            this.lab_uspeh.TabIndex = 20;
+            this.lab_uspeh.Text = "Uspešno zabeležen prolazak";
+            this.lab_uspeh.Visible = false;
+            // 
             // NaplatnoMestoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -427,6 +443,8 @@ namespace SIMS_Projekat_Rampe.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Naplatno Mesto X";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NaplatnoMestoView_FormClosing);
+            this.Load += new System.EventHandler(this.NaplatnoMestoView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -473,5 +491,6 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lab_uspeh;
     }
 }

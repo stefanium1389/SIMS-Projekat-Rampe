@@ -39,7 +39,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             int sef_count = 1;
             int radnik_count = 1;
             int prodavac_count = 1;
-            int mesto_count = 1;
+            int mesto_count = 0;
             int stanica_count = 1;
             int deonica_count = 1;
 
