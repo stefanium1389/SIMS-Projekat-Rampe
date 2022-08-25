@@ -5,7 +5,6 @@ C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Ra
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.dll
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.pdb
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.AssemblyReference.cache
-C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Form1.resources
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.GenerateResource.cache
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.AssemblyInfoInputs.cache
@@ -81,3 +80,8 @@ E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projeka
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.LoginView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.OdabirMestaView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnoMestoView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.LoginView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.MenadzerMeniView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnoMestoView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.OdabirMestaView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.CenovniciView.resources

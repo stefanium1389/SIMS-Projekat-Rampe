@@ -42,6 +42,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             int mesto_count = 1;
             int stanica_count = 1;
             int deonica_count = 1;
+            int men_count = 1;
 
             List<NaplatnaStanica> stanice = new List<NaplatnaStanica>();
             for (int i=0; i<4; i++) 
@@ -50,6 +51,11 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 Korisnik sef = new Korisnik { UserName = "sef"+sef_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "sefthe"+sef_count+"th", Prezime = "sefkovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.SefStanice };
                 coll_korisnici.InsertOne(sef);
                 sef_count += 1;
+
+                //kreiranje menadzera
+                Korisnik menadzer = new Korisnik { UserName = "menadzer" + men_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "menadzerko" + men_count + "-ti", Prezime = "menadzeric", PolKorisnika = Pol.Muski, Tip = TipKorisnika.Menadzer };
+                coll_korisnici.InsertOne(menadzer);
+                men_count += 1;
 
                 //kreiranje radnika
                 List<string> user_radnici = new List<string>();

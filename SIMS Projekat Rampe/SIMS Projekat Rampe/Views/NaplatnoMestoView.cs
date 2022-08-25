@@ -100,5 +100,10 @@ namespace SIMS_Projekat_Rampe.Views
                 lab_citac_tagova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             }
         }
+
+        private void NaplatnoMestoView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
