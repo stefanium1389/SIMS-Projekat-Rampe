@@ -41,7 +41,17 @@ namespace SIMS_Projekat_Rampe
                 if (ulogovani.Tip == TipKorisnika.Radnik) 
                 {
                     OdabirMestaView odabir = new OdabirMestaView(ulogovani, this);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
                     odabir.Show();
+                    this.Visible = false;
+                }
+                if (ulogovani.Tip == TipKorisnika.Menadzer)
+                {
+                    MenadzerMeniView menadzer = new MenadzerMeniView(this, ulogovani);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    menadzer.Show();
                     this.Visible = false;
                 }
 
