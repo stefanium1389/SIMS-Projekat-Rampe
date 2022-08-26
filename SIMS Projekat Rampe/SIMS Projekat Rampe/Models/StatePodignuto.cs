@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using SIMS_Projekat_Rampe.Controlers;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -17,20 +19,38 @@ namespace SIMS_Projekat_Rampe.Models
         }
         public override void KolaOdu()
         {
-            Debug.WriteLine("ga3");
+            Thread.Sleep(2000);
+            System.Diagnostics.Debug.WriteLine("adsadsad");
+            StateSpustaSe s = new StateSpustaSe(Kontroler);
+            DobaviKontekst() .PromeniStanje(s);
+            s.Entry();
+            s.Do();
         }
         public override void Entry()
         {
-            Debug.WriteLine("dodae4");
+            DobaviKontekst().PromeniProlazSemafor(Kontroler,true);
         }
         public override void Do()
         {
-            Debug.WriteLine("a obicna c#5");
+            bool ispravan = DobaviKontekst().SaljiSignal();
+            if (!ispravan)
+            {
+                StatePokvareno p = new StatePokvareno(Kontroler);
+                DobaviKontekst() .PromeniStanje(p);
+                p.Entry();
+            }
+            else 
+            {
+                KolaOdu();
+            }
         }
         public override void KlikNaDugme()
         {
             Debug.WriteLine("propaganda regenjan6");
         }
 
+        public StatePodignuto(NaplatnoMestoController nmk) : base(nmk)
+        {
+        }
     }
 }

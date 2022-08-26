@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
+using SIMS_Projekat_Rampe.Controlers;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -21,16 +22,29 @@ namespace SIMS_Projekat_Rampe.Models
         }
         public override void Entry()
         {
-            Debug.WriteLine("xd4");
+            DobaviKontekst().PromeniProlazSemafor(Kontroler, false);
         }
         public override void Do()
         {
-            Debug.WriteLine("xd5");
+
+            bool ispravan = DobaviKontekst() .SaljiSignal();
+            if (!ispravan)
+            {
+                StatePokvareno p = new StatePokvareno(Kontroler );
+                DobaviKontekst().PromeniStanje(p);
+                p.Entry();
+            }
         }
         public override void KlikNaDugme()
         {
-            Debug.WriteLine("xd6");
+            StatePodizeSe s = new StatePodizeSe(Kontroler);
+            DobaviKontekst().PromeniStanje(new StatePodizeSe(Kontroler));
+            s.Entry();
+            s.Do();
         }
 
+        public StateSpusteno(NaplatnoMestoController nmk) : base(nmk)
+        {
+        }
     }
 }

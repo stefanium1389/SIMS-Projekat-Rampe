@@ -10,7 +10,7 @@ using SIMS_Projekat_Rampe.Models;
 
 namespace SIMS_Projekat_Rampe.Views
 {
-    public partial class NaplatnoMestoView : Form
+    public partial class NaplatnoMestoView : Form, IObserver
     {
 
         public NaplatnoMestoController Kontroler {get; set;}
@@ -19,10 +19,20 @@ namespace SIMS_Projekat_Rampe.Views
         {
             Predak = predak;
             Kontroler = new NaplatnoMestoController(ns, rednibr);
+            Kontroler.PrijaviViewKaoObserver(this);
             InitializeComponent();
             Inicijalizuj();
         }
 
+        public void Perform(string s) 
+        {
+           
+            if (s == "osvezi") 
+            {
+                OsveziRampuISemafor();
+            }
+            
+        }
         private void btn_ucitaj_Click(object sender, EventArgs e)
         {
             Kontroler.NapraviNoviProlazak();
@@ -33,7 +43,7 @@ namespace SIMS_Projekat_Rampe.Views
             OsveziProlazak();
         }
 
-        private void Inicijalizuj() 
+        private void Inicijalizuj()
         {
             this.Text = "Naplatno mesto " + Kontroler.RedniBrojMesta;
             tbx_rampa.Text = Kontroler.DobaviStanjeRampe();
@@ -41,6 +51,11 @@ namespace SIMS_Projekat_Rampe.Views
             lab_citac_tablica.Text = Kontroler.DobaviStanjeCitacaTablica();
             lab_citac_tagova.Text = Kontroler.DobaviStanjeCitacaTagova();
             lab_semafor.Text = Kontroler.DobaviStanjeSemafora();
+            tbx_semafor.Text = Kontroler.DobaviProlazakSemafora();
+            if (Kontroler.DobaviStanjeRampe() == "spuštena") 
+            {
+                btn_podigni.Enabled = true;
+            }
             OsveziUredjaje();
             
             foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila)))
@@ -48,8 +63,13 @@ namespace SIMS_Projekat_Rampe.Views
                 cbx_kategorije.Items.Add(tip);
             }
 
+            bool elektronsko = Kontroler.IsElektronsko();
             foreach (TipUredjaja tip in Enum.GetValues(typeof(TipUredjaja)))
             {
+                if (!elektronsko && tip == TipUredjaja.CitacTagova ) 
+                {
+                    continue;
+                }
                 cbx_uredjaj.Items.Add(tip);
             }
 
@@ -59,12 +79,8 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void btn_prijavi_Click(object sender, EventArgs e)
         {
+            btn_podigni.Enabled = false;
             Kontroler.RegistrujKvar((TipUredjaja)cbx_uredjaj.SelectedItem);
-            lab_displej.Text = Kontroler.DobaviStanjeDispleja();
-            lab_citac_tablica.Text = Kontroler.DobaviStanjeCitacaTablica();
-            lab_citac_tagova.Text = Kontroler.DobaviStanjeCitacaTagova();
-            lab_semafor.Text = Kontroler.DobaviStanjeSemafora();
-            tbx_rampa.Text = Kontroler.DobaviStanjeRampe();
             OsveziUredjaje();
         }
         private void OsveziProlazak() 
@@ -80,8 +96,28 @@ namespace SIMS_Projekat_Rampe.Views
             }
             tbx_iznos.Text = Kontroler.TrenutniIznos.ToString();
         }
+
+        private void OsveziRampuISemafor() 
+        {
+            tbx_rampa.Text = Kontroler.DobaviStanjeRampe();
+            System.Diagnostics.Debug.WriteLine(Kontroler.DobaviStanjeRampe());
+            System.Diagnostics.Debug.WriteLine(Kontroler.DobaviProlazakSemafora());
+            tbx_semafor.Text = Kontroler.DobaviProlazakSemafora();
+            if (Kontroler.DobaviStanjeRampe() == "spuštena") 
+            {
+                btn_podigni.Enabled = true;
+            }
+            OsveziUredjaje();
+            this.Refresh();
+        }
         private void OsveziUredjaje() 
         {
+            lab_displej.Text = Kontroler.DobaviStanjeDispleja();
+            lab_citac_tablica.Text = Kontroler.DobaviStanjeCitacaTablica();
+            lab_citac_tagova.Text = Kontroler.DobaviStanjeCitacaTagova();
+            lab_semafor.Text = Kontroler.DobaviStanjeSemafora();
+            tbx_rampa.Text = Kontroler.DobaviStanjeRampe();
+
             if (lab_displej.Text == "pokvaren")
             {
                 lab_displej.ForeColor = System.Drawing.Color.Red;
@@ -166,6 +202,18 @@ namespace SIMS_Projekat_Rampe.Views
         {
             Kontroler.PrimeniNovTip((TipVozila)cbx_kategorije.SelectedItem);
             tbx_iznos.Text = Kontroler.TrenutniIznos.ToString();
+        }
+
+        private void lab_citac_tablica_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_podigni_Click(object sender, EventArgs e)
+        {
+            btn_podigni.Enabled = false;
+            Kontroler.PodigniRampu();
+            OsveziRampuISemafor();
         }
     }
 }
