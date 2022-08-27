@@ -44,6 +44,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.label6 = new System.Windows.Forms.Label();
             this.tbx_povracaj = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lab_uspeh = new System.Windows.Forms.Label();
             this.lab_greska = new System.Windows.Forms.Label();
             this.tbx_reg = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,8 +54,10 @@ namespace SIMS_Projekat_Rampe.Views
             this.label11 = new System.Windows.Forms.Label();
             this.tbx_rampa = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbx_semafor = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.btn_akcija = new System.Windows.Forms.Button();
+            this.btn_podigni = new System.Windows.Forms.Button();
             this.lab_citac_tagova = new System.Windows.Forms.Label();
             this.lab_semafor = new System.Windows.Forms.Label();
             this.lab_citac_tablica = new System.Windows.Forms.Label();
@@ -65,7 +68,6 @@ namespace SIMS_Projekat_Rampe.Views
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.lab_uspeh = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -220,6 +222,17 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Size = new System.Drawing.Size(626, 425);
             this.panel1.TabIndex = 14;
             // 
+            // lab_uspeh
+            // 
+            this.lab_uspeh.AutoSize = true;
+            this.lab_uspeh.ForeColor = System.Drawing.Color.Blue;
+            this.lab_uspeh.Location = new System.Drawing.Point(456, 394);
+            this.lab_uspeh.Name = "lab_uspeh";
+            this.lab_uspeh.Size = new System.Drawing.Size(153, 15);
+            this.lab_uspeh.TabIndex = 20;
+            this.lab_uspeh.Text = "Uspešno zabeležen prolazak";
+            this.lab_uspeh.Visible = false;
+            // 
             // lab_greska
             // 
             this.lab_greska.ForeColor = System.Drawing.Color.Red;
@@ -285,7 +298,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // tbx_rampa
             // 
-            this.tbx_rampa.Location = new System.Drawing.Point(81, 21);
+            this.tbx_rampa.Location = new System.Drawing.Point(71, 21);
             this.tbx_rampa.Name = "tbx_rampa";
             this.tbx_rampa.ReadOnly = true;
             this.tbx_rampa.Size = new System.Drawing.Size(100, 23);
@@ -294,8 +307,10 @@ namespace SIMS_Projekat_Rampe.Views
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.tbx_semafor);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.btn_akcija);
+            this.panel2.Controls.Add(this.btn_podigni);
             this.panel2.Controls.Add(this.lab_citac_tagova);
             this.panel2.Controls.Add(this.lab_semafor);
             this.panel2.Controls.Add(this.lab_citac_tablica);
@@ -313,6 +328,23 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel2.Size = new System.Drawing.Size(816, 150);
             this.panel2.TabIndex = 15;
             // 
+            // tbx_semafor
+            // 
+            this.tbx_semafor.Location = new System.Drawing.Point(247, 21);
+            this.tbx_semafor.Name = "tbx_semafor";
+            this.tbx_semafor.ReadOnly = true;
+            this.tbx_semafor.Size = new System.Drawing.Size(100, 23);
+            this.tbx_semafor.TabIndex = 36;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(187, 24);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 15);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Semafor:";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -322,50 +354,53 @@ namespace SIMS_Projekat_Rampe.Views
             this.label20.TabIndex = 34;
             this.label20.Text = "Tip uredjaja:";
             // 
-            // btn_akcija
+            // btn_podigni
             // 
-            this.btn_akcija.Location = new System.Drawing.Point(16, 68);
-            this.btn_akcija.Name = "btn_akcija";
-            this.btn_akcija.Size = new System.Drawing.Size(107, 38);
-            this.btn_akcija.TabIndex = 33;
-            this.btn_akcija.Text = "Akcija";
-            this.btn_akcija.UseVisualStyleBackColor = true;
+            this.btn_podigni.Enabled = false;
+            this.btn_podigni.Location = new System.Drawing.Point(16, 68);
+            this.btn_podigni.Name = "btn_podigni";
+            this.btn_podigni.Size = new System.Drawing.Size(107, 38);
+            this.btn_podigni.TabIndex = 33;
+            this.btn_podigni.Text = "Podigni Rampu";
+            this.btn_podigni.UseVisualStyleBackColor = true;
+            this.btn_podigni.Click += new System.EventHandler(this.btn_podigni_Click);
             // 
             // lab_citac_tagova
             // 
             this.lab_citac_tagova.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_citac_tagova.Location = new System.Drawing.Point(501, 53);
+            this.lab_citac_tagova.Location = new System.Drawing.Point(478, 109);
             this.lab_citac_tagova.Name = "lab_citac_tagova";
-            this.lab_citac_tagova.Size = new System.Drawing.Size(79, 15);
+            this.lab_citac_tagova.Size = new System.Drawing.Size(109, 15);
             this.lab_citac_tagova.TabIndex = 32;
-            this.lab_citac_tagova.Text = "stanje";
+            this.lab_citac_tagova.Text = "stanje_tagova";
             // 
             // lab_semafor
             // 
             this.lab_semafor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_semafor.Location = new System.Drawing.Point(501, 21);
+            this.lab_semafor.Location = new System.Drawing.Point(478, 80);
             this.lab_semafor.Name = "lab_semafor";
-            this.lab_semafor.Size = new System.Drawing.Size(79, 15);
+            this.lab_semafor.Size = new System.Drawing.Size(109, 15);
             this.lab_semafor.TabIndex = 31;
-            this.lab_semafor.Text = "stanje";
+            this.lab_semafor.Text = "stanje_semafora";
             // 
             // lab_citac_tablica
             // 
             this.lab_citac_tablica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_citac_tablica.Location = new System.Drawing.Point(341, 53);
+            this.lab_citac_tablica.Location = new System.Drawing.Point(478, 53);
             this.lab_citac_tablica.Name = "lab_citac_tablica";
-            this.lab_citac_tablica.Size = new System.Drawing.Size(74, 15);
+            this.lab_citac_tablica.Size = new System.Drawing.Size(109, 15);
             this.lab_citac_tablica.TabIndex = 30;
-            this.lab_citac_tablica.Text = "stanje";
+            this.lab_citac_tablica.Text = "stanje_tablica";
+            this.lab_citac_tablica.Click += new System.EventHandler(this.lab_citac_tablica_Click);
             // 
             // lab_displej
             // 
             this.lab_displej.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lab_displej.Location = new System.Drawing.Point(309, 24);
+            this.lab_displej.Location = new System.Drawing.Point(478, 24);
             this.lab_displej.Name = "lab_displej";
-            this.lab_displej.Size = new System.Drawing.Size(84, 15);
+            this.lab_displej.Size = new System.Drawing.Size(109, 15);
             this.lab_displej.TabIndex = 29;
-            this.lab_displej.Text = "stanje";
+            this.lab_displej.Text = "stanje_dispej";
             // 
             // btn_prijavi
             // 
@@ -388,7 +423,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(421, 21);
+            this.label15.Location = new System.Drawing.Point(397, 80);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(51, 15);
             this.label15.TabIndex = 25;
@@ -397,7 +432,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(421, 53);
+            this.label14.Location = new System.Drawing.Point(396, 109);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 15);
             this.label14.TabIndex = 24;
@@ -406,7 +441,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(261, 53);
+            this.label13.Location = new System.Drawing.Point(397, 53);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 15);
             this.label13.TabIndex = 23;
@@ -415,22 +450,11 @@ namespace SIMS_Projekat_Rampe.Views
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(261, 24);
+            this.label12.Location = new System.Drawing.Point(397, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 15);
             this.label12.TabIndex = 22;
             this.label12.Text = "Displej";
-            // 
-            // lab_uspeh
-            // 
-            this.lab_uspeh.AutoSize = true;
-            this.lab_uspeh.ForeColor = System.Drawing.Color.Blue;
-            this.lab_uspeh.Location = new System.Drawing.Point(456, 394);
-            this.lab_uspeh.Name = "lab_uspeh";
-            this.lab_uspeh.Size = new System.Drawing.Size(153, 15);
-            this.lab_uspeh.TabIndex = 20;
-            this.lab_uspeh.Text = "Uspešno zabeležen prolazak";
-            this.lab_uspeh.Visible = false;
             // 
             // NaplatnoMestoView
             // 
@@ -479,7 +503,7 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbx_rampa;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btn_akcija;
+        private System.Windows.Forms.Button btn_podigni;
         private System.Windows.Forms.Label lab_citac_tagova;
         private System.Windows.Forms.Label lab_semafor;
         private System.Windows.Forms.Label lab_citac_tablica;
@@ -492,5 +516,7 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lab_uspeh;
+        private System.Windows.Forms.TextBox tbx_semafor;
+        private System.Windows.Forms.Label label8;
     }
 }

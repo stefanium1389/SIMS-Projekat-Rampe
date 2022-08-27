@@ -89,7 +89,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
                     mesto_count += 1;
                 }
 
-                mesto_count = 1;
+                mesto_count = 0;
 
                 NaplatnaStanica stanica = new NaplatnaStanica("st"+stanica_count,"grad"+i, sef.UserName, user_radnici, user_prodavci, naplatna_mesta);
                 coll_stanice.InsertOne(stanica);

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
+using SIMS_Projekat_Rampe.Controlers;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -9,7 +10,8 @@ namespace SIMS_Projekat_Rampe.Models
     {
         public override void OznacenKaoPopravljen()
         {
-            Debug.WriteLine("xd");
+            StateSpusteno s = new StateSpusteno(Kontroler);
+            DobaviKontekst().PromeniStanje(s);
         }
         public override void UsnesnaNaplataENP()
         {
@@ -21,7 +23,7 @@ namespace SIMS_Projekat_Rampe.Models
         }
         public override void Entry()
         {
-            Debug.WriteLine("ajaja");
+            DobaviKontekst().PromeniProlazSemafor(Kontroler, false);
         }
         public override void Do()
         {
@@ -30,6 +32,9 @@ namespace SIMS_Projekat_Rampe.Models
         public override void KlikNaDugme()
         {
             Debug.WriteLine("bracalu sa balkana");
+        }
+        public StatePokvareno(NaplatnoMestoController nmk) : base(nmk)
+        {
         }
 
     }

@@ -11,7 +11,7 @@ namespace SIMS_Projekat_Rampe.Models
         public bool Aktivno { get; set; }
         public Uredjaj Displej { get; set; }
         public Uredjaj CitacTablice { get; set; }
-        public Uredjaj CitacTagova { get; set; }
+        public Uredjaj? CitacTagova { get; set; }
         public Semafor Semafor { get; set; }
         public Rampa Rampa { get; set; }
 
@@ -22,7 +22,14 @@ namespace SIMS_Projekat_Rampe.Models
             Aktivno = aktivno;
             Displej = new Uredjaj(TipUredjaja.Displej);
             CitacTablice = new Uredjaj(TipUredjaja.CitacTablice);
-            CitacTagova = new Uredjaj(TipUredjaja.CitacTagova);
+            if (elektronsko)
+            {
+                CitacTagova = new Uredjaj(TipUredjaja.CitacTagova);
+            }
+            else
+            {
+                CitacTagova = null;
+            }
             Semafor = new Semafor(TipUredjaja.Semafor);
             Rampa = new Rampa(TipUredjaja.Rampa);
         }

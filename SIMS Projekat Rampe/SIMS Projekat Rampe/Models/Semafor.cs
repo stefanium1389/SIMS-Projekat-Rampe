@@ -1,17 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace SIMS_Projekat_Rampe.Models
 {
     
-    public class Semafor : Uredjaj
+    public class Semafor : Uredjaj, IPublisher
     {
         public bool DozvoljenProlazak { get; set; }
-        
+        [BsonIgnore]
+        public List<IObserver> Observers { get; set; }
+
         public Semafor (TipUredjaja tip) :base( tip)
         {
-            DozvoljenProlazak = true;
+            Observers = new List<IObserver>();
+            DozvoljenProlazak = false;
+        }
+
+        public void Publish(string s)
+        {
+            foreach (IObserver o in Observers)
+            {
+                o.Perform(s);
+            }
+        }
+
+        public void AddObserver(IObserver o)
+        {
+            if (Observers is null) 
+            {
+                Observers = new List<IObserver>();
+            }
+            Observers.Add(o);
         }
     }
     

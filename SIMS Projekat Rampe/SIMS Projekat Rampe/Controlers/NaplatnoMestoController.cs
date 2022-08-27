@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
+using SIMS_Projekat_Rampe.Views;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
@@ -33,11 +34,18 @@ namespace SIMS_Projekat_Rampe.Controlers
         public TipVozila SelektovaniTip { get; set; }
 
         public bool KaznaIzdata { get; set; }
+
+        public void ZabeleziPromene() 
+        {
+            StanicaRepo sr = new StanicaRepo();
+            sr.Update(Stanica);
+        }
         
         public NaplatnoMestoController (NaplatnaStanica stanica, int redniBroj) 
         {
             Stanica = stanica;
             RedniBrojMesta = redniBroj;
+            InjektujSebeUStanje();
         }
 
         public void FinalizujProlazak() 
@@ -50,6 +58,29 @@ namespace SIMS_Projekat_Rampe.Controlers
             pr.Create(TrenutniProlazak);
         }
 
+        public void PrijaviViewKaoObserver (NaplatnoMestoView view) 
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            mesto.Rampa.AddObserver(view);
+            mesto.Semafor.AddObserver(view);
+        }
+
+        public void PodigniRampu() 
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.Rampa.Stanje.GetType().Equals(typeof(StateSpusteno))) 
+            {
+                mesto.Rampa.KlikNaDugme();
+            }
+                
+            //System.Diagnostics.Debug.WriteLine(mesto.Rampa.Stanje);
+        }
+
+        public Rampa VratiRampu() 
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            return mesto.Rampa;
+        }
         public float ProveriUplatu(string iznos)
         {
             double izn;
@@ -99,6 +130,25 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             return "greska";
         }
+        public string DobaviProlazakSemafora() 
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.Semafor.Pokvaren == true) 
+            {
+                return "----";
+            }
+            if (mesto.Semafor.DozvoljenProlazak == true)
+            {
+                return "prolazak";
+            }
+            else return "stop";
+        }
+
+        public void InjektujSebeUStanje()
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            mesto.Rampa.Stanje.Kontroler = this;
+        }
 
         public string DobaviStanjeSemafora()
         {
@@ -112,7 +162,12 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public string DobaviStanjeCitacaTagova()
         {
+
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.CitacTagova is null)
+            {
+                return "----";
+            }
             if (mesto.CitacTagova.Pokvaren == true)
             {
                 return "pokvaren";
@@ -142,6 +197,12 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public void NapraviNoviProlazak() 
         {
+
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.CitacTablice.Pokvaren)
+            {
+                throw new NaplatnoMestoException("Čitač tablica je pokvaren!");
+            }
             ProlazakRepo pr = new ProlazakRepo();
             string kod;
             while (true) 
@@ -168,6 +229,15 @@ namespace SIMS_Projekat_Rampe.Controlers
 
             TrenutniIznos = PronadjiIznos();
 
+        }
+        public bool IsElektronsko() 
+        {
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.Elektronsko) 
+            {
+                return true;
+            }
+            return false;
         }
 
         public void PrimeniNovTip(TipVozila tip) 
@@ -332,7 +402,7 @@ namespace SIMS_Projekat_Rampe.Controlers
 
             if (tip == TipUredjaja.Rampa) 
             {
-                mesto.Rampa.PromeniStanje(new StatePokvareno());
+                mesto.Rampa.PromeniStanje(new StatePokvareno(this));
             }
 
             else 
