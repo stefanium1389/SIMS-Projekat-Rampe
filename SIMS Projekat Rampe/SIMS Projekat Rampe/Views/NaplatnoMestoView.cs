@@ -35,7 +35,15 @@ namespace SIMS_Projekat_Rampe.Views
         }
         private void btn_ucitaj_Click(object sender, EventArgs e)
         {
-            Kontroler.NapraviNoviProlazak();
+            try
+            {
+                Kontroler.NapraviNoviProlazak();
+            }
+            catch (NaplatnoMestoException exp) 
+            {
+                lab_greska.Text = exp.Message;
+                lab_greska.Visible = true;
+            }
             Kontroler.SelektovaniTip = (TipVozila)cbx_kategorije.SelectedIndex;
             cbx_kategorije.Enabled = true;
             btn_potvrdi.Enabled = true;
@@ -82,6 +90,7 @@ namespace SIMS_Projekat_Rampe.Views
             btn_podigni.Enabled = false;
             Kontroler.RegistrujKvar((TipUredjaja)cbx_uredjaj.SelectedItem);
             OsveziUredjaje();
+            OsveziRampuISemafor();
         }
         private void OsveziProlazak() 
         {
@@ -107,6 +116,7 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 btn_podigni.Enabled = true;
             }
+            Kontroler.ZabeleziPromene();
             OsveziUredjaje();
             this.Refresh();
         }

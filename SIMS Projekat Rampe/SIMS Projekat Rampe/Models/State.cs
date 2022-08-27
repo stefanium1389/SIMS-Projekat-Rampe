@@ -7,6 +7,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace SIMS_Projekat_Rampe.Models
 {
+    [BsonKnownTypes(typeof(StateSpusteno), typeof(StateSpustaSe), typeof(StatePodignuto), typeof(StatePodizeSe), typeof(StatePokvareno))]
     public abstract class State
     {
         [BsonIgnore]

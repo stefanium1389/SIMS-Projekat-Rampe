@@ -11,7 +11,9 @@ namespace SIMS_Projekat_Rampe.Models
 
     public class Rampa : Uredjaj, IPublisher
     {
+        
         public State Stanje { get; set; }
+        [BsonIgnore]
         public List<IObserver> Observers {get; set;}
         public void PodigniRampu()
         {
@@ -22,7 +24,6 @@ namespace SIMS_Projekat_Rampe.Models
             Thread.Sleep(300);
         }
 
-        
         public bool SaljiSignal() 
         {
             Random random = new Random();
@@ -42,6 +43,14 @@ namespace SIMS_Projekat_Rampe.Models
         public void OznacenKaoPopravljen() { }
         public void PromeniStanje(State stanje)
         {
+            if (stanje.GetType().Equals(typeof(StatePokvareno))) 
+            {
+                Pokvaren = true;
+            }
+            else 
+            {
+                Pokvaren = false;
+            }
             Stanje = stanje;
             Publish("osvezi");
         }
@@ -69,6 +78,10 @@ namespace SIMS_Projekat_Rampe.Models
 
         public void AddObserver(IObserver o)
         {
+            if (Observers is null) 
+            {
+                Observers = new List<IObserver>();
+            }
             Observers.Add(o);
         }
 

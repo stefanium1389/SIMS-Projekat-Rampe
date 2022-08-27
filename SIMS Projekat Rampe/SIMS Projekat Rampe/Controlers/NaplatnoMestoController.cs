@@ -34,6 +34,12 @@ namespace SIMS_Projekat_Rampe.Controlers
         public TipVozila SelektovaniTip { get; set; }
 
         public bool KaznaIzdata { get; set; }
+
+        public void ZabeleziPromene() 
+        {
+            StanicaRepo sr = new StanicaRepo();
+            sr.Update(Stanica);
+        }
         
         public NaplatnoMestoController (NaplatnaStanica stanica, int redniBroj) 
         {
@@ -127,6 +133,10 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string DobaviProlazakSemafora() 
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.Semafor.Pokvaren == true) 
+            {
+                return "----";
+            }
             if (mesto.Semafor.DozvoljenProlazak == true)
             {
                 return "prolazak";
@@ -187,6 +197,12 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public void NapraviNoviProlazak() 
         {
+
+            var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
+            if (mesto.CitacTablice.Pokvaren)
+            {
+                throw new NaplatnoMestoException("Čitač tablica je pokvaren!");
+            }
             ProlazakRepo pr = new ProlazakRepo();
             string kod;
             while (true) 
