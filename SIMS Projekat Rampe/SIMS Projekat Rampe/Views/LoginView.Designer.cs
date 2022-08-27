@@ -64,6 +64,7 @@ namespace SIMS_Projekat_Rampe
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(163, 23);
             this.textBox2.TabIndex = 2;
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // label1
             // 
@@ -131,6 +132,7 @@ namespace SIMS_Projekat_Rampe
             this.Text = "Dobrodošli";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginView_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
