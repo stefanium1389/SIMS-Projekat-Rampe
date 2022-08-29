@@ -7,6 +7,9 @@
     <Compile Update="Views\MenadzerMeniView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\NaplatnaStanicaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\NaplatnoMestoView.cs">
       <SubType>Form</SubType>
     </Compile>

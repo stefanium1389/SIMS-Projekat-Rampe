@@ -90,7 +90,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 }
 
                 mesto_count = 0;
-
+                // generisanje stanice
                 NaplatnaStanica stanica = new NaplatnaStanica("st"+stanica_count,"grad"+i, sef.UserName, user_radnici, user_prodavci, naplatna_mesta);
                 coll_stanice.InsertOne(stanica);
                 stanica_count += 1;
@@ -104,6 +104,11 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 coll_korisnici.InsertOne(radnik);
                 radnik_count += 1;
             }
+
+            // generisanje rezervnog sefa
+            Korisnik rezervni = new Korisnik { UserName = "sef" + sef_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "sefthe" + sef_count + "th", Prezime = "sefkovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.SefStanice };
+            coll_korisnici.InsertOne(rezervni);
+            sef_count += 1;
 
             //generisanje deonica
             Random rd = new Random();

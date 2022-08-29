@@ -54,6 +54,14 @@ namespace SIMS_Projekat_Rampe
                     menadzer.Show();
                     this.Visible = false;
                 }
+                if (ulogovani.Tip == TipKorisnika.SefStanice)
+                {
+                    NaplatnaStanicaView nsv = new NaplatnaStanicaView(this, ulogovani);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    nsv.Show();
+                    this.Visible = false;
+                }
 
             }
             catch (LoginException exp)
