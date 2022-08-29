@@ -22,7 +22,7 @@ namespace SIMS_Projekat_Rampe
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //ovo obara proslu bazu!!
-            //MongolDB.generateTest();
+            MongolDB.generateTest();
 
             Application.Run(new LoginView());
 

@@ -97,6 +97,14 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 stanice.Add(stanica);
             }
 
+            // generisanje rezervnih radnika
+            for (int j = 0; j < 3; j++)
+            {
+                Korisnik radnik = new Korisnik { UserName = "radnik" + radnik_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "radnikthe" + radnik_count + "th", Prezime = "radnikovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.Radnik };
+                coll_korisnici.InsertOne(radnik);
+                radnik_count += 1;
+            }
+
             //generisanje deonica
             Random rd = new Random();
             List <Deonica> deonice = new List<Deonica>();
