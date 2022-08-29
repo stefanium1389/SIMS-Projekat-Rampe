@@ -70,6 +70,7 @@ namespace SIMS_Projekat_Rampe.Models
 
         public void Publish(string s)
         {
+            if (!(Observers is null))
             foreach(IObserver o in Observers) 
             {
                 o.Perform(s);

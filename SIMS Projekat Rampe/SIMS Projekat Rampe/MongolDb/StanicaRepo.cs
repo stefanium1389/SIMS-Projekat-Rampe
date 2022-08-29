@@ -20,6 +20,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             return results.ToList();
         }
 
+        public List<NaplatnaStanica> GetBySef(string username)
+        {
+            var collection = MongolDB.ConnectToMongol<NaplatnaStanica>(imeKolekcije);
+            var results = collection.Find(xd => xd.SefStaniceUsername == username);
+            return results.ToList();
+        }
+
         public List<NaplatnaStanica> GetById(string id)
         {
             var collection = MongolDB.ConnectToMongol<NaplatnaStanica>(imeKolekcije);

@@ -30,6 +30,11 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 this.comboBox1.SelectedIndex = 0;
             }
+            else 
+            {
+                comboBox1.Enabled = false;
+                button2.Enabled = false;
+            }
         }
 
         private void OdabirMestaView_Load(object sender, EventArgs e)
