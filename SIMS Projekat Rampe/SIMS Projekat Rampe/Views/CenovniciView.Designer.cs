@@ -65,7 +65,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(136, 91);
+            this.label3.Location = new System.Drawing.Point(132, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 15);
             this.label3.TabIndex = 6;
@@ -141,7 +141,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(294, 49);
+            this.button1.Location = new System.Drawing.Point(323, 75);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -151,7 +151,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(49, 49);
+            this.dateTimePicker1.Location = new System.Drawing.Point(46, 73);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 1;
@@ -159,7 +159,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 19);
+            this.label1.Location = new System.Drawing.Point(91, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 15);
             this.label1.TabIndex = 0;

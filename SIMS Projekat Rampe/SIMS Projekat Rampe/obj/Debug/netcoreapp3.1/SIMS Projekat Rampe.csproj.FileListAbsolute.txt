@@ -88,3 +88,5 @@ C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Ra
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.CenovniciView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.MenadzerMeniView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnaStanicaView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.IzvestajiView.resources
+C:\Users\Stefan\Desktop\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnaStanicaView.resources

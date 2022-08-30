@@ -9,6 +9,10 @@ namespace SIMS_Projekat_Rampe.Controlers
     public class NaplatnaStanicaController
     {
         public Korisnik SefStanice { get; set; }
+        public NaplatnaStanicaController()
+        {
+
+        }
         public NaplatnaStanicaController(Korisnik sef) 
         {
             SefStanice = sef;
@@ -195,6 +199,11 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             StanicaRepo sr = new StanicaRepo();
             sr.Update(ns);
+        }
+        public List<NaplatnaStanica> DobaviSveStanice()
+        {
+            StanicaRepo sr = new StanicaRepo();
+            return sr.GetAll();  
         }
     }
 }

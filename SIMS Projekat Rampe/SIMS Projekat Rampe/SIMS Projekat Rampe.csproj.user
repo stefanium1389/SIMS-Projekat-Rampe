@@ -4,6 +4,9 @@
     <Compile Update="Views\CenovniciView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\IzvestajiView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\MenadzerMeniView.cs">
       <SubType>Form</SubType>
     </Compile>
