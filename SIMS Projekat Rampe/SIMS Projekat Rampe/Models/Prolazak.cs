@@ -23,6 +23,10 @@ namespace SIMS_Projekat_Rampe.Models
         public string? DeonicaId { get; set; }
         public Naplata? Naplata { get; set; }
 
+        public Prolazak()
+        {
+
+        }
         public Prolazak(string kod, TipVozila tip, DateTime vreme, string ulaznaStanica, string deonica)
         {
             Kod = kod;

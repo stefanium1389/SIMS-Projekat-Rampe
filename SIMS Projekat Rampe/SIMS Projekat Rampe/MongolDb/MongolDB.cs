@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Models;
+using SIMS_Projekat_Rampe.Controlers;
 using System.Diagnostics;
-
+using System.Text;
 
 namespace SIMS_Projekat_Rampe.MongolDb
 {
@@ -36,6 +37,8 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var coll_stanice = db.GetCollection<NaplatnaStanica>("stanice");
             var coll_deonice = db.GetCollection<Deonica>("deonice");
             var coll_cenovnici = db.GetCollection<Cenovnik>("cenovnici");
+            var coll_enpuplate = db.GetCollection<UplataENP>("enp_uplate");
+            var coll_prolasci = db.GetCollection<Prolazak>("prolasci");
             int sef_count = 1;
             int radnik_count = 1;
             int prodavac_count = 1;
@@ -147,8 +150,61 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 Cenovnik c = new Cenovnik(vremena[i], stavke);
                 coll_cenovnici.InsertOne(c);
             }
+            //generisanje enp uplata
+            for (int i = 0; i < 20; i++)
+            {
+                DateTime vreme = DateTime.Now.AddDays(rd.Next(-60,0));
+                int iznos = rd.Next(5, 20) * 100;
+                UplataENP uplata = new UplataENP() { Iznos = iznos, Vreme = vreme };
+                coll_enpuplate.InsertOne(uplata);
+            }
+
+            //generisanje prolazaka
+            DeonicaRepo dr = new DeonicaRepo();
+            CenovnikControler cc = new CenovnikControler();
+            Array vozila = Enum.GetValues(typeof(TipVozila));
+            TipVozila randomVozilo = (TipVozila)vozila.GetValue(rd.Next(vozila.Length));
+
+            for (int i = 0; i<10; i++)
+            {
+                foreach(var deonica in dr.GetAll())
+                {
+                    int random = rd.Next(0, 4);
+                    DateTime vreme = DateTime.Now.AddDays(rd.Next(-60, 0));
+                    string ulaz = deonica.UlazakId;
+                    DateTime vremeNaplate = vreme.AddMinutes(rd.Next(45,180));
+                    Cenovnik cenovnik = cc.DobaviCenovnik(vremeNaplate);
+                    Naplata naplata = new Naplata(vremeNaplate, cenovnik.PronadjiStavku(deonica.Id, randomVozilo).Id);
+                    Prolazak prolazak = new Prolazak() {
+                        Kod = NapraviNovKod(),
+                        TipVozila = randomVozilo, 
+                        VremeUlaska = vreme, 
+                        UlaznaStanica = deonica.UlazakId, 
+                        DeonicaId = deonica.Id, 
+                        Naplata = naplata };
+                    coll_prolasci.InsertOne(prolazak);
+                }
+            }
             
 
+        }
+        public static string NapraviNovKod()
+        {
+            int length = 8;
+
+            StringBuilder str_build = new StringBuilder();
+            Random random = new Random();
+
+            char letter;
+
+            for (int i = 0; i < length; i++)
+            {
+                double flt = random.NextDouble();
+                int shift = Convert.ToInt32(Math.Floor(25 * flt));
+                letter = Convert.ToChar(shift + 65);
+                str_build.Append(letter);
+            }
+            return str_build.ToString();
         }
     }
 }
