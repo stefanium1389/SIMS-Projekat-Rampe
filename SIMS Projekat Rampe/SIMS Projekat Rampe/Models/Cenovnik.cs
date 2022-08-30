@@ -30,5 +30,18 @@ namespace SIMS_Projekat_Rampe.Models
             }
             return null;
         }
+
+        public List<StavkaCenovnika> DobaviStavkePoDeonici (string deonicaId) 
+        {
+            List<StavkaCenovnika> odgovarajuce = new List<StavkaCenovnika>();
+            foreach (StavkaCenovnika s in Stavke) 
+            { 
+                if (s.DeonicaId == deonicaId) 
+                {
+                    odgovarajuce.Add(s);
+                }
+            }
+            return odgovarajuce;
+        }
     }
 }

@@ -20,7 +20,6 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.Id == id);
             return results.ToList();
         }
-
         public void Create(Cenovnik Cenovnik)
         {
             var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);

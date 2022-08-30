@@ -38,17 +38,17 @@ namespace SIMS_Projekat_Rampe.Views
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.table_cene = new System.Windows.Forms.DataGridView();
+            this.table_povezane = new System.Windows.Forms.DataGridView();
+            this.table_zaposleni = new System.Windows.Forms.DataGridView();
+            this.table_opsti = new System.Windows.Forms.DataGridView();
+            this.cbx_stanice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_cene)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_povezane)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_zaposleni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_opsti)).BeginInit();
             this.SuspendLayout();
             // 
             // lab_log
@@ -70,16 +70,16 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dataGridView4);
-            this.panel1.Controls.Add(this.dataGridView3);
-            this.panel1.Controls.Add(this.dataGridView2);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.table_cene);
+            this.panel1.Controls.Add(this.table_povezane);
+            this.panel1.Controls.Add(this.table_zaposleni);
+            this.panel1.Controls.Add(this.table_opsti);
+            this.panel1.Controls.Add(this.cbx_stanice);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lab_log);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(658, 609);
+            this.panel1.Size = new System.Drawing.Size(640, 609);
             this.panel1.TabIndex = 1;
             // 
             // btn_obrisi
@@ -112,7 +112,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(300, 320);
+            this.label5.Location = new System.Drawing.Point(315, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 15);
             this.label5.TabIndex = 10;
@@ -130,7 +130,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(300, 107);
+            this.label3.Location = new System.Drawing.Point(315, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 15);
             this.label3.TabIndex = 8;
@@ -145,65 +145,75 @@ namespace SIMS_Projekat_Rampe.Views
             this.label2.TabIndex = 7;
             this.label2.Text = "Opšti podaci";
             // 
-            // dataGridView4
+            // table_cene
             // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.AllowUserToOrderColumns = true;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(295, 345);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowTemplate.Height = 25;
-            this.dataGridView4.Size = new System.Drawing.Size(240, 170);
-            this.dataGridView4.TabIndex = 6;
+            this.table_cene.AllowUserToAddRows = false;
+            this.table_cene.AllowUserToDeleteRows = false;
+            this.table_cene.AllowUserToOrderColumns = true;
+            this.table_cene.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_cene.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_cene.Location = new System.Drawing.Point(315, 345);
+            this.table_cene.Name = "table_cene";
+            this.table_cene.ReadOnly = true;
+            this.table_cene.RowTemplate.Height = 25;
+            this.table_cene.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_cene.Size = new System.Drawing.Size(271, 170);
+            this.table_cene.TabIndex = 6;
             // 
-            // dataGridView3
+            // table_povezane
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToOrderColumns = true;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(25, 345);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowTemplate.Height = 25;
-            this.dataGridView3.Size = new System.Drawing.Size(240, 170);
-            this.dataGridView3.TabIndex = 5;
+            this.table_povezane.AllowUserToAddRows = false;
+            this.table_povezane.AllowUserToDeleteRows = false;
+            this.table_povezane.AllowUserToOrderColumns = true;
+            this.table_povezane.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_povezane.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_povezane.Location = new System.Drawing.Point(25, 345);
+            this.table_povezane.Name = "table_povezane";
+            this.table_povezane.ReadOnly = true;
+            this.table_povezane.RowTemplate.Height = 25;
+            this.table_povezane.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_povezane.Size = new System.Drawing.Size(240, 170);
+            this.table_povezane.TabIndex = 5;
+            this.table_povezane.SelectionChanged += new System.EventHandler(this.table_povezane_SelectionChanged);
             // 
-            // dataGridView2
+            // table_zaposleni
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(295, 134);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 170);
-            this.dataGridView2.TabIndex = 4;
+            this.table_zaposleni.AllowUserToAddRows = false;
+            this.table_zaposleni.AllowUserToDeleteRows = false;
+            this.table_zaposleni.AllowUserToOrderColumns = true;
+            this.table_zaposleni.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_zaposleni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_zaposleni.Location = new System.Drawing.Point(315, 134);
+            this.table_zaposleni.Name = "table_zaposleni";
+            this.table_zaposleni.ReadOnly = true;
+            this.table_zaposleni.RowTemplate.Height = 25;
+            this.table_zaposleni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_zaposleni.Size = new System.Drawing.Size(271, 170);
+            this.table_zaposleni.TabIndex = 4;
             // 
-            // dataGridView1
+            // table_opsti
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 134);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(240, 170);
-            this.dataGridView1.TabIndex = 3;
+            this.table_opsti.AllowUserToAddRows = false;
+            this.table_opsti.AllowUserToDeleteRows = false;
+            this.table_opsti.AllowUserToOrderColumns = true;
+            this.table_opsti.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.table_opsti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table_opsti.Location = new System.Drawing.Point(25, 134);
+            this.table_opsti.Name = "table_opsti";
+            this.table_opsti.ReadOnly = true;
+            this.table_opsti.RowTemplate.Height = 25;
+            this.table_opsti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_opsti.Size = new System.Drawing.Size(240, 170);
+            this.table_opsti.TabIndex = 3;
             // 
-            // comboBox1
+            // cbx_stanice
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(92, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 2;
+            this.cbx_stanice.FormattingEnabled = true;
+            this.cbx_stanice.Location = new System.Drawing.Point(92, 67);
+            this.cbx_stanice.Name = "cbx_stanice";
+            this.cbx_stanice.Size = new System.Drawing.Size(121, 23);
+            this.cbx_stanice.TabIndex = 2;
+            this.cbx_stanice.SelectedIndexChanged += new System.EventHandler(this.cbx_stanice_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -218,16 +228,20 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 633);
+            this.ClientSize = new System.Drawing.Size(664, 633);
             this.Controls.Add(this.panel1);
             this.Name = "UpravljanjeStanicamaView";
-            this.Text = "UpravljanjeStanicamaView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Upravljanje stanicama";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpravljanjeStanicamaView_FormClosing);
+            this.Load += new System.EventHandler(this.UpravljanjeStanicamaView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_cene)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_povezane)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_zaposleni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table_opsti)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,9 +250,9 @@ namespace SIMS_Projekat_Rampe.Views
 
         private System.Windows.Forms.Label lab_log;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView table_zaposleni;
+        private System.Windows.Forms.DataGridView table_opsti;
+        private System.Windows.Forms.ComboBox cbx_stanice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_obrisi;
         private System.Windows.Forms.Button btn_izmeni;
@@ -247,7 +261,7 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView table_cene;
+        private System.Windows.Forms.DataGridView table_povezane;
     }
 }

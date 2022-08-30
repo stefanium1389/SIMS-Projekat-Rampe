@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
-    public partial class KreiranjeStaniceView : Form
+    public partial class CUStaniceView : Form
     {
-        public KreiranjeStaniceView()
+        public CUStaniceView()
         {
             InitializeComponent();
         }

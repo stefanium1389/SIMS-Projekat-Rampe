@@ -57,6 +57,11 @@ namespace SIMS_Projekat_Rampe.Models
             NaplatnaMesta = naplatnaMesta;
         }
 
+        public override string ToString() 
+        {
+            return Naziv;
+        }
+
         public void DodeliRadnika(Korisnik radnik)
         {
             if (radnik.Tip == TipKorisnika.Radnik)

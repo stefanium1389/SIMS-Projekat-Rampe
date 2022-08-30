@@ -1,7 +1,7 @@
 ﻿
 namespace SIMS_Projekat_Rampe.Views
 {
-    partial class KreiranjeStaniceView
+    partial class CUStaniceView
     {
         /// <summary>
         /// Required designer variable.

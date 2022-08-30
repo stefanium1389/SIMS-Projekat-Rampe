@@ -34,6 +34,7 @@ namespace SIMS_Projekat_Rampe
             label_error.Visible = false;
             Korisnik ulogovani;
             
+            //todo: pocistiti ovo i smestiti u kontroler
             try
             {
                 loginController.ProveriSpam(textBox1.Text);
@@ -57,6 +58,14 @@ namespace SIMS_Projekat_Rampe
                 if (ulogovani.Tip == TipKorisnika.SefStanice)
                 {
                     NaplatnaStanicaView nsv = new NaplatnaStanicaView(this, ulogovani);
+                    textBox1.Text = "";
+                    textBox2.Text = "";
+                    nsv.Show();
+                    this.Visible = false;
+                }
+                if (ulogovani.Tip == TipKorisnika.Admin)
+                {
+                    UpravljanjeStanicamaView nsv = new UpravljanjeStanicamaView(this, ulogovani);
                     textBox1.Text = "";
                     textBox2.Text = "";
                     nsv.Show();
