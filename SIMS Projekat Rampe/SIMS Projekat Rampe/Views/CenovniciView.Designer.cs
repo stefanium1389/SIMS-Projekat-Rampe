@@ -85,7 +85,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.dataGridView1.Location = new System.Drawing.Point(485, 49);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(574, 401);
+            this.dataGridView1.Size = new System.Drawing.Size(566, 401);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.Visible = false;
             // 

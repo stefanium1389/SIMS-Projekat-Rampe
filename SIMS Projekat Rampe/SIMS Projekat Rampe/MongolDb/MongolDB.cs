@@ -162,13 +162,14 @@ namespace SIMS_Projekat_Rampe.MongolDb
             //generisanje prolazaka
             DeonicaRepo dr = new DeonicaRepo();
             CenovnikControler cc = new CenovnikControler();
-            Array vozila = Enum.GetValues(typeof(TipVozila));
-            TipVozila randomVozilo = (TipVozila)vozila.GetValue(rd.Next(vozila.Length));
+            
 
             for (int i = 0; i<10; i++)
             {
                 foreach(var deonica in dr.GetAll())
                 {
+                    Array vozila = Enum.GetValues(typeof(TipVozila));
+                    TipVozila randomVozilo = (TipVozila)vozila.GetValue(rd.Next(0, vozila.Length));
                     int random = rd.Next(0, 4);
                     DateTime vreme = DateTime.Now.AddDays(rd.Next(-60, 0));
                     string ulaz = deonica.UlazakId;

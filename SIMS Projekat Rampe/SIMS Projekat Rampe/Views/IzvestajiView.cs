@@ -58,7 +58,7 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 dateTimePickerDo.Value = dateTimePickerOd.Value;
             }
-            //ShowIzvestaji();
+            ShowIzvestaji();
         }
 
         private void dateTimePickerDo_ValueChanged(object sender, EventArgs e)
@@ -83,7 +83,29 @@ namespace SIMS_Projekat_Rampe.Views
             }
             else
             {
+                ProlazakControler pc = new ProlazakControler();
+                UplataENPControler uc = new UplataENPControler();
+                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
+                int prolasciZbir = 0;
+                int enpZbir = 0;
                 panel3.Visible = true;
+                List<Prolazak> prolasci = pc.DobaviProlaske(dateTimePickerOd.Value, dateTimePickerDo.Value, comboBox1.SelectedItem.ToString());
+                List<UplataENP> uplate = uc.DobaviUplate(dateTimePickerOd.Value, dateTimePickerDo.Value);
+                foreach(Prolazak p in prolasci)
+                {
+                    List<string> podaci = pc.DobaviPodatkeOProlasku(p);
+                    dataGridView1.Rows.Add(podaci[0],podaci[1],podaci[2],podaci[3],podaci[4],podaci[5]);
+                    prolasciZbir += int.Parse(podaci[5]);
+                }
+                label4.Text = "Prihodi od prolazaka: " + prolasciZbir;
+                foreach (UplataENP uplata in uplate)
+                {
+                    dataGridView2.Rows.Add(uplata.Vreme, uplata.Iznos);
+                    enpZbir += uplata.Iznos;
+                }
+                label5.Text = "Prihodi od uplata ENP: " + enpZbir;
+                label6.Text = "Ukupni prihodi: " + (enpZbir+ prolasciZbir);
             }
 
         }

@@ -46,18 +46,25 @@ namespace SIMS_Projekat_Rampe.Views
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.TipVozila = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VremeUlaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UlaznaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VremeNaplate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IzlaznaStanica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iznos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
+            this.Vreme = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IznosUplata = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.labelGreska);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label3);
@@ -66,16 +73,16 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.dateTimePickerOd);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Location = new System.Drawing.Point(132, 60);
+            this.panel1.Location = new System.Drawing.Point(158, 82);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(302, 372);
+            this.panel1.Size = new System.Drawing.Size(302, 379);
             this.panel1.TabIndex = 0;
             // 
             // labelGreska
             // 
             this.labelGreska.AutoSize = true;
             this.labelGreska.ForeColor = System.Drawing.Color.Red;
-            this.labelGreska.Location = new System.Drawing.Point(122, 314);
+            this.labelGreska.Location = new System.Drawing.Point(119, 356);
             this.labelGreska.Name = "labelGreska";
             this.labelGreska.Size = new System.Drawing.Size(42, 15);
             this.labelGreska.TabIndex = 7;
@@ -85,7 +92,7 @@ namespace SIMS_Projekat_Rampe.Views
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(108, 253);
+            this.checkBox1.Location = new System.Drawing.Point(105, 295);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(79, 19);
             this.checkBox1.TabIndex = 6;
@@ -96,7 +103,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 190);
+            this.label3.Location = new System.Drawing.Point(15, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 15);
             this.label3.TabIndex = 5;
@@ -105,7 +112,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 114);
+            this.label2.Location = new System.Drawing.Point(14, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 15);
             this.label2.TabIndex = 4;
@@ -113,7 +120,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // dateTimePickerDo
             // 
-            this.dateTimePickerDo.Location = new System.Drawing.Point(69, 184);
+            this.dateTimePickerDo.Location = new System.Drawing.Point(66, 226);
             this.dateTimePickerDo.Name = "dateTimePickerDo";
             this.dateTimePickerDo.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerDo.TabIndex = 3;
@@ -121,7 +128,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // dateTimePickerOd
             // 
-            this.dateTimePickerOd.Location = new System.Drawing.Point(69, 108);
+            this.dateTimePickerOd.Location = new System.Drawing.Point(66, 150);
             this.dateTimePickerOd.Name = "dateTimePickerOd";
             this.dateTimePickerOd.Size = new System.Drawing.Size(200, 23);
             this.dateTimePickerOd.TabIndex = 2;
@@ -130,7 +137,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 44);
+            this.label1.Location = new System.Drawing.Point(15, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 15);
             this.label1.TabIndex = 1;
@@ -140,7 +147,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(69, 41);
+            this.comboBox1.Location = new System.Drawing.Point(66, 83);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 23);
             this.comboBox1.TabIndex = 0;
@@ -150,7 +157,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel2.Controls.Add(this.buttonNazad);
-            this.panel2.Location = new System.Drawing.Point(132, 491);
+            this.panel2.Location = new System.Drawing.Point(158, 467);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(302, 47);
             this.panel2.TabIndex = 1;
@@ -182,72 +189,122 @@ namespace SIMS_Projekat_Rampe.Views
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(426, 491);
+            this.label6.Location = new System.Drawing.Point(459, 434);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 15);
+            this.label6.Size = new System.Drawing.Size(55, 15);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Ukupno: 00000";
+            this.label6.Text = "Ukupno: ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(426, 382);
+            this.label5.Location = new System.Drawing.Point(459, 382);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 15);
+            this.label5.Size = new System.Drawing.Size(129, 15);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Prihodi od uplate ENP: 00000";
+            this.label5.Text = "Prihodi od uplate ENP: ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(426, 279);
+            this.label4.Location = new System.Drawing.Point(459, 329);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 15);
+            this.label4.Size = new System.Drawing.Size(121, 15);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Prihodi od prolazaka: 00000";
+            this.label4.Text = "Prihodi od prolazaka: ";
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(50, 279);
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Vreme,
+            this.IznosUplata});
+            this.dataGridView2.Location = new System.Drawing.Point(25, 285);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(288, 227);
+            this.dataGridView2.Size = new System.Drawing.Size(369, 227);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 21);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TipVozila,
+            this.VremeUlaska,
+            this.UlaznaStanica,
+            this.VremeNaplate,
+            this.IzlaznaStanica,
+            this.Iznos});
+            this.dataGridView1.Location = new System.Drawing.Point(25, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(615, 227);
+            this.dataGridView1.Size = new System.Drawing.Size(665, 227);
             this.dataGridView1.TabIndex = 0;
             // 
-            // panel4
+            // TipVozila
             // 
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(130, 12);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 37);
-            this.panel4.TabIndex = 3;
+            this.TipVozila.HeaderText = "Tip Vozila";
+            this.TipVozila.Name = "TipVozila";
+            this.TipVozila.ReadOnly = true;
+            // 
+            // VremeUlaska
+            // 
+            this.VremeUlaska.HeaderText = "Vreme Ulaska";
+            this.VremeUlaska.Name = "VremeUlaska";
+            this.VremeUlaska.ReadOnly = true;
+            // 
+            // UlaznaStanica
+            // 
+            this.UlaznaStanica.HeaderText = "Ulazna Stanica";
+            this.UlaznaStanica.Name = "UlaznaStanica";
+            this.UlaznaStanica.ReadOnly = true;
+            // 
+            // VremeNaplate
+            // 
+            this.VremeNaplate.HeaderText = "Vreme Naplate";
+            this.VremeNaplate.Name = "VremeNaplate";
+            this.VremeNaplate.ReadOnly = true;
+            // 
+            // IzlaznaStanica
+            // 
+            this.IzlaznaStanica.HeaderText = "Izlazna Stanica";
+            this.IzlaznaStanica.Name = "IzlaznaStanica";
+            this.IzlaznaStanica.ReadOnly = true;
+            // 
+            // Iznos
+            // 
+            this.Iznos.HeaderText = "Iznos";
+            this.Iznos.Name = "Iznos";
+            this.Iznos.ReadOnly = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(72, 0);
+            this.label7.Location = new System.Drawing.Point(70, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(153, 28);
-            this.label7.TabIndex = 0;
+            this.label7.TabIndex = 8;
             this.label7.Text = "Pregled prihoda";
+            // 
+            // Vreme
+            // 
+            this.Vreme.HeaderText = "Vreme Uplate";
+            this.Vreme.Name = "Vreme";
+            this.Vreme.ReadOnly = true;
+            this.Vreme.Width = 200;
+            // 
+            // IznosUplata
+            // 
+            this.IznosUplata.HeaderText = "Iznos";
+            this.IznosUplata.Name = "IznosUplata";
+            this.IznosUplata.ReadOnly = true;
             // 
             // IzvestajiView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1286, 585);
-            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -261,8 +318,6 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -286,7 +341,14 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipVozila;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VremeUlaska;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UlaznaStanica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VremeNaplate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IzlaznaStanica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iznos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vreme;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IznosUplata;
         private System.Windows.Forms.Label label7;
     }
 }
