@@ -157,10 +157,19 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 table_cene.Rows.Clear();
                 PopuniPodatkeOCenama();
-            }
-            
+            }  
         }
 
-        
+        private void btn_kreiraj_Click(object sender, EventArgs e)
+        {
+            CUStaniceView prozor = new CUStaniceView(this, null);
+            prozor.ShowDialog();
+        }
+
+        private void btn_izmeni_Click(object sender, EventArgs e)
+        {
+            CUStaniceView prozor = new CUStaniceView(this, (NaplatnaStanica)cbx_stanice.SelectedItem);
+            prozor.ShowDialog();
+        }
     }
 }

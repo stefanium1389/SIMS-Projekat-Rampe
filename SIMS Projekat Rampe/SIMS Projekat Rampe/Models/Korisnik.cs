@@ -13,6 +13,12 @@ namespace SIMS_Projekat_Rampe.Models
         public string Prezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public Pol PolKorisnika { get; set; }
+
+        public override string ToString()
+        {
+            return Ime + " " + Prezime + " [" + UserName + "]";
+        }
+
     }
     public enum Pol
     {
@@ -27,4 +33,6 @@ namespace SIMS_Projekat_Rampe.Models
         Menadzer,
         ProdavacENP
     }
+
+    
 }

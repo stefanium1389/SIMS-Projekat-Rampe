@@ -78,21 +78,22 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(787, 550);
+            this.panel1.Size = new System.Drawing.Size(942, 572);
             this.panel1.TabIndex = 0;
             // 
             // btn_dodaj_zaposlenog
             // 
-            this.btn_dodaj_zaposlenog.Location = new System.Drawing.Point(13, 470);
+            this.btn_dodaj_zaposlenog.Location = new System.Drawing.Point(13, 497);
             this.btn_dodaj_zaposlenog.Name = "btn_dodaj_zaposlenog";
             this.btn_dodaj_zaposlenog.Size = new System.Drawing.Size(75, 23);
             this.btn_dodaj_zaposlenog.TabIndex = 24;
             this.btn_dodaj_zaposlenog.Text = "Dodaj";
             this.btn_dodaj_zaposlenog.UseVisualStyleBackColor = true;
+            this.btn_dodaj_zaposlenog.Click += new System.EventHandler(this.btn_dodaj_zaposlenog_Click);
             // 
             // btn_sacuvaj
             // 
-            this.btn_sacuvaj.Location = new System.Drawing.Point(643, 484);
+            this.btn_sacuvaj.Location = new System.Drawing.Point(832, 521);
             this.btn_sacuvaj.Name = "btn_sacuvaj";
             this.btn_sacuvaj.Size = new System.Drawing.Size(88, 35);
             this.btn_sacuvaj.TabIndex = 23;
@@ -102,7 +103,7 @@ namespace SIMS_Projekat_Rampe.Views
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(469, 21);
+            this.label9.Location = new System.Drawing.Point(631, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 15);
             this.label9.TabIndex = 21;
@@ -113,29 +114,37 @@ namespace SIMS_Projekat_Rampe.Views
             this.table_deonice.AllowUserToAddRows = false;
             this.table_deonice.AllowUserToDeleteRows = false;
             this.table_deonice.AllowUserToOrderColumns = true;
+            this.table_deonice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table_deonice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_deonice.Location = new System.Drawing.Point(469, 43);
+            this.table_deonice.Location = new System.Drawing.Point(631, 36);
             this.table_deonice.Name = "table_deonice";
-            this.table_deonice.ReadOnly = true;
             this.table_deonice.RowTemplate.Height = 25;
-            this.table_deonice.Size = new System.Drawing.Size(262, 185);
+            this.table_deonice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_deonice.Size = new System.Drawing.Size(289, 185);
             this.table_deonice.TabIndex = 20;
+            this.table_deonice.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.table_deonice_CellBeginEdit);
+            this.table_deonice.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_deonice_CellEndEdit);
+            this.table_deonice.SelectionChanged += new System.EventHandler(this.table_deonice_SelectionChanged);
             // 
             // table_cene
             // 
             this.table_cene.AllowUserToAddRows = false;
             this.table_cene.AllowUserToDeleteRows = false;
+            this.table_cene.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table_cene.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_cene.Location = new System.Drawing.Point(469, 263);
+            this.table_cene.Location = new System.Drawing.Point(631, 263);
             this.table_cene.Name = "table_cene";
             this.table_cene.RowTemplate.Height = 25;
-            this.table_cene.Size = new System.Drawing.Size(262, 185);
+            this.table_cene.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.table_cene.Size = new System.Drawing.Size(289, 214);
             this.table_cene.TabIndex = 19;
+            this.table_cene.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.table_cene_CellBeginEdit);
+            this.table_cene.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.table_cene_CellEndEdit);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(469, 241);
+            this.label8.Location = new System.Drawing.Point(631, 241);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 15);
             this.label8.TabIndex = 18;
@@ -145,7 +154,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.lab_greska.AutoSize = true;
             this.lab_greska.ForeColor = System.Drawing.Color.Red;
-            this.lab_greska.Location = new System.Drawing.Point(13, 521);
+            this.lab_greska.Location = new System.Drawing.Point(13, 541);
             this.lab_greska.Name = "lab_greska";
             this.lab_greska.Size = new System.Drawing.Size(41, 15);
             this.lab_greska.TabIndex = 12;
@@ -153,17 +162,18 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // btn_ukloni_zaposlenog
             // 
-            this.btn_ukloni_zaposlenog.Location = new System.Drawing.Point(197, 470);
+            this.btn_ukloni_zaposlenog.Location = new System.Drawing.Point(293, 497);
             this.btn_ukloni_zaposlenog.Name = "btn_ukloni_zaposlenog";
             this.btn_ukloni_zaposlenog.Size = new System.Drawing.Size(75, 23);
             this.btn_ukloni_zaposlenog.TabIndex = 11;
             this.btn_ukloni_zaposlenog.Text = "Ukloni";
             this.btn_ukloni_zaposlenog.UseVisualStyleBackColor = true;
+            this.btn_ukloni_zaposlenog.Click += new System.EventHandler(this.btn_ukloni_zaposlenog_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(197, 241);
+            this.label5.Location = new System.Drawing.Point(293, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(114, 15);
             this.label5.TabIndex = 10;
@@ -175,11 +185,12 @@ namespace SIMS_Projekat_Rampe.Views
             this.table_zaposleni.AllowUserToDeleteRows = false;
             this.table_zaposleni.AllowUserToOrderColumns = true;
             this.table_zaposleni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_zaposleni.Location = new System.Drawing.Point(197, 263);
+            this.table_zaposleni.Location = new System.Drawing.Point(293, 263);
             this.table_zaposleni.Name = "table_zaposleni";
             this.table_zaposleni.ReadOnly = true;
             this.table_zaposleni.RowTemplate.Height = 25;
-            this.table_zaposleni.Size = new System.Drawing.Size(240, 185);
+            this.table_zaposleni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table_zaposleni.Size = new System.Drawing.Size(310, 214);
             this.table_zaposleni.TabIndex = 9;
             // 
             // label4
@@ -198,6 +209,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.cbx_tip.Name = "cbx_tip";
             this.cbx_tip.Size = new System.Drawing.Size(121, 23);
             this.cbx_tip.TabIndex = 7;
+            this.cbx_tip.SelectedIndexChanged += new System.EventHandler(this.cbx_tip_SelectedIndexChanged);
             // 
             // lbx_zaposleni
             // 
@@ -205,7 +217,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.lbx_zaposleni.ItemHeight = 15;
             this.lbx_zaposleni.Location = new System.Drawing.Point(13, 263);
             this.lbx_zaposleni.Name = "lbx_zaposleni";
-            this.lbx_zaposleni.Size = new System.Drawing.Size(152, 184);
+            this.lbx_zaposleni.Size = new System.Drawing.Size(260, 214);
             this.lbx_zaposleni.TabIndex = 6;
             // 
             // tbx_naziv
@@ -256,14 +268,16 @@ namespace SIMS_Projekat_Rampe.Views
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv stanice:";
             // 
-            // KreiranjeStaniceView
+            // CUStaniceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 584);
+            this.ClientSize = new System.Drawing.Size(967, 597);
             this.Controls.Add(this.panel1);
-            this.Name = "KreiranjeStaniceView";
-            this.Text = "KreiranjeStaniceView";
+            this.Name = "CUStaniceView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Kreiranje i izmena stanice";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_deonice)).EndInit();

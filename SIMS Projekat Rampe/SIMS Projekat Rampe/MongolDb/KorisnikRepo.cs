@@ -19,6 +19,12 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.UserName == username);
             return results.ToList();
         }
+        public List<Korisnik> GetByTip(TipKorisnika tip)
+        {
+            var collection = MongolDB.ConnectToMongol<Korisnik>(imeKolekcije);
+            var results = collection.Find(xd => xd.Tip == tip);
+            return results.ToList();
+        }
         public void Delete(Korisnik user)
         {
             var collection = MongolDB.ConnectToMongol<Korisnik>(imeKolekcije);

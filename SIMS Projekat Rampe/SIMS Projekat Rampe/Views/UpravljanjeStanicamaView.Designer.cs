@@ -99,6 +99,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.btn_izmeni.TabIndex = 12;
             this.btn_izmeni.Text = "Izmeni";
             this.btn_izmeni.UseVisualStyleBackColor = true;
+            this.btn_izmeni.Click += new System.EventHandler(this.btn_izmeni_Click);
             // 
             // btn_kreiraj
             // 
@@ -108,6 +109,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.btn_kreiraj.TabIndex = 11;
             this.btn_kreiraj.Text = "Kreiraj novu";
             this.btn_kreiraj.UseVisualStyleBackColor = true;
+            this.btn_kreiraj.Click += new System.EventHandler(this.btn_kreiraj_Click);
             // 
             // label5
             // 
