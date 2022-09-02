@@ -206,11 +206,16 @@ namespace SIMS_Projekat_Rampe.Views
                 return;
             }
 
-            // nije testirano! moze biti uzrok buduceg bug-a!
-            NaplatnaStanica st = Kontroler.PretvoriUStanicu((string)table_deonice.SelectedRows[0].Cells[0].Value);
-            Kontroler.TabelaPovezanihPodaci[st] = rez;
-            System.Diagnostics.Debug.WriteLine(Kontroler.TabelaPovezanihPodaci[st]);
-
+            NaplatnaStanica st = Kontroler.PretvoriUStanicu((string)table_deonice.Rows[e.RowIndex].Cells[0].Value.ToString());
+            NaplatnaStanica trazena = null;
+            foreach (NaplatnaStanica kljuc in Kontroler.TabelaPovezanihPodaci.Keys) 
+            {
+                if (kljuc.Id == st.Id) 
+                {
+                    trazena = kljuc;
+                }
+            }
+            Kontroler.TabelaPovezanihPodaci[trazena] = rez;
         }
 
         private void table_deonice_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -249,6 +254,29 @@ namespace SIMS_Projekat_Rampe.Views
                     item.Value[tip] = rez;
                 }
 
+            }
+        }
+
+        private void btn_sacuvaj_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("deonice");
+            foreach(var item in Kontroler.TabelaPovezanihPodaci) 
+            {
+                System.Diagnostics.Debug.WriteLine(item.Key+" " + item.Value);
+            }
+            try
+            {
+                Kontroler.ValidirajTbx(tbx_naziv.Text, tbx_obicnih.Text, tbx_elektronskih.Text);
+                Kontroler.ValidirajZaposlene();
+                Kontroler.ValidirajDeonice();
+                Kontroler.ValidirajCene();
+                lab_greska.Text = "ale aleee";
+                lab_greska.Visible = true;
+            }
+            catch (ValidacijaException ex)
+            {
+                lab_greska.Text = ex.Message;
+                lab_greska.Visible = true;
             }
         }
     }

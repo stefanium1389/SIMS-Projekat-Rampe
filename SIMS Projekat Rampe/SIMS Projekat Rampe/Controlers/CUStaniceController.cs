@@ -6,6 +6,20 @@ using SIMS_Projekat_Rampe.Models;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
+    public class ValidacijaException : Exception
+    {
+        public ValidacijaException()
+        {
+        }
+        public ValidacijaException(string message)
+            : base(message)
+        {
+        }
+        public ValidacijaException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+    }
     public class CUStaniceController
     {
         public NaplatnaStanica? Stanica { get; set; }
@@ -45,7 +59,7 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public TipVozila PretvoriUTipVozila(string izbor)
         {
-            System.Diagnostics.Debug.WriteLine("aaaaaaaaaaaa" + izbor);
+            
             //verovatno postoji finiji nacin da se ovo uradi
             /*
              Auto,
@@ -62,7 +76,7 @@ namespace SIMS_Projekat_Rampe.Controlers
                     return TipVozila.Motor;
                     break;
                 case "Kamion":
-                    return TipVozila.Motor;
+                    return TipVozila.Kamion;
                     break;
                 case "Autobus":
                     return TipVozila.Autobus;
@@ -264,6 +278,76 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
 
             return aktivni;
+        }
+
+        public void ValidirajTbx(string naziv, string brojObicnih, string brojElektronskih) 
+        {
+            if (string.IsNullOrEmpty(naziv) || string.IsNullOrWhiteSpace(naziv)) 
+            {
+                throw new ValidacijaException("Greška - Naziv stanice je prazan.");
+            }
+
+            int br_ob = -1;
+            if (Int32.TryParse(brojObicnih, out br_ob) == false) 
+            {
+                throw new ValidacijaException("Greška - Broj običnih nije prepoznat");
+            }
+            if (br_ob < 0) 
+            {
+                throw new ValidacijaException("Greška - Broj običnih je manji od nule");
+            }
+
+            int br_el = -1;
+            if (Int32.TryParse(brojElektronskih, out br_el) == false)
+            {
+                throw new ValidacijaException("Greška - Broj elektronskih nije prepoznat");
+            }
+            if (br_el < 0)
+            {
+                throw new ValidacijaException("Greška - Broj elektronskih je manji od nule");
+            }
+        }
+
+        public void ValidirajZaposlene() 
+        {
+            int br_sefova = 0;
+            foreach (var zap in Zaposleni) 
+            {
+                if (zap.Tip == TipKorisnika.SefStanice) 
+                {
+                    br_sefova += 1;
+                }
+            }
+
+            if (br_sefova > 1) 
+            {
+                throw new ValidacijaException("Greška - Stanica ima više od 1 šefa.");
+            }
+        }
+
+        public void ValidirajDeonice() 
+        {
+            foreach(var item in TabelaPovezanihPodaci) 
+            {
+                if (item.Value <= 0) 
+                {
+                    throw new ValidacijaException("Greška - Tabela povezanih je nepopunjena ili ima pogrešnu vrednost.");
+                }
+            }
+        }
+
+        public void ValidirajCene() 
+        {
+            foreach (var item in TabelaCenaPodaci) 
+            {
+                foreach (var item2 in item.Value) 
+                {
+                    if (item2.Value <= 0) 
+                    {
+                        throw new ValidacijaException("Greška - Tabela cena je nepopunjena ili ima pogrešnu vrednost.");
+                    }
+                }
+            }
         }
     }
 }

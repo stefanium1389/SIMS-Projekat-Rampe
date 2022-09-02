@@ -99,6 +99,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.btn_sacuvaj.TabIndex = 23;
             this.btn_sacuvaj.Text = "Sačuvaj";
             this.btn_sacuvaj.UseVisualStyleBackColor = true;
+            this.btn_sacuvaj.Click += new System.EventHandler(this.btn_sacuvaj_Click);
             // 
             // label9
             // 
