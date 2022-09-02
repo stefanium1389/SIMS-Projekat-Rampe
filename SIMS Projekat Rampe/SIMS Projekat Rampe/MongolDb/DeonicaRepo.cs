@@ -43,5 +43,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             collection.InsertOne(Deonica);
             return;
         }
+
+        public void Update(Deonica deonica)
+        {
+            var collection = MongolDB.ConnectToMongol<Deonica>(imeKolekcije);
+            var filter = Builders<Deonica>.Filter.Eq("Id", deonica.Id);
+            var results = collection.ReplaceOne(filter, deonica);
+            return;
+        }
     }
 }

@@ -31,5 +31,24 @@ namespace SIMS_Projekat_Rampe.MongolDb
             collection.InsertOne(Cenovnik);
             
         }
+        public void Update(Cenovnik cenovnik)
+        {
+            var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
+            var filter = Builders<Cenovnik>.Filter.Eq("Id", cenovnik.Id);
+            var results = collection.ReplaceOne(filter, cenovnik);
+            return;
+        }
+
+        public void Sort() 
+        {
+            //ja ne znam pametniji nacin za ovo
+            var cenovnici = GetAll();
+            cenovnici.Sort((x, y) => x.VaziOd.CompareTo(y.VaziOd));
+            var db = MongolDB.DobaviDB();
+            db.DropCollection(imeKolekcije);
+            var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
+            collection.InsertMany(cenovnici);
+
+        }
     }
 }

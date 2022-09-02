@@ -67,20 +67,22 @@ namespace SIMS_Projekat_Rampe.Views
             table_povezane.Columns[1].Name = "Daljina";
             table_povezane.RowHeadersVisible = false;
 
-
-            //popunjavanje cbx za stanice
+            OsveziCbx();
+            
+        }
+        private void OsveziCbx() 
+        {
+            cbx_stanice.Items.Clear();
             List<NaplatnaStanica> stanice = Kontroler.DobaviStanice();
-            foreach (var stanica in stanice) 
+            foreach (var stanica in stanice)
             {
                 cbx_stanice.Items.Add(stanica);
             }
-
-            if (stanice.Count > 0) 
+            if (stanice.Count > 0)
             {
                 cbx_stanice.SelectedIndex = 0;
                 //nije potrebno da se osvezi jer se osvezava kad se promeni selektovani indeks
             }
-            
         }
 
         private void OsveziTabele() 
@@ -163,13 +165,27 @@ namespace SIMS_Projekat_Rampe.Views
         private void btn_kreiraj_Click(object sender, EventArgs e)
         {
             CUStaniceView prozor = new CUStaniceView(this, null);
-            prozor.ShowDialog();
+            if (prozor.ShowDialog() == DialogResult.OK) 
+            {
+                string box_msg = "Kreiranje stanice uspešno izvršeno";
+                string box_title = "Uspeh";
+                MessageBox.Show(box_msg, box_title);
+                //ideja za nadogradnju - kad se osveži cbx neka ostane selektovana stanica
+                OsveziCbx();
+            }
         }
 
         private void btn_izmeni_Click(object sender, EventArgs e)
         {
             CUStaniceView prozor = new CUStaniceView(this, (NaplatnaStanica)cbx_stanice.SelectedItem);
-            prozor.ShowDialog();
+            if (prozor.ShowDialog() == DialogResult.OK)
+            {
+                string box_msg = "Izmena stanice uspešno izvršena";
+                string box_title = "Uspeh";
+                MessageBox.Show(box_msg, box_title);
+                //ideja za nadogradnju - kad se osveži cbx neka ostane selektovana stanica
+                OsveziCbx();
+            }
         }
     }
 }

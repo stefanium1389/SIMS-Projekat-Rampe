@@ -41,5 +41,17 @@ namespace SIMS_Projekat_Rampe.MongolDb
             collection.ReplaceOne(filter, ns);
         }
 
+        public void Create(NaplatnaStanica ns)
+        {
+            var collection = MongolDB.ConnectToMongol<NaplatnaStanica>(imeKolekcije);
+            var results = collection.Find(xd => xd.Id == ns.Id);
+            if (results.ToList().Count > 0)
+            {
+                return;
+            }
+            collection.InsertOne(ns);
+            return;
+        }
+
     }
 }

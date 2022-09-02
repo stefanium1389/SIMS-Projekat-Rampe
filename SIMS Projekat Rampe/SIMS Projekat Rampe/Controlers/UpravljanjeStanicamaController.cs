@@ -76,9 +76,11 @@ namespace SIMS_Projekat_Rampe.Controlers
                 podaci.Add(new string[] { korisnik.Ime, korisnik.Prezime, korisnik.Tip.ToString() });
             }
 
-            Korisnik sef = kr.GetByUsername(stanica.SefStaniceUsername)[0];
-            podaci.Add(new string[] { sef.Ime, sef.Prezime, sef.Tip.ToString() });
-
+            if (!(stanica.SefStaniceUsername is null)) 
+            {
+                Korisnik sef = kr.GetByUsername(stanica.SefStaniceUsername)[0];
+                podaci.Add(new string[] { sef.Ime, sef.Prezime, sef.Tip.ToString() });
+            }
             return podaci;
         }
 
@@ -112,7 +114,6 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public List<string[]> DobaviPodatkeOCenama(string stanica1, string stanica2)
         {
-            //ovo bi trebao kontroler da radi
             DeonicaRepo dr = new DeonicaRepo();
             List<string[]> podaci = new List<string[]>();
 

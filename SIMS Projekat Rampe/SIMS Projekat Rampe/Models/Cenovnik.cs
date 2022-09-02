@@ -19,6 +19,18 @@ namespace SIMS_Projekat_Rampe.Models
             Stavke = stavke;
         }
 
+        public Cenovnik(Cenovnik c) 
+        {
+            Id = ObjectId.GenerateNewId();
+            VaziOd = DateTime.Now;
+            Stavke = new List<StavkaCenovnika>();
+            foreach (StavkaCenovnika sc in c.Stavke) 
+            {
+                Stavke.Add(new StavkaCenovnika(sc.DeonicaId,sc.TipVozila,sc.Iznos));
+            }
+            
+        }
+
         public StavkaCenovnika? PronadjiStavku(string deonicaId, TipVozila tipVozila)
         {
             foreach (StavkaCenovnika s in Stavke)

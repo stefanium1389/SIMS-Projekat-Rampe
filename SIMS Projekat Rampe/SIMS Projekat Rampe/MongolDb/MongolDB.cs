@@ -27,6 +27,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             return db.GetCollection<T>(collection);
         }
 
+        public static IMongoDatabase DobaviDB() 
+        {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase(databaseName);
+            return db;
+        }
+
 
         public static void GenerisiStanice() 
         {

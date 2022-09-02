@@ -270,14 +270,19 @@ namespace SIMS_Projekat_Rampe.Views
                 Kontroler.ValidirajZaposlene();
                 Kontroler.ValidirajDeonice();
                 Kontroler.ValidirajCene();
-                lab_greska.Text = "ale aleee";
-                lab_greska.Visible = true;
+                Kontroler.ZabeleziPromene(tbx_naziv.Text, tbx_obicnih.Text, tbx_elektronskih.Text);
+                this.DialogResult = DialogResult.OK;
             }
             catch (ValidacijaException ex)
             {
                 lab_greska.Text = ex.Message;
                 lab_greska.Visible = true;
             }
+        }
+
+        private void CUStaniceView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
