@@ -50,25 +50,27 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.loginLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(797, 450);
+            this.panel1.Size = new System.Drawing.Size(914, 600);
             this.panel1.TabIndex = 0;
             // 
             // labelStanica
             // 
             this.labelStanica.AutoSize = true;
             this.labelStanica.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelStanica.Location = new System.Drawing.Point(25, 59);
+            this.labelStanica.Location = new System.Drawing.Point(29, 79);
             this.labelStanica.Name = "labelStanica";
-            this.labelStanica.Size = new System.Drawing.Size(59, 21);
+            this.labelStanica.Size = new System.Drawing.Size(74, 28);
             this.labelStanica.TabIndex = 5;
             this.labelStanica.Text = "Stanica";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(268, 196);
+            this.button2.Location = new System.Drawing.Point(306, 261);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(86, 31);
             this.button2.TabIndex = 4;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 196);
+            this.button1.Location = new System.Drawing.Point(29, 261);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(86, 31);
             this.button1.TabIndex = 3;
             this.button1.Text = "Odustani";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,17 +90,18 @@ namespace SIMS_Projekat_Rampe.Views
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(25, 122);
+            this.comboBox1.Location = new System.Drawing.Point(29, 163);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.Size = new System.Drawing.Size(174, 28);
             this.comboBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 94);
+            this.label1.Location = new System.Drawing.Point(29, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 15);
+            this.label1.Size = new System.Drawing.Size(174, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Odabir naplatnog mesta:";
             // 
@@ -105,18 +109,19 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.loginLabel.Location = new System.Drawing.Point(25, 25);
+            this.loginLabel.Location = new System.Drawing.Point(29, 33);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(271, 25);
+            this.loginLabel.Size = new System.Drawing.Size(345, 32);
             this.loginLabel.TabIndex = 0;
             this.loginLabel.Text = "Ulogovani ste kao : korisnik123";
             // 
             // OdabirMestaView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "OdabirMestaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Odabir mesta";

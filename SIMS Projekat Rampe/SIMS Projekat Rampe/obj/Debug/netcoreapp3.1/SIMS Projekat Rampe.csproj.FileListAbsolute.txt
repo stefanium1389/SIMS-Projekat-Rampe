@@ -90,3 +90,51 @@ E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projeka
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnaStanicaView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.UpravljanjeStanicamaView.resources
 E:\faks\sims\IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.CUStaniceView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.exe
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.deps.json
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.runtimeconfig.json
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.runtimeconfig.dev.json
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SIMS Projekat Rampe.pdb
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\DnsClient.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\SharpCompress.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\linux\native\libsnappy64.so
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\linux\native\libzstd.so
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\osx\native\libsnappy64.dylib
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\osx\native\libzstd.dylib
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\linux\native\libmongocrypt.so
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\osx\native\libmongocrypt.dylib
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.AssemblyReference.cache
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.CenovniciView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.CUStaniceView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.LoginView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.MenadzerMeniView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnaStanicaView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.NaplatnoMestoView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.OdabirMestaView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS_Projekat_Rampe.Views.UpravljanjeStanicamaView.resources
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.GenerateResource.cache
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.GeneratedMSBuildEditorConfig.editorconfig
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.AssemblyInfoInputs.cache
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.AssemblyInfo.cs
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.CoreCompileInputs.cache
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.csproj.CopyComplete
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.dll
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.pdb
+D:\faks\druga godina\sims\PROJEKAT IMPLEMENTACIJA\SIMS-Projekat-Rampe\SIMS Projekat Rampe\SIMS Projekat Rampe\obj\Debug\netcoreapp3.1\SIMS Projekat Rampe.genruntimeconfig.cache
