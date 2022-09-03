@@ -11,12 +11,14 @@ namespace SIMS_Projekat_Rampe.Models
         public ObjectId Id { get; set; }
         public DateTime VaziOd { get; set; }
         public List<StavkaCenovnika> Stavke { get; set; }
+        public bool Obrisan { get; set; }
 
         public Cenovnik(DateTime vaziOd, List<StavkaCenovnika> stavke) 
         {
             Id = ObjectId.GenerateNewId();
             VaziOd = vaziOd;
             Stavke = stavke;
+            Obrisan = false;
         }
 
         public Cenovnik(Cenovnik c) 

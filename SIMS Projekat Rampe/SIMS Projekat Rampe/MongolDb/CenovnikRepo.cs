@@ -14,10 +14,22 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(_ => true);
             return results.ToList();
         }
+        public List<Cenovnik> GetAllActive()
+        {
+            var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
+            var results = collection.Find(xd => xd.Obrisan == false);
+            return results.ToList();
+        }
         public List<Cenovnik> GetById(ObjectId id)
         {
             var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
             var results = collection.Find(xd => xd.Id == id);
+            return results.ToList();
+        }
+        public List<Cenovnik> GetByIdActive(ObjectId id)
+        {
+            var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
+            var results = collection.Find(xd => xd.Id == id && xd.Obrisan == false);
             return results.ToList();
         }
         public void Create(Cenovnik Cenovnik)
@@ -31,6 +43,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             collection.InsertOne(Cenovnik);
             
         }
+
         public void Update(Cenovnik cenovnik)
         {
             var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
@@ -49,6 +62,17 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var collection = MongolDB.ConnectToMongol<Cenovnik>(imeKolekcije);
             collection.InsertMany(cenovnici);
 
+        }
+        public void Delete(Cenovnik c)
+        {
+            //sigurno postoji bolji način za ovo
+            Cenovnik cenovnik = GetById(c.Id)[0];
+            cenovnik.Obrisan = true;
+            foreach (StavkaCenovnika sc in cenovnik.Stavke) 
+            {
+                sc.Obrisana = true;
+            }
+            Update(cenovnik);
         }
     }
 }

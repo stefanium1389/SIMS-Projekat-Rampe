@@ -10,6 +10,7 @@ namespace SIMS_Projekat_Rampe.Models
         public float Iznos { get; set; }
         public TipVozila TipVozila { get; set; }
         public string DeonicaId { get; set; }
+        public bool Obrisana { get; set; }
 
 
         public StavkaCenovnika(string deonica, TipVozila tip, float iznos)  
@@ -18,6 +19,7 @@ namespace SIMS_Projekat_Rampe.Models
             Iznos = iznos;
             TipVozila = tip;
             DeonicaId = deonica;
+            Obrisana = false;
         }
     }
 }
