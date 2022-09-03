@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -48,7 +48,7 @@ namespace SIMS_Projekat_Rampe.Models
         public List<NaplatnoMesto> NaplatnaMesta { get; set; }
         public bool Obrisana { get; set; }
 
-        public NaplatnaStanica( string id, string naziv, string? sef, List<string> radnici, List<string> prodavciENP, List<NaplatnoMesto> naplatnaMesta) 
+        public NaplatnaStanica(string id, string naziv, string? sef, List<string> radnici, List<string> prodavciENP, List<NaplatnoMesto> naplatnaMesta)
         {
             Id = id;
             Naziv = naziv;
@@ -59,7 +59,7 @@ namespace SIMS_Projekat_Rampe.Models
             Obrisana = false;
         }
 
-        public override string ToString() 
+        public override string ToString()
         {
             return Naziv;
         }

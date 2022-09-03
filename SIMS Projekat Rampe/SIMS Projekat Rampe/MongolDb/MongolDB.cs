@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MongoDB.Driver;
-using SIMS_Projekat_Rampe.Models;
+﻿using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Controlers;
-using System.Diagnostics;
+using SIMS_Projekat_Rampe.Models;
+using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace SIMS_Projekat_Rampe.MongolDb
@@ -18,7 +17,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var client = new MongoClient(connectionString);
             client.DropDatabase(databaseName);
             GenerisiStanice();
-            
+
         }
 
         public static IMongoCollection<T> ConnectToMongol<T>(string collection)
@@ -28,7 +27,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             return db.GetCollection<T>(collection);
         }
 
-        public static IMongoDatabase DobaviDB() 
+        public static IMongoDatabase DobaviDB()
         {
             var client = new MongoClient(connectionString);
             var db = client.GetDatabase(databaseName);
@@ -36,7 +35,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
         }
 
 
-        public static void GenerisiStanice() 
+        public static void GenerisiStanice()
         {
             var client = new MongoClient(connectionString);
             var db = client.GetDatabase(databaseName);
@@ -56,10 +55,10 @@ namespace SIMS_Projekat_Rampe.MongolDb
             int admin_count = 1;
 
             List<NaplatnaStanica> stanice = new List<NaplatnaStanica>();
-            for (int i=0; i<4; i++) 
+            for (int i = 0; i < 4; i++)
             {
                 //kreiranje sefa
-                Korisnik sef = new Korisnik { UserName = "sef"+sef_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "sefthe"+sef_count+"th", Prezime = "sefkovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.SefStanice };
+                Korisnik sef = new Korisnik { UserName = "sef" + sef_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "sefthe" + sef_count + "th", Prezime = "sefkovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.SefStanice };
                 coll_korisnici.InsertOne(sef);
                 sef_count += 1;
 
@@ -70,7 +69,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
 
                 //kreiranje radnika
                 List<string> user_radnici = new List<string>();
-                for (int j=0; j<3; j++) 
+                for (int j = 0; j < 3; j++)
                 {
                     Korisnik radnik = new Korisnik { UserName = "radnik" + radnik_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "radnikthe" + radnik_count + "th", Prezime = "radnikovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.Radnik };
                     coll_korisnici.InsertOne(radnik);
@@ -87,9 +86,9 @@ namespace SIMS_Projekat_Rampe.MongolDb
 
                 //kreiranje naplatnih mesta
                 List<NaplatnoMesto> naplatna_mesta = new List<NaplatnoMesto>();
-                for (int j=0; j<3; j++) 
+                for (int j = 0; j < 3; j++)
                 {
-                    NaplatnoMesto nm = new NaplatnoMesto(mesto_count,false, true);
+                    NaplatnoMesto nm = new NaplatnoMesto(mesto_count, false, true);
                     naplatna_mesta.Add(nm);
                     mesto_count += 1;
                 }
@@ -102,7 +101,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
 
                 mesto_count = 0;
                 // generisanje stanice
-                NaplatnaStanica stanica = new NaplatnaStanica("st"+stanica_count,"grad"+i, sef.UserName, user_radnici, user_prodavci, naplatna_mesta);
+                NaplatnaStanica stanica = new NaplatnaStanica("st" + stanica_count, "grad" + i, sef.UserName, user_radnici, user_prodavci, naplatna_mesta);
                 coll_stanice.InsertOne(stanica);
                 stanica_count += 1;
                 stanice.Add(stanica);
@@ -131,14 +130,14 @@ namespace SIMS_Projekat_Rampe.MongolDb
 
             //generisanje deonica
             Random rd = new Random();
-            List <Deonica> deonice = new List<Deonica>();
-            for (int i=0; i<stanice.Count-1; i++) 
+            List<Deonica> deonice = new List<Deonica>();
+            for (int i = 0; i < stanice.Count - 1; i++)
             {
-                for (int j=i+1; j<stanice.Count; j++) 
+                for (int j = i + 1; j < stanice.Count; j++)
                 {
-                    
+
                     float duzina = rd.Next(20, 200);
-                    Deonica d = new Deonica("d"+deonica_count,duzina,stanice[i].Id, stanice[j].Id);
+                    Deonica d = new Deonica("d" + deonica_count, duzina, stanice[i].Id, stanice[j].Id);
                     deonice.Add(d);
                     coll_deonice.InsertOne(d);
                     deonica_count += 1;
@@ -151,13 +150,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             vremena.Add(DateTime.Now);
             vremena.Add(DateTime.Now.AddDays(60));
             int brTipova = Enum.GetNames(typeof(TipVozila)).Length;
-            
-            for (int i=0; i<3; i++) 
+
+            for (int i = 0; i < 3; i++)
             {
                 List<StavkaCenovnika> stavke = new List<StavkaCenovnika>();
-                for (int j=0; j<deonice.Count; j++) 
+                for (int j = 0; j < deonice.Count; j++)
                 {
-                    for (int k=0; k<brTipova; k++) 
+                    for (int k = 0; k < brTipova; k++)
                     {
                         StavkaCenovnika sc = new StavkaCenovnika(deonice[j].Id, (TipVozila)k, rd.Next(500, 1000));
                         stavke.Add(sc);
@@ -169,7 +168,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             //generisanje enp uplata
             for (int i = 0; i < 20; i++)
             {
-                DateTime vreme = DateTime.Now.AddDays(rd.Next(-60,0));
+                DateTime vreme = DateTime.Now.AddDays(rd.Next(-60, 0));
                 int iznos = rd.Next(5, 20) * 100;
                 UplataENP uplata = new UplataENP() { Iznos = iznos, Vreme = vreme };
                 coll_enpuplate.InsertOne(uplata);
@@ -178,31 +177,33 @@ namespace SIMS_Projekat_Rampe.MongolDb
             //generisanje prolazaka
             DeonicaRepo dr = new DeonicaRepo();
             CenovnikControler cc = new CenovnikControler();
-            
 
-            for (int i = 0; i<10; i++)
+
+            for (int i = 0; i < 10; i++)
             {
-                foreach(var deonica in dr.GetAll())
+                foreach (var deonica in dr.GetAll())
                 {
                     Array vozila = Enum.GetValues(typeof(TipVozila));
                     TipVozila randomVozilo = (TipVozila)vozila.GetValue(rd.Next(0, vozila.Length));
                     int random = rd.Next(0, 4);
                     DateTime vreme = DateTime.Now.AddDays(rd.Next(-60, 0));
                     string ulaz = deonica.UlazakId;
-                    DateTime vremeNaplate = vreme.AddMinutes(rd.Next(45,180));
+                    DateTime vremeNaplate = vreme.AddMinutes(rd.Next(45, 180));
                     Cenovnik cenovnik = cc.DobaviCenovnik(vremeNaplate);
                     Naplata naplata = new Naplata(vremeNaplate, cenovnik.PronadjiStavku(deonica.Id, randomVozilo).Id);
-                    Prolazak prolazak = new Prolazak() {
+                    Prolazak prolazak = new Prolazak()
+                    {
                         Kod = NapraviNovKod(),
-                        TipVozila = randomVozilo, 
-                        VremeUlaska = vreme, 
-                        UlaznaStanica = deonica.UlazakId, 
-                        DeonicaId = deonica.Id, 
-                        Naplata = naplata };
+                        TipVozila = randomVozilo,
+                        VremeUlaska = vreme,
+                        UlaznaStanica = deonica.UlazakId,
+                        DeonicaId = deonica.Id,
+                        Naplata = naplata
+                    };
                     coll_prolasci.InsertOne(prolazak);
                 }
             }
-            
+
 
         }
         public static string NapraviNovKod()

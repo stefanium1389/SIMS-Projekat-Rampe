@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Text;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -10,15 +6,15 @@ namespace SIMS_Projekat_Rampe.Models
     {
         public override void OznacenKaoPopravljen()
         {
-            Debug.WriteLine("jauu1");
+            throw new NotImplementedException("jauu");
         }
         public override void UsnesnaNaplataENP()
         {
-            Debug.WriteLine("jauu2");
+            throw new NotImplementedException("jauu");
         }
         public override void KolaOdu()
         {
-            Debug.WriteLine("jauu3");
+            throw new NotImplementedException("jauu");
         }
         public override void Entry()
         {
@@ -26,25 +22,25 @@ namespace SIMS_Projekat_Rampe.Models
         }
         public override void Do()
         {
-            bool ispravan = DobaviKontekst() .SaljiSignal();
+            bool ispravan = DobaviKontekst().SaljiSignal();
             if (ispravan)
             {
-                StateSpusteno s = new StateSpusteno(Kontroler );
-                DobaviKontekst() .PromeniStanje(s);
+                StateSpusteno s = new StateSpusteno(Kontroler);
+                DobaviKontekst().PromeniStanje(s);
                 s.Entry();
                 s.Do();
 
             }
             else
             {
-                StatePokvareno p = new StatePokvareno(Kontroler );
-                DobaviKontekst() .PromeniStanje(p);
+                StatePokvareno p = new StatePokvareno(Kontroler);
+                DobaviKontekst().PromeniStanje(p);
                 p.Entry();
             }
         }
         public override void KlikNaDugme()
         {
-            Debug.WriteLine("jauu6");
+            throw new NotImplementedException("jauu");
         }
 
         public StateSpustaSe(NaplatnoMestoController nmk) : base(nmk)

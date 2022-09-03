@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Models;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.MongolDb
 {
@@ -43,7 +43,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => (xd.UlazakId == stanica || xd.IzlazakId == stanica) && xd.Obrisana == false);
             return results.ToList();
         }
-        public List<Deonica> GetByStanice(string stanica1 , string stanica2)
+        public List<Deonica> GetByStanice(string stanica1, string stanica2)
         {
             var collection = MongolDB.ConnectToMongol<Deonica>(imeKolekcije);
             var results = collection.Find(xd => xd.UlazakId == stanica1 && xd.IzlazakId == stanica2 || xd.UlazakId == stanica2 && xd.IzlazakId == stanica1);
@@ -52,7 +52,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
         public List<Deonica> GetByStaniceActive(string stanica1, string stanica2)
         {
             var collection = MongolDB.ConnectToMongol<Deonica>(imeKolekcije);
-            var results = collection.Find(xd => ( ( (xd.UlazakId == stanica1 && xd.IzlazakId == stanica2) || (xd.UlazakId == stanica2 && xd.IzlazakId == stanica1) ) && xd.Obrisana == false));
+            var results = collection.Find(xd => (((xd.UlazakId == stanica1 && xd.IzlazakId == stanica2) || (xd.UlazakId == stanica2 && xd.IzlazakId == stanica1)) && xd.Obrisana == false));
             return results.ToList();
         }
 
@@ -62,7 +62,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.Id == Deonica.Id);
             if (results.ToList().Count > 0)
             {
-                return; 
+                return;
             }
             collection.InsertOne(Deonica);
             return;

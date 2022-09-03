@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Bson;
 using SIMS_Projekat_Rampe.Models;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.MongolDb
 {
@@ -38,10 +38,10 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.Id == Cenovnik.Id);
             if (results.ToList().Count > 0)
             {
-                return; 
+                return;
             }
             collection.InsertOne(Cenovnik);
-            
+
         }
 
         public void Update(Cenovnik cenovnik)
@@ -52,7 +52,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             return;
         }
 
-        public void Sort() 
+        public void Sort()
         {
             //ja ne znam pametniji nacin za ovo
             var cenovnici = GetAll();
@@ -68,7 +68,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             //sigurno postoji bolji način za ovo
             Cenovnik cenovnik = GetById(c.Id)[0];
             cenovnik.Obrisan = true;
-            foreach (StavkaCenovnika sc in cenovnik.Stavke) 
+            foreach (StavkaCenovnika sc in cenovnik.Stavke)
             {
                 sc.Obrisana = true;
             }

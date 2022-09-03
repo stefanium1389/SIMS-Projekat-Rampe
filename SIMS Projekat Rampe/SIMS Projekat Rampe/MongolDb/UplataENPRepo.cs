@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
-using MongoDB.Bson;
+﻿using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Models;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.MongolDb
 {
@@ -27,10 +26,10 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.Id == kaznaZaPrekoracenjeBrzine.Id);
             if (results.ToList().Count > 0)
             {
-                return; 
+                return;
             }
             collection.InsertOne(kaznaZaPrekoracenjeBrzine);
-            
+
         }
     }
 }

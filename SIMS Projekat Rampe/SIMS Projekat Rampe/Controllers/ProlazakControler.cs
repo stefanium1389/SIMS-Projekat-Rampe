@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SIMS_Projekat_Rampe.Models;
+﻿using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
+using System;
+using System.Collections.Generic;
 
 
 namespace SIMS_Projekat_Rampe.Controlers
@@ -28,10 +27,10 @@ namespace SIMS_Projekat_Rampe.Controlers
                     lista.Add(prolazak);
                 }
             }
-            if(stanica != "Sve stanice")
+            if (stanica != "Sve stanice")
             {
                 List<Prolazak> listb = new List<Prolazak>();
-                foreach(var prolazak in lista)
+                foreach (var prolazak in lista)
                 {
                     if (stanica == sr.GetById(dr.GetById(prolazak.DeonicaId)[0].IzlazakId)[0].Naziv)
                     {

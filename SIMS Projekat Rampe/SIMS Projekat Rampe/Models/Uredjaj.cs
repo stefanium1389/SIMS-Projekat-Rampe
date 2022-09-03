@@ -19,7 +19,7 @@
             Pokvaren = false;
         }
 
-        public Uredjaj() 
+        public Uredjaj()
         {
         }
     }

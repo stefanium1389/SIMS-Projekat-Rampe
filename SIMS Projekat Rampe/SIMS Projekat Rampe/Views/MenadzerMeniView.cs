@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using SIMS_Projekat_Rampe.Models;
+using System;
 using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Models;
 
 namespace SIMS_Projekat_Rampe.Views
 {

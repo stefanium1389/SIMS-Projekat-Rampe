@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using SIMS_Projekat_Rampe.Controlers;
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace SIMS_Projekat_Rampe.Models
 {
-
     public class Rampa : Uredjaj, IPublisher
     {
-        
+
         public State Stanje { get; set; }
         [BsonIgnore]
-        public List<IObserver> Observers {get; set;}
+        public List<IObserver> Observers { get; set; }
         public void PodigniRampu()
         {
             Thread.Sleep(300);
@@ -24,17 +21,17 @@ namespace SIMS_Projekat_Rampe.Models
             Thread.Sleep(300);
         }
 
-        public bool SaljiSignal() 
+        public bool SaljiSignal()
         {
             Random random = new Random();
             int br = random.Next(1, 10);
-            if (br == 5) 
+            if (br == 5)
             {
                 return false;
             }
             return true;
         }
-        public void KlikNaDugme() 
+        public void KlikNaDugme()
         {
             Stanje.KlikNaDugme();
         }
@@ -43,11 +40,11 @@ namespace SIMS_Projekat_Rampe.Models
         public void OznacenKaoPopravljen() { }
         public void PromeniStanje(State stanje)
         {
-            if (stanje.GetType().Equals(typeof(StatePokvareno))) 
+            if (stanje.GetType().Equals(typeof(StatePokvareno)))
             {
                 Pokvaren = true;
             }
-            else 
+            else
             {
                 Pokvaren = false;
             }
@@ -55,7 +52,7 @@ namespace SIMS_Projekat_Rampe.Models
             Publish("osvezi");
         }
 
-        public Rampa (TipUredjaja tip) : base(tip) 
+        public Rampa(TipUredjaja tip) : base(tip)
         {
             Observers = new List<IObserver>();
             PromeniStanje(new StateSpusteno(null));
@@ -71,15 +68,15 @@ namespace SIMS_Projekat_Rampe.Models
         public void Publish(string s)
         {
             if (!(Observers is null))
-            foreach(IObserver o in Observers) 
-            {
-                o.Perform(s);
-            }
+                foreach (IObserver o in Observers)
+                {
+                    o.Perform(s);
+                }
         }
 
         public void AddObserver(IObserver o)
         {
-            if (Observers is null) 
+            if (Observers is null)
             {
                 Observers = new List<IObserver>();
             }
@@ -87,5 +84,5 @@ namespace SIMS_Projekat_Rampe.Models
         }
 
     }
-    
+
 }

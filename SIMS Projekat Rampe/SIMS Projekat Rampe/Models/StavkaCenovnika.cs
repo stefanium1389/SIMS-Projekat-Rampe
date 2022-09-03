@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -13,7 +13,7 @@ namespace SIMS_Projekat_Rampe.Models
         public bool Obrisana { get; set; }
 
 
-        public StavkaCenovnika(string deonica, TipVozila tip, float iznos)  
+        public StavkaCenovnika(string deonica, TipVozila tip, float iznos)
         {
             Id = ObjectId.GenerateNewId();
             Iznos = iznos;

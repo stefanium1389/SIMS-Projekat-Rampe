@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Text;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -10,15 +6,15 @@ namespace SIMS_Projekat_Rampe.Models
     {
         public override void OznacenKaoPopravljen()
         {
-            Debug.WriteLine("adohudodab");
+            throw new NotImplementedException("jauu");
         }
         public override void UsnesnaNaplataENP()
         {
-            Debug.WriteLine("mjehao");
+            throw new NotImplementedException("jauu");
         }
         public override void KolaOdu()
         {
-            Debug.WriteLine("ga");
+            throw new NotImplementedException("jauu");
         }
         public override void Entry()
         {
@@ -26,25 +22,25 @@ namespace SIMS_Projekat_Rampe.Models
         }
         public override void Do()
         {
-            bool ispravan = DobaviKontekst() .SaljiSignal();
+            bool ispravan = DobaviKontekst().SaljiSignal();
             if (ispravan)
             {
-                StatePodignuto s = new StatePodignuto(Kontroler );
-                DobaviKontekst() .PromeniStanje(s);
+                StatePodignuto s = new StatePodignuto(Kontroler);
+                DobaviKontekst().PromeniStanje(s);
                 s.Entry();
                 s.Do();
 
             }
-            else 
+            else
             {
-                StatePokvareno p = new StatePokvareno(Kontroler );
-                DobaviKontekst() .PromeniStanje(p);
+                StatePokvareno p = new StatePokvareno(Kontroler);
+                DobaviKontekst().PromeniStanje(p);
                 p.Entry();
             }
         }
         public override void KlikNaDugme()
         {
-            Debug.WriteLine("propaganda regenjan");
+            throw new NotImplementedException("jauu");
         }
 
         public StatePodizeSe(NaplatnoMestoController nmk) : base(nmk)

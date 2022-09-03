@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
@@ -65,7 +61,7 @@ namespace SIMS_Projekat_Rampe.Views
         {
             ShowIzvestaji();
         }
-        
+
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             //ShowIzvestaji();
@@ -74,7 +70,7 @@ namespace SIMS_Projekat_Rampe.Views
         {
             labelGreska.Visible = false;
             panel3.Visible = false;
-            
+
             if (dateTimePickerOd.Value > dateTimePickerDo.Value)
             {
                 labelGreska.Visible = true;
@@ -92,10 +88,10 @@ namespace SIMS_Projekat_Rampe.Views
                 panel3.Visible = true;
                 List<Prolazak> prolasci = pc.DobaviProlaske(dateTimePickerOd.Value, dateTimePickerDo.Value, comboBox1.SelectedItem.ToString());
                 List<UplataENP> uplate = uc.DobaviUplate(dateTimePickerOd.Value, dateTimePickerDo.Value);
-                foreach(Prolazak p in prolasci)
+                foreach (Prolazak p in prolasci)
                 {
                     List<string> podaci = pc.DobaviPodatkeOProlasku(p);
-                    dataGridView1.Rows.Add(podaci[0],podaci[1],podaci[2],podaci[3],podaci[4],podaci[5]);
+                    dataGridView1.Rows.Add(podaci[0], podaci[1], podaci[2], podaci[3], podaci[4], podaci[5]);
                     prolasciZbir += int.Parse(podaci[5]);
                 }
                 label4.Text = "Prihodi od prolazaka: " + prolasciZbir;
@@ -105,7 +101,7 @@ namespace SIMS_Projekat_Rampe.Views
                     enpZbir += uplata.Iznos;
                 }
                 label5.Text = "Prihodi od uplata ENP: " + enpZbir;
-                label6.Text = "Ukupni prihodi: " + (enpZbir+ prolasciZbir);
+                label6.Text = "Ukupni prihodi: " + (enpZbir + prolasciZbir);
             }
 
         }

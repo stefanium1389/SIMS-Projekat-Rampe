@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
-using SIMS_Projekat_Rampe.Controlers;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
     public partial class NaplatnaStanicaView : Form
     {
         public Form Predak { get; set; }
-        public NaplatnaStanicaController Kontroler {get; set;}
+        public NaplatnaStanicaController Kontroler { get; set; }
         public bool SefRukovodi { get; set; }
 
         public NaplatnaStanicaView(Form predak, Korisnik ulogovani)
@@ -23,16 +19,16 @@ namespace SIMS_Projekat_Rampe.Views
             InitializeComponent();
             Inicijalizuj();
         }
-        public void Inicijalizuj() 
+        public void Inicijalizuj()
         {
             //tekst forme
             string imeStanice = Kontroler.DobaviImeStanice();
-            if (imeStanice != "") 
+            if (imeStanice != "")
             {
                 this.SefRukovodi = true;
-                this.Text = "Naplatna stanica " + imeStanice; 
+                this.Text = "Naplatna stanica " + imeStanice;
             }
-            else 
+            else
             {
                 this.SefRukovodi = false;
                 this.Text = "Ulogovani ste kao šef stanice";
@@ -42,17 +38,17 @@ namespace SIMS_Projekat_Rampe.Views
             lab_log.Text = "Ulogovani ste kao: " + Kontroler.DobaviImeSefa();
 
             //tekst male labele
-            if (imeStanice != "") 
+            if (imeStanice != "")
             {
                 lab_stanica.Text = imeStanice;
             }
-            else 
+            else
             {
                 lab_stanica.Text = "Trenutno ne rukovodite nijednu stanicu";
             }
 
             //popunjavanje tbx
-            if (SefRukovodi) 
+            if (SefRukovodi)
             {
                 tbx_brradnika.Text = Kontroler.DobaviBrojRadnika().ToString();
                 tbx_brobicnih.Text = Kontroler.DobaviBrojObicnih().ToString();
@@ -61,11 +57,11 @@ namespace SIMS_Projekat_Rampe.Views
             }
 
             //popunjavanje cbx naplatnih mesta
-            if (SefRukovodi == false) 
+            if (SefRukovodi == false)
             {
                 cbx_mesta.Enabled = false;
             }
-            else 
+            else
             {
                 List<string> imena = Kontroler.DobaviImenaMesta();
                 foreach (string ime in imena)
@@ -87,7 +83,7 @@ namespace SIMS_Projekat_Rampe.Views
                 cbx_tip.Items.Add(tip);
             }
             cbx_tip.SelectedIndex = 0;
-            if (SefRukovodi == false) 
+            if (SefRukovodi == false)
             {
                 cbx_tip.Enabled = false;
             }
@@ -100,9 +96,9 @@ namespace SIMS_Projekat_Rampe.Views
 
         }
 
-        private void OsveziNaplatnoMesto() 
+        private void OsveziNaplatnoMesto()
         {
-            if (SefRukovodi == false) 
+            if (SefRukovodi == false)
             {
                 lab_dispej.Text = "----";
                 lab_rampa.Text = "----";
@@ -110,10 +106,10 @@ namespace SIMS_Projekat_Rampe.Views
                 lab_tag.Text = "----";
                 lab_semafor.Text = "----";
             }
-            else 
+            else
             {
                 int rednibr = Int32.Parse(cbx_mesta.SelectedItem.ToString().Replace("naplatno mesto ", ""));
-                string stanjeDispleja = Kontroler.DobaviStanjeUredjaja(rednibr,TipUredjaja.Displej);
+                string stanjeDispleja = Kontroler.DobaviStanjeUredjaja(rednibr, TipUredjaja.Displej);
                 string stanjeRampe = Kontroler.DobaviStanjeUredjaja(rednibr, TipUredjaja.Rampa);
                 string stanjeTablice = Kontroler.DobaviStanjeUredjaja(rednibr, TipUredjaja.CitacTablice);
                 string stanjeTagova = Kontroler.DobaviStanjeUredjaja(rednibr, TipUredjaja.CitacTagova);
@@ -125,7 +121,7 @@ namespace SIMS_Projekat_Rampe.Views
                 lab_tag.Text = stanjeTagova;
                 lab_tablice.Text = stanjeTablice;
 
-                if (stanjeDispleja == "radi") 
+                if (stanjeDispleja == "radi")
                 {
                     this.lab_dispej.ForeColor = System.Drawing.Color.Green;
                 }
@@ -152,7 +148,7 @@ namespace SIMS_Projekat_Rampe.Views
                     this.lab_tablice.ForeColor = System.Drawing.Color.Red;
                 }
 
-                if (stanjeTagova == "radi" || stanjeTagova =="----")
+                if (stanjeTagova == "radi" || stanjeTagova == "----")
                 {
                     this.lab_tag.ForeColor = System.Drawing.Color.Green;
                 }

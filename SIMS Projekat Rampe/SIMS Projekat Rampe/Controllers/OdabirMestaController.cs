@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Models;
+﻿using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
-    
+
     public class OdabirMestaController
     {
         public Korisnik Ulogovani { get; set; }
-        
-        public OdabirMestaController (Korisnik ulogovani) 
+
+        public OdabirMestaController(Korisnik ulogovani)
         {
             Ulogovani = ulogovani;
         }
 
-        public string DobaviImeStanice() 
+        public string DobaviImeStanice()
         {
             StanicaRepo stanicaRepo = new StanicaRepo();
             List<NaplatnaStanica> odabrana = stanicaRepo.GetByRadnikActive(Ulogovani.UserName);
@@ -26,7 +23,7 @@ namespace SIMS_Projekat_Rampe.Controlers
                 return stanicaRepo.GetByRadnikActive(Ulogovani.UserName)[0].Naziv;
             }
             else return "Niste pozicionirani ni na jednu stanicu";
-            
+
         }
 
         public NaplatnaStanica DobaviStanicu()
@@ -36,13 +33,13 @@ namespace SIMS_Projekat_Rampe.Controlers
         }
 
         //ignorise elektronska
-        public List<string> DobaviImenaMesta() 
+        public List<string> DobaviImenaMesta()
         {
             StanicaRepo stanicaRepo = new StanicaRepo();
             List<string> imena = new List<string>();
-            
+
             List<NaplatnaStanica> stanice = stanicaRepo.GetByRadnikActive(Ulogovani.UserName);
-            if (stanice.Count > 0) 
+            if (stanice.Count > 0)
             {
                 NaplatnaStanica st = stanice[0];
                 foreach (NaplatnoMesto nm in st.NaplatnaMesta)
@@ -58,7 +55,7 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public string DobaviImeUlogovanog()
         {
-            return Ulogovani.Ime +" "+ Ulogovani.Prezime;
+            return Ulogovani.Ime + " " + Ulogovani.Prezime;
         }
     }
 }

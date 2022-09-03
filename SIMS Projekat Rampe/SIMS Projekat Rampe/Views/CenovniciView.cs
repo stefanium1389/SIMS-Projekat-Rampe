@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
-using SIMS_Projekat_Rampe.Controlers;
+using System;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
@@ -39,10 +34,10 @@ namespace SIMS_Projekat_Rampe.Views
             try
             {
                 var cenovnik = controller.DobaviCenovnik(dateTimePicker1.Value);
-                
-                foreach(var stavka in cenovnik.Stavke)
+
+                foreach (var stavka in cenovnik.Stavke)
                 {
-                    dataGridView1.Rows.Add(deonicaController.MestaDeonice(stavka.DeonicaId)[0], deonicaController.MestaDeonice(stavka.DeonicaId)[1], deonicaController.DuzinaDeonice(stavka.DeonicaId), stavka.TipVozila.ToString(), stavka.Iznos) ;
+                    dataGridView1.Rows.Add(deonicaController.MestaDeonice(stavka.DeonicaId)[0], deonicaController.MestaDeonice(stavka.DeonicaId)[1], deonicaController.DuzinaDeonice(stavka.DeonicaId), stavka.TipVozila.ToString(), stavka.Iznos);
                 }
                 dataGridView1.Visible = true;
                 label2.Text = "Cenovnik validan za dan: " + dateTimePicker1.Value.Date.ToString();

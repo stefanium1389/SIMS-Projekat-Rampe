@@ -1,18 +1,18 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace SIMS_Projekat_Rampe.Models
 {
-    
-     public enum TipVozila
-     {
-            Auto,
-            Motor,
-            Kamion,
-            Autobus,
-            Kombi
-     }
-    
+
+    public enum TipVozila
+    {
+        Auto,
+        Motor,
+        Kamion,
+        Autobus,
+        Kombi
+    }
+
     public class Prolazak
     {
         [BsonId]
@@ -36,8 +36,8 @@ namespace SIMS_Projekat_Rampe.Models
             DeonicaId = deonica;
         }
 
-        
+
     }
 
-    
+
 }

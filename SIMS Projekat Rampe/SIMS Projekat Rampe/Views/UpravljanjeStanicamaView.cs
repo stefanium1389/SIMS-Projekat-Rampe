@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
-using SIMS_Projekat_Rampe.Controlers;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
@@ -16,7 +12,7 @@ namespace SIMS_Projekat_Rampe.Views
     {
         public UpravljanjeStanicamaController Kontroler { get; set; }
         public Form Predak { get; set; }
-        public UpravljanjeStanicamaView (Form predak, Korisnik admin)
+        public UpravljanjeStanicamaView(Form predak, Korisnik admin)
         {
             Predak = predak;
             Kontroler = new UpravljanjeStanicamaController(admin);
@@ -40,7 +36,7 @@ namespace SIMS_Projekat_Rampe.Views
             Predak.Visible = true;
         }
 
-        private void Inicijalizuj() 
+        private void Inicijalizuj()
         {
             //login label
             lab_log.Text = "Ulogovani ste kao: " + Kontroler.DobaviUlogovanog();
@@ -68,9 +64,9 @@ namespace SIMS_Projekat_Rampe.Views
             table_povezane.RowHeadersVisible = false;
 
             OsveziCbx();
-            
+
         }
-        private void OsveziCbx() 
+        private void OsveziCbx()
         {
             cbx_stanice.Items.Clear();
             List<NaplatnaStanica> stanice = Kontroler.DobaviStanice();
@@ -85,13 +81,13 @@ namespace SIMS_Projekat_Rampe.Views
             }
         }
 
-        private void OsveziTabele() 
+        private void OsveziTabele()
         {
             PopuniPodatkeOStanici();
             PopuniPodatkeOZaposlenima();
             PopuniPodatkeODeonicama();
             //i ovo moze biti problematicno
-            if (table_povezane.Rows.Count > 0) 
+            if (table_povezane.Rows.Count > 0)
             {
                 table_povezane.Rows[0].Selected = true;
             }
@@ -100,9 +96,9 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void PopuniPodatkeOStanici()
         {
-            List <string[]> podaci = Kontroler.DobaviPodatkeOStanici((NaplatnaStanica)cbx_stanice.SelectedItem);
+            List<string[]> podaci = Kontroler.DobaviPodatkeOStanici((NaplatnaStanica)cbx_stanice.SelectedItem);
 
-            foreach(var red in podaci) 
+            foreach (var red in podaci)
             {
                 table_opsti.Rows.Add(red);
             }
@@ -130,8 +126,6 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void PopuniPodatkeOCenama()
         {
-            System.Diagnostics.Debug.WriteLine(table_povezane.SelectedRows.Count);
-            System.Diagnostics.Debug.WriteLine(table_povezane.SelectedRows[0].Cells.Count);
             NaplatnaStanica ns = Kontroler.DobaviStanicuIzTabele(table_povezane.SelectedRows[0].Cells[0].Value.ToString());
             string stanica_cbx = ((NaplatnaStanica)cbx_stanice.SelectedItem).Id;
             List<string[]> podaci = Kontroler.DobaviPodatkeOCenama(stanica_cbx, ns.Id);
@@ -142,7 +136,7 @@ namespace SIMS_Projekat_Rampe.Views
             }
         }
 
-        private void OcistiTabele() 
+        private void OcistiTabele()
         {
             table_opsti.Rows.Clear();
             table_cene.Rows.Clear();
@@ -158,17 +152,17 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void table_povezane_SelectionChanged(object sender, EventArgs e)
         {
-            if (table_povezane.SelectedRows.Count > 0) 
+            if (table_povezane.SelectedRows.Count > 0)
             {
                 table_cene.Rows.Clear();
                 PopuniPodatkeOCenama();
-            }  
+            }
         }
 
         private void btn_kreiraj_Click(object sender, EventArgs e)
         {
             CUStaniceView prozor = new CUStaniceView(this, null);
-            if (prozor.ShowDialog() == DialogResult.OK) 
+            if (prozor.ShowDialog() == DialogResult.OK)
             {
                 string box_msg = "Kreiranje stanice uspešno izvršeno";
                 string box_title = "Uspeh";
@@ -193,7 +187,7 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void btn_obrisi_Click(object sender, EventArgs e)
         {
-            if (cbx_stanice.SelectedIndex > -1) 
+            if (cbx_stanice.SelectedIndex > -1)
             {
                 Kontroler.ObrisiStanicu((NaplatnaStanica)cbx_stanice.SelectedItem);
                 OsveziCbx();

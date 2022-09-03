@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
-using SIMS_Projekat_Rampe.Models;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
@@ -29,15 +28,15 @@ namespace SIMS_Projekat_Rampe.Controlers
         public Dictionary<NaplatnaStanica, float> TabelaPovezanihPodaci { get; set; }
         public Dictionary<NaplatnaStanica, Dictionary<TipVozila, float>> TabelaCenaPodaci { get; set; }
 
-        public CUStaniceController(NaplatnaStanica stanica) 
+        public CUStaniceController(NaplatnaStanica stanica)
         {
             Stanica = stanica;
-            if (stanica == null) 
+            if (stanica == null)
             {
                 Kreiranje = true;
                 Zaposleni = new List<Korisnik>();
             }
-            else 
+            else
             {
                 Kreiranje = false;
                 Zaposleni = DobaviZaposleneUStanici();
@@ -47,7 +46,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             TabelaCenaPodaci = new Dictionary<NaplatnaStanica, Dictionary<TipVozila, float>>();
             InicijalizujTabeluPovezanih();
             InicijalizujTabeluCena();
-            
+
         }
         public string NapraviNoviIdZaDeonicu()
         {
@@ -64,14 +63,14 @@ namespace SIMS_Projekat_Rampe.Controlers
             broj = broj + 1;
             return "d" + broj.ToString();
         }
-        public string NapraviNoviIdZaStanicu() 
+        public string NapraviNoviIdZaStanicu()
         {
             StanicaRepo sr = new StanicaRepo();
             int broj = 0;
-            foreach (var stanica in sr.GetAll()) 
+            foreach (var stanica in sr.GetAll())
             {
                 int br = Int32.Parse(stanica.Id.Replace("st", ""));
-                if (br > broj) 
+                if (br > broj)
                 {
                     broj = br;
                 }
@@ -81,16 +80,16 @@ namespace SIMS_Projekat_Rampe.Controlers
         }
 
         //ideja za unapredjenje - ne pravi novi cenovnik ako nije bio korišćen ni u jednom prolasku
-        public void ZabeleziPromene(string naziv, string obicni, string elektronski) 
-        {  
+        public void ZabeleziPromene(string naziv, string obicni, string elektronski)
+        {
             if (Kreiranje)
             {
                 NaplatnaStanica ns = KreirajStanicu(naziv, obicni, elektronski);
                 List<Deonica> deonice = NapraviDeonice(ns);
                 DopuniCenovnike(deonice, ns);
             }
-            
-            if (!Kreiranje) 
+
+            if (!Kreiranje)
             {
                 IzmeniStanicu(naziv, obicni, elektronski);
                 IzmeniDeonice();
@@ -103,7 +102,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             CenovnikRepo cr = new CenovnikRepo();
             DeonicaRepo dr = new DeonicaRepo();
             List<Deonica> deonice = new List<Deonica>();
-            foreach (var item in TabelaCenaPodaci) 
+            foreach (var item in TabelaCenaPodaci)
             {
                 deonice.Add(dr.GetByStaniceActive(Stanica.Id, item.Key.Id)[0]);
             }
@@ -113,17 +112,17 @@ namespace SIMS_Projekat_Rampe.Controlers
                 foreach (Deonica d in deonice)
                 {
                     List<StavkaCenovnika> stavke = c.DobaviStavkePoDeonici(d.Id);
-                    foreach( var stavka in stavke) 
+                    foreach (var stavka in stavke)
                     {
                         //boli me mozak, ovo valjda radi
-                        stavka.Iznos = PronadjiIznos(d,Stanica,stavka.TipVozila);
+                        stavka.Iznos = PronadjiIznos(d, Stanica, stavka.TipVozila);
                     }
                 }
                 cr.Update(c);
             }
         }
 
-        public void IzmeniDeonice() 
+        public void IzmeniDeonice()
         {
             DeonicaRepo dr = new DeonicaRepo();
             foreach (var item in TabelaPovezanihPodaci)
@@ -134,7 +133,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
         }
 
-        public void IzmeniStanicu(string naziv, string obicni, string elektronski) 
+        public void IzmeniStanicu(string naziv, string obicni, string elektronski)
         {
             int br_obicni = Int32.Parse(obicni);
             int br_elektronski = Int32.Parse(elektronski);
@@ -149,7 +148,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                 int rednibr = -1;
                 for (int i = 0; i < br_obicni - br_obicnih_trenutno; i++)
                 {
-                    System.Diagnostics.Debug.WriteLine("dohudobdab  " + i);
                     rednibr = NabaviNoviRedniBroj();
                     NaplatnoMesto novo = new NaplatnoMesto(rednibr, false, true);
                     Stanica.NaplatnaMesta.Add(novo);
@@ -158,7 +156,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             else if (br_obicni < br_obicnih_trenutno)
             {
-                for (int i = 0; i < br_obicnih_trenutno - br_obicni; i++) 
+                for (int i = 0; i < br_obicnih_trenutno - br_obicni; i++)
                 {
                     ObrisiNaplatnoMesto(true);
                 }
@@ -186,7 +184,7 @@ namespace SIMS_Projekat_Rampe.Controlers
 
             //prikupljanje id-ova svih
             List<string> lista_svih = new List<string>();
-            foreach(var kor in Stanica.RadniciUsernames) 
+            foreach (var kor in Stanica.RadniciUsernames)
             {
                 lista_svih.Add(kor);
             }
@@ -194,7 +192,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             {
                 lista_svih.Add(kor);
             }
-            if (!(Stanica.SefStaniceUsername is null)) 
+            if (!(Stanica.SefStaniceUsername is null))
             {
                 lista_svih.Add(Stanica.SefStaniceUsername);
             }
@@ -204,7 +202,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             {
                 if (!(Zaposleni.Exists(x => x.UserName == kor)))
                 {
-                    if (Stanica.RadniciUsernames.Contains(kor)) 
+                    if (Stanica.RadniciUsernames.Contains(kor))
                     {
                         Stanica.RadniciUsernames.Remove(kor);
                     }
@@ -214,12 +212,12 @@ namespace SIMS_Projekat_Rampe.Controlers
                     }
                     else if (!(Stanica.SefStaniceUsername is null))
                     {
-                        if (Stanica.SefStaniceUsername == kor) 
+                        if (Stanica.SefStaniceUsername == kor)
                         {
                             Stanica.SefStaniceUsername = null;
                         }
                     }
-                    else 
+                    else
                     {
                         throw new KeyNotFoundException("greška u brisanju zaposlenog");
                     }
@@ -227,23 +225,23 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
 
             //ubacivanje radnika
-            foreach (Korisnik kor in Zaposleni) 
+            foreach (Korisnik kor in Zaposleni)
             {
-                if (lista_svih.Contains(kor.UserName) == false) 
+                if (lista_svih.Contains(kor.UserName) == false)
                 {
-                    if (kor.Tip == TipKorisnika.SefStanice) 
+                    if (kor.Tip == TipKorisnika.SefStanice)
                     {
                         Stanica.SefStaniceUsername = kor.UserName;
                     }
-                    else if (kor.Tip == TipKorisnika.Radnik) 
+                    else if (kor.Tip == TipKorisnika.Radnik)
                     {
                         Stanica.RadniciUsernames.Add(kor.UserName);
                     }
-                    else if (kor.Tip == TipKorisnika.ProdavacENP) 
+                    else if (kor.Tip == TipKorisnika.ProdavacENP)
                     {
                         Stanica.ProdavciENPUsernames.Add(kor.UserName);
                     }
-                    else 
+                    else
                     {
                         throw new KeyNotFoundException("dat pogresan tip radnika");
                     }
@@ -255,15 +253,15 @@ namespace SIMS_Projekat_Rampe.Controlers
             sr.Update(Stanica);
         }
 
-        public void ObrisiNaplatnoMesto(bool obicno) 
+        public void ObrisiNaplatnoMesto(bool obicno)
         {
             NaplatnoMesto oznacenoZaBrisanje = null;
 
-            if (obicno) 
+            if (obicno)
             {
-                foreach (NaplatnoMesto nm in Stanica.NaplatnaMesta) 
+                foreach (NaplatnoMesto nm in Stanica.NaplatnaMesta)
                 {
-                    if (nm.Elektronsko == false) 
+                    if (nm.Elektronsko == false)
                     {
                         oznacenoZaBrisanje = nm;
                         break;
@@ -282,19 +280,19 @@ namespace SIMS_Projekat_Rampe.Controlers
                 }
             }
 
-            if (oznacenoZaBrisanje is null) 
+            if (oznacenoZaBrisanje is null)
             {
                 throw new KeyNotFoundException("greska u potrazi naplatnog mesta");
             }
             Stanica.NaplatnaMesta.Remove(oznacenoZaBrisanje);
         }
 
-        public int NabaviNoviRedniBroj() 
+        public int NabaviNoviRedniBroj()
         {
             int redni = 0;
-            foreach (NaplatnoMesto nm in Stanica.NaplatnaMesta) 
+            foreach (NaplatnoMesto nm in Stanica.NaplatnaMesta)
             {
-                if (nm.RedniBr > redni) 
+                if (nm.RedniBr > redni)
                 {
                     redni = nm.RedniBr;
                 }
@@ -303,13 +301,13 @@ namespace SIMS_Projekat_Rampe.Controlers
             return redni;
         }
 
-        public void DopuniCenovnike(List<Deonica> deonice, NaplatnaStanica nova) 
+        public void DopuniCenovnike(List<Deonica> deonice, NaplatnaStanica nova)
         {
             List<Cenovnik> cenovnici = DobaviNoviAktivniIBuduceCenovnike();
             CenovnikRepo cr = new CenovnikRepo();
-            foreach (Cenovnik c in cenovnici) 
+            foreach (Cenovnik c in cenovnici)
             {
-                foreach (Deonica d in deonice) 
+                foreach (Deonica d in deonice)
                 {
                     List<StavkaCenovnika> stavke = NapraviStavke(d, nova);
                     c.Stavke.AddRange(stavke);
@@ -318,26 +316,26 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
         }
 
-        public List<StavkaCenovnika> NapraviStavke(Deonica d, NaplatnaStanica novaStanica) 
+        public List<StavkaCenovnika> NapraviStavke(Deonica d, NaplatnaStanica novaStanica)
         {
             List<StavkaCenovnika> stavke = new List<StavkaCenovnika>();
-            foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila))) 
+            foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila)))
             {
-                float iznos = PronadjiIznos(d, novaStanica,tip);
+                float iznos = PronadjiIznos(d, novaStanica, tip);
                 StavkaCenovnika nova = new StavkaCenovnika(d.Id, tip, iznos);
                 stavke.Add(nova);
             }
             return stavke;
         }
 
-        public List<Deonica> NapraviDeonice ( NaplatnaStanica ns) 
+        public List<Deonica> NapraviDeonice(NaplatnaStanica ns)
         {
             List<Deonica> deonice = new List<Deonica>();
             DeonicaRepo dr = new DeonicaRepo();
-            foreach (var item in TabelaPovezanihPodaci) 
+            foreach (var item in TabelaPovezanihPodaci)
             {
                 string id = NapraviNoviIdZaDeonicu();
-                Deonica d = new Deonica(id,item.Value,ns.Id,item.Key.Id);
+                Deonica d = new Deonica(id, item.Value, ns.Id, item.Key.Id);
                 dr.Create(d);
                 deonice.Add(d);
             }
@@ -345,21 +343,21 @@ namespace SIMS_Projekat_Rampe.Controlers
             return deonice;
         }
 
-        public float PronadjiIznos(Deonica d, NaplatnaStanica ns, TipVozila tip) 
+        public float PronadjiIznos(Deonica d, NaplatnaStanica ns, TipVozila tip)
         {
             string id = null;
-            if (d.UlazakId == ns.Id) 
+            if (d.UlazakId == ns.Id)
             {
                 id = d.IzlazakId;
             }
-            else 
+            else
             {
                 id = d.UlazakId;
             }
 
-            foreach(var item in TabelaCenaPodaci) 
+            foreach (var item in TabelaCenaPodaci)
             {
-                if (item.Key.Id == id) 
+                if (item.Key.Id == id)
                 {
                     return item.Value[tip];
                 }
@@ -367,7 +365,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             throw new KeyNotFoundException("greska u potrazi cena");
         }
 
-        public NaplatnaStanica KreirajStanicu(string naziv, string obicni, string elektronski) 
+        public NaplatnaStanica KreirajStanicu(string naziv, string obicni, string elektronski)
         {
             int br_obicni = Int32.Parse(obicni);
             int br_elektronski = Int32.Parse(elektronski);
@@ -418,7 +416,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             return nova;
         }
 
-        public NaplatnaStanica PretvoriUStanicu(string izbor) 
+        public NaplatnaStanica PretvoriUStanicu(string izbor)
         {
             StanicaRepo sr = new StanicaRepo();
             string id_stanice = izbor.Split('[', ']')[1];
@@ -427,75 +425,61 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public TipVozila PretvoriUTipVozila(string izbor)
         {
-            
             //verovatno postoji finiji nacin da se ovo uradi
-            /*
-             Auto,
-            Motor,
-            Kamion,
-            Autobus,
-            Kombi*/
-            switch (izbor) 
+            switch (izbor)
             {
                 case "Auto":
                     return TipVozila.Auto;
-                    break;
                 case "Motor":
                     return TipVozila.Motor;
-                    break;
                 case "Kamion":
                     return TipVozila.Kamion;
-                    break;
                 case "Autobus":
                     return TipVozila.Autobus;
-                    break;
                 case "Kombi":
                     return TipVozila.Kombi;
-                    break;
             }
             throw new KeyNotFoundException("nema tog vozila");
         }
 
-        public Dictionary<TipVozila,float> DobaviDictionaryCena(NaplatnaStanica ns) 
+        public Dictionary<TipVozila, float> DobaviDictionaryCena(NaplatnaStanica ns)
         {
             DeonicaRepo dr = new DeonicaRepo();
             Dictionary<TipVozila, float> cene = new Dictionary<TipVozila, float>();
             Cenovnik c = DobaviAktivniCenovnik();
             Deonica deonica = dr.GetByStaniceActive(Stanica.Id, ns.Id)[0];
-            List<StavkaCenovnika> stavke =c.DobaviStavkePoDeonici(deonica.Id);
-            foreach (var stavka in stavke) 
+            List<StavkaCenovnika> stavke = c.DobaviStavkePoDeonici(deonica.Id);
+            foreach (var stavka in stavke)
             {
                 cene[stavka.TipVozila] = stavka.Iznos;
             }
             return cene;
         }
 
-        public void InicijalizujTabeluCena() 
+        public void InicijalizujTabeluCena()
         {
-            if (Kreiranje) 
+            if (Kreiranje)
             {
                 foreach (var item in TabelaPovezanihPodaci)
                 {
                     Dictionary<TipVozila, float> cene = new Dictionary<TipVozila, float>();
-                    foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila))) 
+                    foreach (TipVozila tip in Enum.GetValues(typeof(TipVozila)))
                     {
                         cene[tip] = 0;
                     }
                     TabelaCenaPodaci[item.Key] = cene;
-                    System.Diagnostics.Debug.WriteLine("xdd" + item.Key);
                 }
             }
 
-            else 
+            else
             {
                 foreach (var item in TabelaPovezanihPodaci)
                 {
                     Dictionary<TipVozila, float> cene = DobaviDictionaryCena(item.Key);
                     TabelaCenaPodaci[item.Key] = cene;
-                    System.Diagnostics.Debug.WriteLine("xdd" + item.Key);
                 }
             }
-            
+
         }
 
         public void InicijalizujTabeluPovezanih()
@@ -503,25 +487,25 @@ namespace SIMS_Projekat_Rampe.Controlers
             DeonicaRepo dr = new DeonicaRepo();
             StanicaRepo sr = new StanicaRepo();
 
-            if (Kreiranje) 
+            if (Kreiranje)
             {
                 List<NaplatnaStanica> stanice = sr.GetAllActive();
-                foreach(var stanica in stanice) 
+                foreach (var stanica in stanice)
                 {
                     TabelaPovezanihPodaci[stanica] = 0;
                 }
             }
-            else 
+            else
             {
                 var deonice = dr.GetByStanicaActive(Stanica.Id);
                 foreach (var deonica in deonice)
                 {
-                    if (Stanica.Id == deonica.IzlazakId) 
+                    if (Stanica.Id == deonica.IzlazakId)
                     {
                         NaplatnaStanica stanica = sr.GetByIdActive(deonica.UlazakId)[0];
                         TabelaPovezanihPodaci[stanica] = deonica.Duzina;
                     }
-                    else 
+                    else
                     {
                         NaplatnaStanica stanica = sr.GetByIdActive(deonica.IzlazakId)[0];
                         TabelaPovezanihPodaci[stanica] = deonica.Duzina;
@@ -543,12 +527,12 @@ namespace SIMS_Projekat_Rampe.Controlers
             ListBoxPodaci[TipKorisnika.SefStanice] = korisnici;
         }
 
-        public int DobaviBrojElektronskih() 
+        public int DobaviBrojElektronskih()
         {
             int elektronske = 0;
-            foreach(NaplatnoMesto nm in Stanica.NaplatnaMesta) 
+            foreach (NaplatnoMesto nm in Stanica.NaplatnaMesta)
             {
-                if (nm.Elektronsko) 
+                if (nm.Elektronsko)
                 {
                     elektronske += 1;
                 }
@@ -569,25 +553,25 @@ namespace SIMS_Projekat_Rampe.Controlers
             return neelektronske;
         }
 
-        public List<Korisnik> DobaviSlobodneRadnikeTipa(TipKorisnika tip) 
+        public List<Korisnik> DobaviSlobodneRadnikeTipa(TipKorisnika tip)
         {
             KorisnikRepo kr = new KorisnikRepo();
             StanicaRepo sr = new StanicaRepo();
             List<NaplatnaStanica> stanice = sr.GetAllActive();
             List<Korisnik> korisnici = kr.GetByTip(tip);
-            
-            if (tip == TipKorisnika.Radnik) 
+
+            if (tip == TipKorisnika.Radnik)
             {
-                foreach(NaplatnaStanica stanica in stanice) 
+                foreach (NaplatnaStanica stanica in stanice)
                 {
-                    foreach(string id in stanica.RadniciUsernames) 
+                    foreach (string id in stanica.RadniciUsernames)
                     {
                         korisnici.RemoveAll(x => x.UserName == id);
                     }
                 }
             }
 
-            if (tip == TipKorisnika.ProdavacENP) 
+            if (tip == TipKorisnika.ProdavacENP)
             {
                 foreach (NaplatnaStanica stanica in stanice)
                 {
@@ -610,11 +594,11 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         }
 
-        public List<Korisnik> DobaviZaposleneUStanici() 
+        public List<Korisnik> DobaviZaposleneUStanici()
         {
             KorisnikRepo kr = new KorisnikRepo();
-            List < Korisnik > korisnici = new List<Korisnik>();
-            foreach (string id in Stanica.RadniciUsernames) 
+            List<Korisnik> korisnici = new List<Korisnik>();
+            foreach (string id in Stanica.RadniciUsernames)
             {
                 korisnici.Add(kr.GetByUsername(id)[0]);
             }
@@ -622,7 +606,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             {
                 korisnici.Add(kr.GetByUsername(id)[0]);
             }
-            if (!(Stanica.SefStaniceUsername == null)) 
+            if (!(Stanica.SefStaniceUsername == null))
             {
                 korisnici.Add(kr.GetByUsername(Stanica.SefStaniceUsername)[0]);
             }
@@ -682,19 +666,19 @@ namespace SIMS_Projekat_Rampe.Controlers
             return trazeni;
         }
 
-        public void ValidirajTbx(string naziv, string brojObicnih, string brojElektronskih) 
+        public void ValidirajTbx(string naziv, string brojObicnih, string brojElektronskih)
         {
-            if (string.IsNullOrEmpty(naziv) || string.IsNullOrWhiteSpace(naziv)) 
+            if (string.IsNullOrEmpty(naziv) || string.IsNullOrWhiteSpace(naziv))
             {
                 throw new ValidacijaException("Greška - Naziv stanice je prazan.");
             }
 
             int br_ob = -1;
-            if (Int32.TryParse(brojObicnih, out br_ob) == false) 
+            if (Int32.TryParse(brojObicnih, out br_ob) == false)
             {
                 throw new ValidacijaException("Greška - Broj običnih nije prepoznat");
             }
-            if (br_ob < 0) 
+            if (br_ob < 0)
             {
                 throw new ValidacijaException("Greška - Broj običnih je manji od nule");
             }
@@ -710,41 +694,41 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
         }
 
-        public void ValidirajZaposlene() 
+        public void ValidirajZaposlene()
         {
             int br_sefova = 0;
-            foreach (var zap in Zaposleni) 
+            foreach (var zap in Zaposleni)
             {
-                if (zap.Tip == TipKorisnika.SefStanice) 
+                if (zap.Tip == TipKorisnika.SefStanice)
                 {
                     br_sefova += 1;
                 }
             }
 
-            if (br_sefova > 1) 
+            if (br_sefova > 1)
             {
                 throw new ValidacijaException("Greška - Stanica ima više od 1 šefa.");
             }
         }
 
-        public void ValidirajDeonice() 
+        public void ValidirajDeonice()
         {
-            foreach(var item in TabelaPovezanihPodaci) 
+            foreach (var item in TabelaPovezanihPodaci)
             {
-                if (item.Value <= 0) 
+                if (item.Value <= 0)
                 {
                     throw new ValidacijaException("Greška - Tabela povezanih je nepopunjena ili ima pogrešnu vrednost.");
                 }
             }
         }
 
-        public void ValidirajCene() 
+        public void ValidirajCene()
         {
-            foreach (var item in TabelaCenaPodaci) 
+            foreach (var item in TabelaCenaPodaci)
             {
-                foreach (var item2 in item.Value) 
+                foreach (var item2 in item.Value)
                 {
-                    if (item2.Value <= 0) 
+                    if (item2.Value <= 0)
                     {
                         throw new ValidacijaException("Greška - Tabela cena je nepopunjena ili ima pogrešnu vrednost.");
                     }

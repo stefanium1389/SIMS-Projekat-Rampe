@@ -1,6 +1,5 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using System;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -9,7 +8,7 @@ namespace SIMS_Projekat_Rampe.Models
         public DateTime VremeNaplate { get; set; }
         public ObjectId IdStavkeCene { get; set; }
 
-        public Naplata(DateTime vreme, ObjectId stavka) 
+        public Naplata(DateTime vreme, ObjectId stavka)
         {
             VremeNaplate = vreme;
             IdStavkeCene = stavka;

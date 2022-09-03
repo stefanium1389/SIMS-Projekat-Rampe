@@ -1,9 +1,9 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace SIMS_Projekat_Rampe.Models
 {
-    public class Korisnik 
+    public class Korisnik
     {
         public TipKorisnika Tip { get; set; }
         [BsonId]
@@ -34,5 +34,5 @@ namespace SIMS_Projekat_Rampe.Models
         ProdavacENP
     }
 
-    
+
 }

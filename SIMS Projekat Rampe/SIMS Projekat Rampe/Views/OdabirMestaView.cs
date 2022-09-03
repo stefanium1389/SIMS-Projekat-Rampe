@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
     public partial class OdabirMestaView : Form
     {
         public Form Predak { get; set; }
-        public OdabirMestaController OdabirController {get; set;}
+        public OdabirMestaController OdabirController { get; set; }
         public OdabirMestaView(Korisnik ulogovani, Form predak)
         {
             Predak = predak;
@@ -26,11 +22,11 @@ namespace SIMS_Projekat_Rampe.Views
             {
                 this.comboBox1.Items.Add(ime);
             }
-            if (imena.Count > 0) 
+            if (imena.Count > 0)
             {
                 this.comboBox1.SelectedIndex = 0;
             }
-            else 
+            else
             {
                 comboBox1.Enabled = false;
                 button2.Enabled = false;
@@ -55,15 +51,15 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.comboBox1.SelectedIndex == -1) 
+            if (this.comboBox1.SelectedIndex == -1)
             {
                 //todo: prikazi neku poruku
             }
-            else 
+            else
             {
-                string rednibr = comboBox1.Text.Replace("naplatno mesto ","");
+                string rednibr = comboBox1.Text.Replace("naplatno mesto ", "");
                 int rednibrint = Int32.Parse(rednibr);
-                NaplatnoMestoView nmv = new NaplatnoMestoView(this,OdabirController.DobaviStanicu(),rednibrint);
+                NaplatnoMestoView nmv = new NaplatnoMestoView(this, OdabirController.DobaviStanicu(), rednibrint);
                 nmv.Show();
                 this.Visible = false;
             }

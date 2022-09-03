@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.Views;
+using System;
+using System.Windows.Forms;
 
 
 namespace SIMS_Projekat_Rampe
 {
     public partial class LoginView : Form
     {
-        
+
         private LoginController loginController;
         public LoginView()
         {
@@ -33,13 +26,13 @@ namespace SIMS_Projekat_Rampe
         {
             label_error.Visible = false;
             Korisnik ulogovani;
-            
+
             //todo: pocistiti ovo i smestiti u kontroler
             try
             {
                 loginController.ProveriSpam(textBox1.Text);
                 ulogovani = loginController.CheckLogin(textBox1.Text, textBox2.Text);
-                if (ulogovani.Tip == TipKorisnika.Radnik) 
+                if (ulogovani.Tip == TipKorisnika.Radnik)
                 {
                     OdabirMestaView odabir = new OdabirMestaView(ulogovani, this);
                     textBox1.Text = "";
@@ -77,13 +70,13 @@ namespace SIMS_Projekat_Rampe
             {
                 label_error.Text = exp.Message;
                 label_error.Visible = true;
-                
+
             }
         }
 
         private void LoginView_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 button1.PerformClick();
             }

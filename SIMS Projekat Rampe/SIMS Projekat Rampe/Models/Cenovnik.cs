@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.Models
 {
@@ -13,7 +13,7 @@ namespace SIMS_Projekat_Rampe.Models
         public List<StavkaCenovnika> Stavke { get; set; }
         public bool Obrisan { get; set; }
 
-        public Cenovnik(DateTime vaziOd, List<StavkaCenovnika> stavke) 
+        public Cenovnik(DateTime vaziOd, List<StavkaCenovnika> stavke)
         {
             Id = ObjectId.GenerateNewId();
             VaziOd = vaziOd;
@@ -21,23 +21,23 @@ namespace SIMS_Projekat_Rampe.Models
             Obrisan = false;
         }
 
-        public Cenovnik(Cenovnik c) 
+        public Cenovnik(Cenovnik c)
         {
             Id = ObjectId.GenerateNewId();
             VaziOd = DateTime.Now;
             Stavke = new List<StavkaCenovnika>();
-            foreach (StavkaCenovnika sc in c.Stavke) 
+            foreach (StavkaCenovnika sc in c.Stavke)
             {
-                Stavke.Add(new StavkaCenovnika(sc.DeonicaId,sc.TipVozila,sc.Iznos));
+                Stavke.Add(new StavkaCenovnika(sc.DeonicaId, sc.TipVozila, sc.Iznos));
             }
-            
+
         }
 
         public StavkaCenovnika? PronadjiStavku(string deonicaId, TipVozila tipVozila)
         {
             foreach (StavkaCenovnika s in Stavke)
             {
-                if(deonicaId == s.DeonicaId && tipVozila == s.TipVozila)
+                if (deonicaId == s.DeonicaId && tipVozila == s.TipVozila)
                 {
                     return s;
                 }
@@ -45,12 +45,12 @@ namespace SIMS_Projekat_Rampe.Models
             return null;
         }
 
-        public List<StavkaCenovnika> DobaviStavkePoDeonici (string deonicaId) 
+        public List<StavkaCenovnika> DobaviStavkePoDeonici(string deonicaId)
         {
             List<StavkaCenovnika> odgovarajuce = new List<StavkaCenovnika>();
-            foreach (StavkaCenovnika s in Stavke) 
-            { 
-                if (s.DeonicaId == deonicaId) 
+            foreach (StavkaCenovnika s in Stavke)
+            {
+                if (s.DeonicaId == deonicaId)
                 {
                     odgovarajuce.Add(s);
                 }

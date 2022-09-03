@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using SIMS_Projekat_Rampe.Models;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.MongolDb
 {
@@ -45,7 +45,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             var results = collection.Find(xd => xd.UserName == user.UserName);
             if (results.ToList().Count > 0)
             {
-                return; 
+                return;
             }
             collection.InsertOne(user);
             return;

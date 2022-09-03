@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SIMS_Projekat_Rampe.Models;
+﻿using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
+using System.Collections.Generic;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
@@ -13,11 +11,11 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
 
         }
-        public NaplatnaStanicaController(Korisnik sef) 
+        public NaplatnaStanicaController(Korisnik sef)
         {
             SefStanice = sef;
         }
-        public string DobaviImeStanice() 
+        public string DobaviImeStanice()
         {
             StanicaRepo sr = new StanicaRepo();
             List<NaplatnaStanica> stanice = sr.GetBySefActive(SefStanice.UserName);
@@ -29,12 +27,12 @@ namespace SIMS_Projekat_Rampe.Controlers
             else return "";
         }
 
-        public string DobaviImeSefa() 
+        public string DobaviImeSefa()
         {
             return SefStanice.Ime + " " + SefStanice.Prezime;
         }
 
-        public int DobaviBrojRadnika() 
+        public int DobaviBrojRadnika()
         {
             StanicaRepo sr = new StanicaRepo();
             List<NaplatnaStanica> stanice = sr.GetBySefActive(SefStanice.UserName);
@@ -53,15 +51,15 @@ namespace SIMS_Projekat_Rampe.Controlers
             StanicaRepo sr = new StanicaRepo();
             NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             int br_obicnih = 0;
-            foreach(NaplatnoMesto np in stanica.NaplatnaMesta) 
+            foreach (NaplatnoMesto np in stanica.NaplatnaMesta)
             {
-                if (np.Elektronsko == false) 
+                if (np.Elektronsko == false)
                 {
                     br_obicnih += 1;
                 }
             }
             return br_obicnih;
-            
+
         }
 
         public int DobaviBrojElektronskih()
@@ -90,33 +88,32 @@ namespace SIMS_Projekat_Rampe.Controlers
                 NaplatnaStanica st = stanice[0];
                 foreach (NaplatnoMesto nm in st.NaplatnaMesta)
                 {
-                    
+
                     imena.Add("naplatno mesto " + nm.RedniBr);
-                    
+
                 }
             }
             return imena;
         }
 
-        public string DobaviStanjeUredjaja(int rednibr, TipUredjaja tip) 
+        public string DobaviStanjeUredjaja(int rednibr, TipUredjaja tip)
         {
             StanicaRepo sr = new StanicaRepo();
             NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             NaplatnoMesto mesto = stanica.NaplatnaMesta[rednibr];
-            switch (tip) 
+            switch (tip)
             {
                 case TipUredjaja.CitacTablice:
                     if (mesto.CitacTablice.Pokvaren)
                     {
                         return "kvar";
                     }
-                    else 
+                    else
                     {
                         return "radi";
                     }
-                    break;
                 case TipUredjaja.CitacTagova:
-                    if (mesto.CitacTagova == null) 
+                    if (mesto.CitacTagova == null)
                     {
                         return "----";
                     }
@@ -128,7 +125,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                     {
                         return "radi";
                     }
-                    break;
                 case TipUredjaja.Displej:
                     if (mesto.Displej.Pokvaren)
                     {
@@ -138,7 +134,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                     {
                         return "radi";
                     }
-                    break;
                 case TipUredjaja.Rampa:
                     if (mesto.Rampa.Pokvaren)
                     {
@@ -148,7 +143,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                     {
                         return "radi";
                     }
-                    break;
                 case TipUredjaja.Semafor:
                     if (mesto.Semafor.Pokvaren)
                     {
@@ -158,7 +152,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                     {
                         return "radi";
                     }
-                    break;
             }
             return "greska";
         }
@@ -174,7 +167,7 @@ namespace SIMS_Projekat_Rampe.Controlers
                     mesto.CitacTablice.Pokvaren = false;
                     break;
                 case TipUredjaja.CitacTagova:
-                    if ((mesto.Elektronsko)) 
+                    if ((mesto.Elektronsko))
                     {
                         mesto.CitacTagova.Pokvaren = false;
                     }
@@ -184,7 +177,6 @@ namespace SIMS_Projekat_Rampe.Controlers
                     break;
                 case TipUredjaja.Rampa:
                     mesto.Rampa.Pokvaren = false;
-                    //mozda proizvede bug !
                     mesto.Rampa.PromeniStanje(new StateSpusteno(null));
                     break;
                 case TipUredjaja.Semafor:
@@ -195,7 +187,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             ZabeleziIzmene(stanica);
         }
 
-        public void ZabeleziIzmene(NaplatnaStanica ns) 
+        public void ZabeleziIzmene(NaplatnaStanica ns)
         {
             StanicaRepo sr = new StanicaRepo();
             sr.Update(ns);
@@ -203,7 +195,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public List<NaplatnaStanica> DobaviSveStanice()
         {
             StanicaRepo sr = new StanicaRepo();
-            return sr.GetAll();  
+            return sr.GetAll();
         }
     }
 }

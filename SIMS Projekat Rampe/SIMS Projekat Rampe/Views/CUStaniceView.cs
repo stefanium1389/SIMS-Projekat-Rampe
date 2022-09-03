@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Controlers;
+﻿using SIMS_Projekat_Rampe.Controlers;
 using SIMS_Projekat_Rampe.Models;
-using SIMS_Projekat_Rampe.MongolDb;
+using System;
+using System.Windows.Forms;
 
 namespace SIMS_Projekat_Rampe.Views
 {
     public partial class CUStaniceView : Form
     {
-        public CUStaniceController Kontroler {get; set;}
+        public CUStaniceController Kontroler { get; set; }
         public Form Predak { get; set; }
         public float VrednostIzmenePovezane { get; set; }
         public float VrednostIzmeneCene { get; set; }
@@ -29,17 +23,17 @@ namespace SIMS_Projekat_Rampe.Views
         public void Inicijalizuj()
         {
             //Promena imena prozora u zavisnosti od akcije
-            if (Kontroler.Kreiranje) 
+            if (Kontroler.Kreiranje)
             {
                 this.Text = "Kreiranje stanice";
             }
-            else 
+            else
             {
-                this.Text = "Izmena stanice "+Kontroler.Stanica.Naziv;
+                this.Text = "Izmena stanice " + Kontroler.Stanica.Naziv;
             }
 
             //(izmena) popunjavanje tbx
-            if (!Kontroler.Kreiranje) 
+            if (!Kontroler.Kreiranje)
             {
                 tbx_naziv.Text = Kontroler.Stanica.Naziv;
                 tbx_obicnih.Text = Kontroler.DobaviBrojObicnih().ToString();
@@ -49,7 +43,7 @@ namespace SIMS_Projekat_Rampe.Views
             //popunjavanje cbx
             foreach (TipKorisnika tip in Enum.GetValues(typeof(TipKorisnika)))
             {
-                if (tip == TipKorisnika.Admin || tip == TipKorisnika.Menadzer) 
+                if (tip == TipKorisnika.Admin || tip == TipKorisnika.Menadzer)
                 {
                     continue;
                 }
@@ -61,7 +55,7 @@ namespace SIMS_Projekat_Rampe.Views
 
             //tabela zaposlenih
             table_zaposleni.RowHeadersVisible = false;
-            
+
             table_zaposleni.AutoGenerateColumns = false;
 
             DataGridViewColumn column = new DataGridViewTextBoxColumn();
@@ -106,29 +100,27 @@ namespace SIMS_Projekat_Rampe.Views
 
         public void OsveziTabeluCena()
         {
-            if (table_deonice.SelectedRows.Count < 1) 
+            if (table_deonice.SelectedRows.Count < 1)
             {
-                System.Diagnostics.Debug.WriteLine("aaaaaaaaaaaaaaaaaaaaa");
                 return;
             }
             table_cene.Rows.Clear();
             NaplatnaStanica st = Kontroler.PretvoriUStanicu((string)table_deonice.SelectedRows[0].Cells[0].Value);
-            //System.Diagnostics.Debug.WriteLine(st.Id+" "+st.Naziv);
             foreach (var item in Kontroler.TabelaCenaPodaci)
             {
-                if (item.Key.Id == st.Id) 
+                if (item.Key.Id == st.Id)
                 {
-                    foreach(var item2 in item.Value) 
+                    foreach (var item2 in item.Value)
                     {
                         var red = new string[] { item2.Key.ToString(), item2.Value.ToString() };
                         table_cene.Rows.Add(red);
-                    }  
+                    }
                 }
-                
+
             }
         }
 
-        public void OsveziTabeluPovezanih() 
+        public void OsveziTabeluPovezanih()
         {
             table_deonice.Rows.Clear();
             foreach (var item in Kontroler.TabelaPovezanihPodaci)
@@ -137,14 +129,14 @@ namespace SIMS_Projekat_Rampe.Views
                 table_deonice.Rows.Add(red);
             }
 
-            if (table_deonice.Rows.Count > 0) 
+            if (table_deonice.Rows.Count > 0)
             {
                 table_deonice.Rows[0].Selected = true;
             }
-            
+
         }
 
-        public void OsveziListBox() 
+        public void OsveziListBox()
         {
             //nije lep način ali radi
             lbx_zaposleni.DataSource = null;
@@ -176,7 +168,7 @@ namespace SIMS_Projekat_Rampe.Views
             }
         }
         private void OsveziZaposlene()
-        {   
+        {
             //nije lep način ali radi
             table_zaposleni.DataSource = null;
             table_zaposleni.DataSource = Kontroler.Zaposleni;
@@ -184,11 +176,11 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void table_deonice_SelectionChanged(object sender, EventArgs e)
         {
-            if(table_cene.Columns.Count > 0) 
+            if (table_cene.Columns.Count > 0)
             {
                 OsveziTabeluCena();
             }
-            
+
         }
 
         private void table_deonice_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -199,8 +191,8 @@ namespace SIMS_Projekat_Rampe.Views
                 table_deonice.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = VrednostIzmenePovezane.ToString();
                 return;
             }
-            
-            if (rez <= 0) 
+
+            if (rez <= 0)
             {
                 table_deonice.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = VrednostIzmenePovezane.ToString();
                 return;
@@ -208,9 +200,9 @@ namespace SIMS_Projekat_Rampe.Views
 
             NaplatnaStanica st = Kontroler.PretvoriUStanicu((string)table_deonice.Rows[e.RowIndex].Cells[0].Value.ToString());
             NaplatnaStanica trazena = null;
-            foreach (NaplatnaStanica kljuc in Kontroler.TabelaPovezanihPodaci.Keys) 
+            foreach (NaplatnaStanica kljuc in Kontroler.TabelaPovezanihPodaci.Keys)
             {
-                if (kljuc.Id == st.Id) 
+                if (kljuc.Id == st.Id)
                 {
                     trazena = kljuc;
                 }
@@ -221,13 +213,11 @@ namespace SIMS_Projekat_Rampe.Views
         private void table_deonice_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             VrednostIzmenePovezane = float.Parse(table_deonice.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-            //System.Diagnostics.Debug.WriteLine(VrednostIzmenePovezane);
         }
 
         private void table_cene_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             VrednostIzmeneCene = float.Parse(table_cene.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
-            //System.Diagnostics.Debug.WriteLine(VrednostIzmenePovezane);
         }
 
         private void table_cene_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -260,11 +250,6 @@ namespace SIMS_Projekat_Rampe.Views
         private void btn_sacuvaj_Click(object sender, EventArgs e)
         {
             lab_greska.Visible = false;
-            System.Diagnostics.Debug.WriteLine("deonice");
-            foreach(var item in Kontroler.TabelaPovezanihPodaci) 
-            {
-                System.Diagnostics.Debug.WriteLine(item.Key+" " + item.Value);
-            }
             try
             {
                 Kontroler.ValidirajTbx(tbx_naziv.Text, tbx_obicnih.Text, tbx_elektronskih.Text);

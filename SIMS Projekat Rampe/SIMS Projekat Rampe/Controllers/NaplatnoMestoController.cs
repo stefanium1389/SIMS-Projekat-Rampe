@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using SIMS_Projekat_Rampe.Models;
+﻿using SIMS_Projekat_Rampe.Models;
 using SIMS_Projekat_Rampe.MongolDb;
 using SIMS_Projekat_Rampe.Views;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
@@ -35,20 +34,20 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         public bool KaznaIzdata { get; set; }
 
-        public void ZabeleziPromene() 
+        public void ZabeleziPromene()
         {
             StanicaRepo sr = new StanicaRepo();
             sr.Update(Stanica);
         }
-        
-        public NaplatnoMestoController (NaplatnaStanica stanica, int redniBroj) 
+
+        public NaplatnoMestoController(NaplatnaStanica stanica, int redniBroj)
         {
             Stanica = stanica;
             RedniBrojMesta = redniBroj;
             InjektujSebeUStanje();
         }
 
-        public void FinalizujProlazak() 
+        public void FinalizujProlazak()
         {
             Cenovnik c = DobaviAktivniCenovnik();
             StavkaCenovnika s = c.PronadjiStavku(TrenutniProlazak.DeonicaId, (TipVozila)TrenutniProlazak.TipVozila);
@@ -58,25 +57,23 @@ namespace SIMS_Projekat_Rampe.Controlers
             pr.Create(TrenutniProlazak);
         }
 
-        public void PrijaviViewKaoObserver (NaplatnoMestoView view) 
+        public void PrijaviViewKaoObserver(NaplatnoMestoView view)
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
             mesto.Rampa.AddObserver(view);
             mesto.Semafor.AddObserver(view);
         }
 
-        public void PodigniRampu() 
+        public void PodigniRampu()
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
-            if (mesto.Rampa.Stanje.GetType().Equals(typeof(StateSpusteno))) 
+            if (mesto.Rampa.Stanje.GetType().Equals(typeof(StateSpusteno)))
             {
                 mesto.Rampa.KlikNaDugme();
             }
-                
-            //System.Diagnostics.Debug.WriteLine(mesto.Rampa.Stanje);
         }
 
-        public Rampa VratiRampu() 
+        public Rampa VratiRampu()
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
             return mesto.Rampa;
@@ -98,17 +95,17 @@ namespace SIMS_Projekat_Rampe.Controlers
                 throw new NaplatnoMestoException("Greška - uplata je negativna");
             }
 
-            if (izn < TrenutniIznos) 
+            if (izn < TrenutniIznos)
             {
                 throw new NaplatnoMestoException("Greška - uplata je manja od iznosa");
             }
 
             return (float)(izn - TrenutniIznos);
         }
-        public string DobaviStanjeRampe() 
+        public string DobaviStanjeRampe()
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
-            if (mesto.Rampa.Stanje.GetType().Equals(typeof(StatePodignuto))) 
+            if (mesto.Rampa.Stanje.GetType().Equals(typeof(StatePodignuto)))
             {
                 return "podignuta";
             }
@@ -130,10 +127,10 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             return "greska";
         }
-        public string DobaviProlazakSemafora() 
+        public string DobaviProlazakSemafora()
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
-            if (mesto.Semafor.Pokvaren == true) 
+            if (mesto.Semafor.Pokvaren == true)
             {
                 return "----";
             }
@@ -195,7 +192,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             else return "radi";
         }
 
-        public void NapraviNoviProlazak() 
+        public void NapraviNoviProlazak()
         {
 
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
@@ -205,10 +202,10 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             ProlazakRepo pr = new ProlazakRepo();
             string kod;
-            while (true) 
+            while (true)
             {
                 kod = NapraviNovKod();
-                if (pr.GetByKod(kod).Count == 0) 
+                if (pr.GetByKod(kod).Count == 0)
                 {
                     break;
                 }
@@ -218,7 +215,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             DateTime vreme = OdaberiNasumiceVreme();
             string deonica = OdaberiNasumiceDeonicu();
             string ulazna = OdrediUlaznuStanicu(deonica);
-            
+
             TrenutniProlazak = new Prolazak(kod, tip, vreme, ulazna, deonica);
 
             TrenutneTablice = GenerisiNoveTablice();
@@ -230,48 +227,48 @@ namespace SIMS_Projekat_Rampe.Controlers
             TrenutniIznos = PronadjiIznos();
 
         }
-        public bool IsElektronsko() 
+        public bool IsElektronsko()
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
-            if (mesto.Elektronsko) 
+            if (mesto.Elektronsko)
             {
                 return true;
             }
             return false;
         }
 
-        public void PrimeniNovTip(TipVozila tip) 
+        public void PrimeniNovTip(TipVozila tip)
         {
-            if (!(TrenutniProlazak is null)) 
+            if (!(TrenutniProlazak is null))
             {
                 TrenutniProlazak.TipVozila = tip;
                 TrenutniIznos = PronadjiIznos();
             }
-            
+
         }
 
-        public float PronadjiIznos() 
+        public float PronadjiIznos()
         {
             Cenovnik c = DobaviAktivniCenovnik();
             return DobaviIznos(c, TrenutniProlazak.DeonicaId, (TipVozila)TrenutniProlazak.TipVozila);
         }
 
-        public float DobaviIznos(Cenovnik c, string deonicaId, TipVozila tip) 
+        public float DobaviIznos(Cenovnik c, string deonicaId, TipVozila tip)
         {
             return c.PronadjiStavku(deonicaId, tip).Iznos;
         }
 
         //podrazumeva da su cenovnici sortirani po datumu
-        public Cenovnik DobaviAktivniCenovnik() 
+        public Cenovnik DobaviAktivniCenovnik()
         {
             CenovnikRepo cr = new CenovnikRepo();
 
-            List < Cenovnik > cenovnici = cr.GetAllActive();
+            List<Cenovnik> cenovnici = cr.GetAllActive();
 
             Cenovnik aktivni = null;
-            foreach( Cenovnik c in cenovnici) 
+            foreach (Cenovnik c in cenovnici)
             {
-                if (c.VaziOd < DateTime.Now) 
+                if (c.VaziOd < DateTime.Now)
                 {
                     aktivni = c;
                 }
@@ -280,11 +277,11 @@ namespace SIMS_Projekat_Rampe.Controlers
             return aktivni;
         }
 
-        public bool GenerisiKaznu() 
+        public bool GenerisiKaznu()
         {
             if (TrenutnaProsecnaBrzina > 130)
             {
-                KaznaZaPrekoracenjeBrzine kpb = new KaznaZaPrekoracenjeBrzine(TrenutneTablice,TrenutniProlazak.Kod);
+                KaznaZaPrekoracenjeBrzine kpb = new KaznaZaPrekoracenjeBrzine(TrenutneTablice, TrenutniProlazak.Kod);
                 KaznaRepo kr = new KaznaRepo();
                 kr.Create(kpb);
                 return true;
@@ -292,7 +289,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             return false;
         }
 
-        public float IzracunajProsecnuBrzinu() 
+        public float IzracunajProsecnuBrzinu()
         {
             DeonicaRepo dr = new DeonicaRepo();
             Deonica d = dr.GetByStaniceActive(Stanica.Id, TrenutniProlazak.UlaznaStanica)[0];
@@ -302,15 +299,15 @@ namespace SIMS_Projekat_Rampe.Controlers
 
         }
 
-        public DateTime OdaberiNasumiceVreme() 
+        public DateTime OdaberiNasumiceVreme()
         {
             Random random = new Random();
             DateTime novo = DateTime.Now;
-            return novo.AddMinutes(-random.Next(50,80));
-            
+            return novo.AddMinutes(-random.Next(50, 80));
+
         }
 
-        public string OdrediUlaznuStanicu(string deonicaId) 
+        public string OdrediUlaznuStanicu(string deonicaId)
         {
             DeonicaRepo dr = new DeonicaRepo();
             Deonica deonica = dr.GetByIdActive(deonicaId)[0];
@@ -318,13 +315,13 @@ namespace SIMS_Projekat_Rampe.Controlers
             {
                 return deonica.IzlazakId;
             }
-            else 
+            else
             {
                 return deonica.UlazakId;
             }
         }
 
-        public string OdaberiNasumiceDeonicu() 
+        public string OdaberiNasumiceDeonicu()
         {
             Random random = new Random();
             DeonicaRepo dr = new DeonicaRepo();
@@ -333,7 +330,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             return potencijalne[index].Id;
         }
 
-        public string NapraviNovKod() 
+        public string NapraviNovKod()
         {
             int length = 8;
 
@@ -368,7 +365,7 @@ namespace SIMS_Projekat_Rampe.Controlers
                 letter = Convert.ToChar(shift + 65);
                 str_build.Append(letter);
             }
-           
+
 
             int broj = random.Next(100, 999);
             str_build.Append(broj);
@@ -383,21 +380,21 @@ namespace SIMS_Projekat_Rampe.Controlers
             return str_build.ToString().ToUpper();
         }
 
-        public string DobaviImeUlazneStanice() 
+        public string DobaviImeUlazneStanice()
         {
             StanicaRepo sr = new StanicaRepo();
             return sr.GetByIdActive(TrenutniProlazak.UlaznaStanica)[0].Naziv;
         }
-        public void RegistrujKvar(TipUredjaja tip) 
+        public void RegistrujKvar(TipUredjaja tip)
         {
             var mesto = Stanica.NaplatnaMesta[RedniBrojMesta];
 
-            if (tip == TipUredjaja.Rampa) 
+            if (tip == TipUredjaja.Rampa)
             {
                 mesto.Rampa.PromeniStanje(new StatePokvareno(this));
             }
 
-            else 
+            else
             {
                 switch (tip)
                 {

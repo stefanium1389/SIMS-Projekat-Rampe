@@ -1,7 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat_Rampe.MongolDb;
 using System.Collections.Generic;
-using System.Text;
-using SIMS_Projekat_Rampe.MongolDb;
 
 namespace SIMS_Projekat_Rampe.Controlers
 {
