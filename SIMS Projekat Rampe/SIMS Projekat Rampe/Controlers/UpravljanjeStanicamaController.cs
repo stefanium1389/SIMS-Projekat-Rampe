@@ -155,5 +155,48 @@ namespace SIMS_Projekat_Rampe.Controlers
             string id_stanice = izbor.Split('[', ']')[1];
             return sr.GetById(id_stanice)[0];
         }
+
+        public void ObrisiStanicu(NaplatnaStanica ns) 
+        {
+            StanicaRepo sr = new StanicaRepo();
+            DeonicaRepo dr = new DeonicaRepo();
+            CenovnikRepo cr = new CenovnikRepo();
+
+            sr.Delete(ns);
+            foreach(Deonica d in dr.GetByStanica(ns.Id)) 
+            {
+                dr.Delete(d);
+            }
+
+            List<Cenovnik> buduci = new List<Cenovnik>();
+            Cenovnik aktivni = DobaviAktivniCenovnik();
+            foreach (Cenovnik c in cr.GetAllActive()) 
+            {
+                if (c.VaziOd > aktivni.VaziOd) 
+                {
+                    buduci.Add(c);
+                }
+            }
+
+            foreach(Cenovnik c in buduci) 
+            {
+                cr.Delete(c);
+            }
+
+            List<StavkaCenovnika> stavke = new List<StavkaCenovnika>();
+            foreach(StavkaCenovnika sc in aktivni.Stavke) 
+            {
+                Deonica trenutna = dr.GetById(sc.DeonicaId)[0];
+                if (trenutna.Obrisana == false) 
+                {
+                    StavkaCenovnika nova = new StavkaCenovnika(sc.DeonicaId, sc.TipVozila, sc.Iznos);
+                    stavke.Add(nova);
+                }
+
+            }
+            Cenovnik noviAktivni = new Cenovnik(DateTime.Now, stavke);
+            cr.Create(noviAktivni);
+            cr.Sort();
+        }
     }
 }

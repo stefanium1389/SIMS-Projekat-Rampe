@@ -90,6 +90,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.btn_obrisi.TabIndex = 13;
             this.btn_obrisi.Text = "Obriši";
             this.btn_obrisi.UseVisualStyleBackColor = true;
+            this.btn_obrisi.Click += new System.EventHandler(this.btn_obrisi_Click);
             // 
             // btn_izmeni
             // 

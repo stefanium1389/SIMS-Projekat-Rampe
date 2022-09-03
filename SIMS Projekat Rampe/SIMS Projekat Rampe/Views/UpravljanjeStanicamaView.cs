@@ -187,5 +187,14 @@ namespace SIMS_Projekat_Rampe.Views
                 OsveziCbx();
             }
         }
+
+        private void btn_obrisi_Click(object sender, EventArgs e)
+        {
+            if (cbx_stanice.SelectedIndex > -1) 
+            {
+                Kontroler.ObrisiStanicu((NaplatnaStanica)cbx_stanice.SelectedItem);
+                OsveziCbx();
+            }
+        }
     }
 }
