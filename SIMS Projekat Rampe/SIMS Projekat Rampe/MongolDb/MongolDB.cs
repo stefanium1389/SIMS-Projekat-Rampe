@@ -28,6 +28,13 @@ namespace SIMS_Projekat_Rampe.MongolDb
             return db.GetCollection<T>(collection);
         }
 
+        public static IMongoDatabase DobaviDB() 
+        {
+            var client = new MongoClient(connectionString);
+            var db = client.GetDatabase(databaseName);
+            return db;
+        }
+
 
         public static void GenerisiStanice() 
         {
@@ -46,6 +53,7 @@ namespace SIMS_Projekat_Rampe.MongolDb
             int stanica_count = 1;
             int deonica_count = 1;
             int men_count = 1;
+            int admin_count = 1;
 
             List<NaplatnaStanica> stanice = new List<NaplatnaStanica>();
             for (int i=0; i<4; i++) 
@@ -106,6 +114,14 @@ namespace SIMS_Projekat_Rampe.MongolDb
                 Korisnik radnik = new Korisnik { UserName = "radnik" + radnik_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "radnikthe" + radnik_count + "th", Prezime = "radnikovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.Radnik };
                 coll_korisnici.InsertOne(radnik);
                 radnik_count += 1;
+            }
+
+            //generisanje admina
+            for (int j = 0; j < 3; j++)
+            {
+                Korisnik admin = new Korisnik { UserName = "admin" + admin_count, PassWord = "pass", DatumRodjenja = DateTime.Now, Ime = "adminthe" + admin_count + "th", Prezime = "adminovic", PolKorisnika = Pol.Muski, Tip = TipKorisnika.Admin };
+                coll_korisnici.InsertOne(admin);
+                admin_count += 1;
             }
 
             // generisanje rezervnog sefa

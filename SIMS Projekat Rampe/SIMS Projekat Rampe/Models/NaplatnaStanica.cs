@@ -46,6 +46,7 @@ namespace SIMS_Projekat_Rampe.Models
         public List<string> RadniciUsernames { get; set; }
         public List<string> ProdavciENPUsernames { get; set; }
         public List<NaplatnoMesto> NaplatnaMesta { get; set; }
+        public bool Obrisana { get; set; }
 
         public NaplatnaStanica( string id, string naziv, string? sef, List<string> radnici, List<string> prodavciENP, List<NaplatnoMesto> naplatnaMesta) 
         {
@@ -55,6 +56,12 @@ namespace SIMS_Projekat_Rampe.Models
             RadniciUsernames = radnici;
             ProdavciENPUsernames = prodavciENP;
             NaplatnaMesta = naplatnaMesta;
+            Obrisana = false;
+        }
+
+        public override string ToString() 
+        {
+            return Naziv;
         }
 
         public void DodeliRadnika(Korisnik radnik)

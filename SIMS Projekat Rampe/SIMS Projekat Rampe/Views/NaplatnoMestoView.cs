@@ -225,5 +225,11 @@ namespace SIMS_Projekat_Rampe.Views
             Kontroler.PodigniRampu();
             OsveziRampuISemafor();
         }
+
+        private void btn_izadji_Click(object sender, EventArgs e)
+        {
+            this.Predak.Visible = true;
+            this.Close();
+        }
     }
 }

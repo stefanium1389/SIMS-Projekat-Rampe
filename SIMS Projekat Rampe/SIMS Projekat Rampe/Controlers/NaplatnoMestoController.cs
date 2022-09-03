@@ -266,7 +266,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             CenovnikRepo cr = new CenovnikRepo();
 
-            List < Cenovnik > cenovnici = cr.GetAll();
+            List < Cenovnik > cenovnici = cr.GetAllActive();
 
             Cenovnik aktivni = null;
             foreach( Cenovnik c in cenovnici) 
@@ -295,20 +295,12 @@ namespace SIMS_Projekat_Rampe.Controlers
         public float IzracunajProsecnuBrzinu() 
         {
             DeonicaRepo dr = new DeonicaRepo();
-            Deonica d = dr.GetByStanice(Stanica.Id, TrenutniProlazak.UlaznaStanica)[0];
+            Deonica d = dr.GetByStaniceActive(Stanica.Id, TrenutniProlazak.UlaznaStanica)[0];
             double vreme = (DateTime.Now - TrenutniProlazak.VremeUlaska).TotalHours;
             float brzina = d.Duzina / (float)vreme;
             return brzina;
 
         }
-
-        /*public TipVozila OdaberiNasumiceTip() 
-        {
-            Array values = Enum.GetValues(typeof(TipVozila));
-            Random random = new Random();
-            TipVozila randomTip = (TipVozila)values.GetValue(random.Next(values.Length));
-            return randomTip;
-        }*/
 
         public DateTime OdaberiNasumiceVreme() 
         {
@@ -321,7 +313,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string OdrediUlaznuStanicu(string deonicaId) 
         {
             DeonicaRepo dr = new DeonicaRepo();
-            Deonica deonica = dr.GetById(deonicaId)[0];
+            Deonica deonica = dr.GetByIdActive(deonicaId)[0];
             if (Stanica.Id == deonica.UlazakId)
             {
                 return deonica.IzlazakId;
@@ -336,7 +328,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             Random random = new Random();
             DeonicaRepo dr = new DeonicaRepo();
-            List<Deonica> potencijalne = dr.GetByStanica(Stanica.Id);
+            List<Deonica> potencijalne = dr.GetByStanicaActive(Stanica.Id);
             int index = random.Next(potencijalne.Count);
             return potencijalne[index].Id;
         }
@@ -394,7 +386,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string DobaviImeUlazneStanice() 
         {
             StanicaRepo sr = new StanicaRepo();
-            return sr.GetById(TrenutniProlazak.UlaznaStanica)[0].Naziv;
+            return sr.GetByIdActive(TrenutniProlazak.UlaznaStanica)[0].Naziv;
         }
         public void RegistrujKvar(TipUredjaja tip) 
         {

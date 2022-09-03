@@ -9,6 +9,7 @@ namespace SIMS_Projekat_Rampe.Models
         public float Duzina { get; set; }
         public string UlazakId { get; set; }
         public string IzlazakId { get; set; }
+        public bool Obrisana { get; set; }
 
         public Deonica (string id,float duzina,string ulaz, string izlaz) 
         {
@@ -16,6 +17,7 @@ namespace SIMS_Projekat_Rampe.Models
             Duzina = duzina;
             UlazakId = ulaz;
             IzlazakId = izlaz;
+            Obrisana = false;
         }
     }
 }

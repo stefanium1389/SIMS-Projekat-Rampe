@@ -89,7 +89,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.lab_log);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 559);
+            this.panel1.Size = new System.Drawing.Size(741, 449);
             this.panel1.TabIndex = 0;
             // 
             // lab_semafor
@@ -130,7 +130,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // btn_nazad
             // 
-            this.btn_nazad.Location = new System.Drawing.Point(682, 518);
+            this.btn_nazad.Location = new System.Drawing.Point(16, 385);
             this.btn_nazad.Name = "btn_nazad";
             this.btn_nazad.Size = new System.Drawing.Size(75, 23);
             this.btn_nazad.TabIndex = 21;
@@ -334,7 +334,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(796, 593);
+            this.ClientSize = new System.Drawing.Size(768, 471);
             this.Controls.Add(this.panel1);
             this.Name = "NaplatnaStanicaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
