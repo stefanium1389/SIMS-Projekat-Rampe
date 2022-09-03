@@ -91,7 +91,10 @@ namespace SIMS_Projekat_Rampe.Views
             PopuniPodatkeOZaposlenima();
             PopuniPodatkeODeonicama();
             //i ovo moze biti problematicno
-            table_povezane.Rows[0].Selected = true;
+            if (table_povezane.Rows.Count > 0) 
+            {
+                table_povezane.Rows[0].Selected = true;
+            }
             //ovde bi islo popuni o cenama ali event to radi
         }
 
@@ -195,6 +198,12 @@ namespace SIMS_Projekat_Rampe.Views
                 Kontroler.ObrisiStanicu((NaplatnaStanica)cbx_stanice.SelectedItem);
                 OsveziCbx();
             }
+        }
+
+        private void btn_izadji_Click(object sender, EventArgs e)
+        {
+            this.Predak.Visible = true;
+            this.Close();
         }
     }
 }

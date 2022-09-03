@@ -44,6 +44,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.table_opsti = new System.Windows.Forms.DataGridView();
             this.cbx_stanice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_izadji = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_cene)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_povezane)).BeginInit();
@@ -63,6 +64,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_izadji);
             this.panel1.Controls.Add(this.btn_obrisi);
             this.panel1.Controls.Add(this.btn_izmeni);
             this.panel1.Controls.Add(this.btn_kreiraj);
@@ -227,6 +229,16 @@ namespace SIMS_Projekat_Rampe.Views
             this.label1.TabIndex = 1;
             this.label1.Text = "Stanica:";
             // 
+            // btn_izadji
+            // 
+            this.btn_izadji.Location = new System.Drawing.Point(502, 547);
+            this.btn_izadji.Name = "btn_izadji";
+            this.btn_izadji.Size = new System.Drawing.Size(84, 33);
+            this.btn_izadji.TabIndex = 14;
+            this.btn_izadji.Text = "Izađi";
+            this.btn_izadji.UseVisualStyleBackColor = true;
+            this.btn_izadji.Click += new System.EventHandler(this.btn_izadji_Click);
+            // 
             // UpravljanjeStanicamaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -266,5 +278,6 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView table_cene;
         private System.Windows.Forms.DataGridView table_povezane;
+        private System.Windows.Forms.Button btn_izadji;
     }
 }

@@ -20,10 +20,10 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string DobaviImeStanice() 
         {
             StanicaRepo stanicaRepo = new StanicaRepo();
-            List<NaplatnaStanica> odabrana = stanicaRepo.GetByRadnik(Ulogovani.UserName);
+            List<NaplatnaStanica> odabrana = stanicaRepo.GetByRadnikActive(Ulogovani.UserName);
             if (odabrana.Count > 0)
             {
-                return stanicaRepo.GetByRadnik(Ulogovani.UserName)[0].Naziv;
+                return stanicaRepo.GetByRadnikActive(Ulogovani.UserName)[0].Naziv;
             }
             else return "Niste pozicionirani ni na jednu stanicu";
             
@@ -32,7 +32,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public NaplatnaStanica DobaviStanicu()
         {
             StanicaRepo stanicaRepo = new StanicaRepo();
-            return stanicaRepo.GetByRadnik(Ulogovani.UserName)[0];
+            return stanicaRepo.GetByRadnikActive(Ulogovani.UserName)[0];
         }
 
         //ignorise elektronska
@@ -41,7 +41,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             StanicaRepo stanicaRepo = new StanicaRepo();
             List<string> imena = new List<string>();
             
-            List<NaplatnaStanica> stanice = stanicaRepo.GetByRadnik(Ulogovani.UserName);
+            List<NaplatnaStanica> stanice = stanicaRepo.GetByRadnikActive(Ulogovani.UserName);
             if (stanice.Count > 0) 
             {
                 NaplatnaStanica st = stanice[0];

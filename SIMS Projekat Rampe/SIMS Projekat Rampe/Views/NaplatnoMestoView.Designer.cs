@@ -68,6 +68,7 @@ namespace SIMS_Projekat_Rampe.Views
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.btn_izadji = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -307,6 +308,7 @@ namespace SIMS_Projekat_Rampe.Views
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.Controls.Add(this.btn_izadji);
             this.panel2.Controls.Add(this.tbx_semafor);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label20);
@@ -456,6 +458,16 @@ namespace SIMS_Projekat_Rampe.Views
             this.label12.TabIndex = 22;
             this.label12.Text = "Displej";
             // 
+            // btn_izadji
+            // 
+            this.btn_izadji.Location = new System.Drawing.Point(727, 118);
+            this.btn_izadji.Name = "btn_izadji";
+            this.btn_izadji.Size = new System.Drawing.Size(75, 23);
+            this.btn_izadji.TabIndex = 37;
+            this.btn_izadji.Text = "Izađi";
+            this.btn_izadji.UseVisualStyleBackColor = true;
+            this.btn_izadji.Click += new System.EventHandler(this.btn_izadji_Click);
+            // 
             // NaplatnoMestoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -518,5 +530,6 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label lab_uspeh;
         private System.Windows.Forms.TextBox tbx_semafor;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_izadji;
     }
 }

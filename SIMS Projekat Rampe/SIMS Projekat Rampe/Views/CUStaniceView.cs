@@ -259,6 +259,7 @@ namespace SIMS_Projekat_Rampe.Views
 
         private void btn_sacuvaj_Click(object sender, EventArgs e)
         {
+            lab_greska.Visible = false;
             System.Diagnostics.Debug.WriteLine("deonice");
             foreach(var item in Kontroler.TabelaPovezanihPodaci) 
             {
@@ -283,6 +284,11 @@ namespace SIMS_Projekat_Rampe.Views
         private void CUStaniceView_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_odustani_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

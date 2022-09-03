@@ -16,7 +16,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string DobaviImeStanice() 
         {
             StanicaRepo sr = new StanicaRepo();
-            List<NaplatnaStanica> stanice = sr.GetBySef(SefStanice.UserName);
+            List<NaplatnaStanica> stanice = sr.GetBySefActive(SefStanice.UserName);
 
             if (stanice.Count > 0)
             {
@@ -33,21 +33,21 @@ namespace SIMS_Projekat_Rampe.Controlers
         public int DobaviBrojRadnika() 
         {
             StanicaRepo sr = new StanicaRepo();
-            List<NaplatnaStanica> stanice = sr.GetBySef(SefStanice.UserName);
+            List<NaplatnaStanica> stanice = sr.GetBySefActive(SefStanice.UserName);
             return stanice[0].RadniciUsernames.Count;
         }
 
         public int DobaviBrojENP()
         {
             StanicaRepo sr = new StanicaRepo();
-            List<NaplatnaStanica> stanice = sr.GetBySef(SefStanice.UserName);
+            List<NaplatnaStanica> stanice = sr.GetBySefActive(SefStanice.UserName);
             return stanice[0].ProdavciENPUsernames.Count;
         }
 
         public int DobaviBrojObicnih()
         {
             StanicaRepo sr = new StanicaRepo();
-            NaplatnaStanica stanica = sr.GetBySef(SefStanice.UserName)[0];
+            NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             int br_obicnih = 0;
             foreach(NaplatnoMesto np in stanica.NaplatnaMesta) 
             {
@@ -63,7 +63,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public int DobaviBrojElektronskih()
         {
             StanicaRepo sr = new StanicaRepo();
-            NaplatnaStanica stanica = sr.GetBySef(SefStanice.UserName)[0];
+            NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             int br_el = 0;
             foreach (NaplatnoMesto np in stanica.NaplatnaMesta)
             {
@@ -80,7 +80,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             StanicaRepo stanicaRepo = new StanicaRepo();
             List<string> imena = new List<string>();
 
-            List<NaplatnaStanica> stanice = stanicaRepo.GetBySef(SefStanice.UserName);
+            List<NaplatnaStanica> stanice = stanicaRepo.GetBySefActive(SefStanice.UserName);
             if (stanice.Count > 0)
             {
                 NaplatnaStanica st = stanice[0];
@@ -97,7 +97,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public string DobaviStanjeUredjaja(int rednibr, TipUredjaja tip) 
         {
             StanicaRepo sr = new StanicaRepo();
-            NaplatnaStanica stanica = sr.GetBySef(SefStanice.UserName)[0];
+            NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             NaplatnoMesto mesto = stanica.NaplatnaMesta[rednibr];
             switch (tip) 
             {
@@ -162,7 +162,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         public void OznaciKaoPopravljeno(TipUredjaja tip, int rednibr)
         {
             StanicaRepo sr = new StanicaRepo();
-            NaplatnaStanica stanica = sr.GetBySef(SefStanice.UserName)[0];
+            NaplatnaStanica stanica = sr.GetBySefActive(SefStanice.UserName)[0];
             NaplatnoMesto mesto = stanica.NaplatnaMesta[rednibr];
             switch (tip)
             {

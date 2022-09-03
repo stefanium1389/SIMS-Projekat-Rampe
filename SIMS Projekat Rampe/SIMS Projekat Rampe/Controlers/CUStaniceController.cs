@@ -105,7 +105,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             List<Deonica> deonice = new List<Deonica>();
             foreach (var item in TabelaCenaPodaci) 
             {
-                deonice.Add(dr.GetByStanice(Stanica.Id, item.Key.Id)[0]);
+                deonice.Add(dr.GetByStaniceActive(Stanica.Id, item.Key.Id)[0]);
             }
 
             foreach (Cenovnik c in cenovnici)
@@ -128,7 +128,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             DeonicaRepo dr = new DeonicaRepo();
             foreach (var item in TabelaPovezanihPodaci)
             {
-                Deonica d = dr.GetByStanice(Stanica.Id, item.Key.Id)[0];
+                Deonica d = dr.GetByStaniceActive(Stanica.Id, item.Key.Id)[0];
                 d.Duzina = item.Value;
                 dr.Update(d);
             }
@@ -422,7 +422,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             StanicaRepo sr = new StanicaRepo();
             string id_stanice = izbor.Split('[', ']')[1];
-            return sr.GetById(id_stanice)[0];
+            return sr.GetByIdActive(id_stanice)[0];
         }
 
         public TipVozila PretvoriUTipVozila(string izbor)
@@ -461,7 +461,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             DeonicaRepo dr = new DeonicaRepo();
             Dictionary<TipVozila, float> cene = new Dictionary<TipVozila, float>();
             Cenovnik c = DobaviAktivniCenovnik();
-            Deonica deonica = dr.GetByStanice(Stanica.Id, ns.Id)[0];
+            Deonica deonica = dr.GetByStaniceActive(Stanica.Id, ns.Id)[0];
             List<StavkaCenovnika> stavke =c.DobaviStavkePoDeonici(deonica.Id);
             foreach (var stavka in stavke) 
             {
@@ -505,7 +505,7 @@ namespace SIMS_Projekat_Rampe.Controlers
 
             if (Kreiranje) 
             {
-                List<NaplatnaStanica> stanice = sr.GetAll();
+                List<NaplatnaStanica> stanice = sr.GetAllActive();
                 foreach(var stanica in stanice) 
                 {
                     TabelaPovezanihPodaci[stanica] = 0;
@@ -513,17 +513,17 @@ namespace SIMS_Projekat_Rampe.Controlers
             }
             else 
             {
-                var deonice = dr.GetByStanica(Stanica.Id);
+                var deonice = dr.GetByStanicaActive(Stanica.Id);
                 foreach (var deonica in deonice)
                 {
                     if (Stanica.Id == deonica.IzlazakId) 
                     {
-                        NaplatnaStanica stanica = sr.GetById(deonica.UlazakId)[0];
+                        NaplatnaStanica stanica = sr.GetByIdActive(deonica.UlazakId)[0];
                         TabelaPovezanihPodaci[stanica] = deonica.Duzina;
                     }
                     else 
                     {
-                        NaplatnaStanica stanica = sr.GetById(deonica.IzlazakId)[0];
+                        NaplatnaStanica stanica = sr.GetByIdActive(deonica.IzlazakId)[0];
                         TabelaPovezanihPodaci[stanica] = deonica.Duzina;
                     }
                 }
@@ -573,7 +573,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             KorisnikRepo kr = new KorisnikRepo();
             StanicaRepo sr = new StanicaRepo();
-            List<NaplatnaStanica> stanice = sr.GetAll();
+            List<NaplatnaStanica> stanice = sr.GetAllActive();
             List<Korisnik> korisnici = kr.GetByTip(tip);
             
             if (tip == TipKorisnika.Radnik) 
@@ -634,7 +634,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             CenovnikRepo cr = new CenovnikRepo();
 
-            List<Cenovnik> cenovnici = cr.GetAll();
+            List<Cenovnik> cenovnici = cr.GetAllActive();
 
             Cenovnik aktivni = null;
             foreach (Cenovnik c in cenovnici)
@@ -653,7 +653,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             CenovnikRepo cr = new CenovnikRepo();
 
-            List<Cenovnik> cenovnici = cr.GetAll();
+            List<Cenovnik> cenovnici = cr.GetAllActive();
 
             Cenovnik aktivni = null;
             foreach (Cenovnik c in cenovnici)

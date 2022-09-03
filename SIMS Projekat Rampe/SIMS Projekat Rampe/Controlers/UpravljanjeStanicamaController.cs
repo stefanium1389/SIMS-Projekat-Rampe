@@ -25,13 +25,13 @@ namespace SIMS_Projekat_Rampe.Controlers
         public List<NaplatnaStanica> DobaviStanice() 
         {
             StanicaRepo sr = new StanicaRepo();
-            return sr.GetAll();
+            return sr.GetAllActive();
         }
 
         public List<string[]> DobaviPodatkeOStanici(NaplatnaStanica stanica) 
         {
             StanicaRepo sr = new StanicaRepo();
-            NaplatnaStanica ucitanaStanica = sr.GetById(stanica.Id)[0];
+            NaplatnaStanica ucitanaStanica = sr.GetByIdActive(stanica.Id)[0];
             List<string[]> podaci = new List<string[]>();
 
             podaci.Add(new string[] { "Broj naplatnih mesta", stanica.NaplatnaMesta.Count.ToString() });
@@ -60,7 +60,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             StanicaRepo sr = new StanicaRepo();
             KorisnikRepo kr = new KorisnikRepo();
-            NaplatnaStanica ucitanaStanica = sr.GetById(stanica.Id)[0];
+            NaplatnaStanica ucitanaStanica = sr.GetByIdActive(stanica.Id)[0];
             List<string[]> podaci = new List<string[]>();
 
 
@@ -91,19 +91,19 @@ namespace SIMS_Projekat_Rampe.Controlers
 
             List<string[]> podaci = new List<string[]>();
 
-            var deonice = dr.GetByStanica(stanica.Id);
+            var deonice = dr.GetByStanicaActive(stanica.Id);
 
             foreach (var deonica in deonice) 
             {
                 if (deonica.UlazakId == stanica.Id) 
                 {
-                    NaplatnaStanica ucitana = sr.GetById(deonica.IzlazakId)[0];
+                    NaplatnaStanica ucitana = sr.GetByIdActive(deonica.IzlazakId)[0];
                     string ispis = ucitana.Naziv + " [" + ucitana.Id + "]";
                     podaci.Add(new string[] { ispis, deonica.Duzina.ToString() });
                 }
                 else
                 {
-                    NaplatnaStanica ucitana = sr.GetById(deonica.UlazakId)[0];
+                    NaplatnaStanica ucitana = sr.GetByIdActive(deonica.UlazakId)[0];
                     string ispis = ucitana.Naziv + " [" + ucitana.Id + "]";
                     podaci.Add(new string[] { ispis, deonica.Duzina.ToString() });
                 }
@@ -117,7 +117,7 @@ namespace SIMS_Projekat_Rampe.Controlers
             DeonicaRepo dr = new DeonicaRepo();
             List<string[]> podaci = new List<string[]>();
 
-            Deonica deonica = dr.GetByStanice(stanica1, stanica2)[0];
+            Deonica deonica = dr.GetByStaniceActive(stanica1, stanica2)[0];
             Cenovnik aktivni = DobaviAktivniCenovnik();
 
             List<StavkaCenovnika> stavke = aktivni.DobaviStavkePoDeonici(deonica.Id);
@@ -135,7 +135,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             CenovnikRepo cr = new CenovnikRepo();
 
-            List<Cenovnik> cenovnici = cr.GetAll();
+            List<Cenovnik> cenovnici = cr.GetAllActive();
 
             Cenovnik aktivni = null;
             foreach (Cenovnik c in cenovnici)
@@ -153,7 +153,7 @@ namespace SIMS_Projekat_Rampe.Controlers
         {
             StanicaRepo sr = new StanicaRepo();
             string id_stanice = izbor.Split('[', ']')[1];
-            return sr.GetById(id_stanice)[0];
+            return sr.GetByIdActive(id_stanice)[0];
         }
 
         public void ObrisiStanicu(NaplatnaStanica ns) 

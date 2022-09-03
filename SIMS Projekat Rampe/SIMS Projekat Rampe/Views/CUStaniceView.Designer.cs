@@ -30,6 +30,7 @@ namespace SIMS_Projekat_Rampe.Views
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_odustani = new System.Windows.Forms.Button();
             this.btn_dodaj_zaposlenog = new System.Windows.Forms.Button();
             this.btn_sacuvaj = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,6 +58,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_odustani);
             this.panel1.Controls.Add(this.btn_dodaj_zaposlenog);
             this.panel1.Controls.Add(this.btn_sacuvaj);
             this.panel1.Controls.Add(this.label9);
@@ -78,12 +80,22 @@ namespace SIMS_Projekat_Rampe.Views
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 572);
+            this.panel1.Size = new System.Drawing.Size(942, 599);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_odustani
+            // 
+            this.btn_odustani.Location = new System.Drawing.Point(13, 548);
+            this.btn_odustani.Name = "btn_odustani";
+            this.btn_odustani.Size = new System.Drawing.Size(75, 35);
+            this.btn_odustani.TabIndex = 25;
+            this.btn_odustani.Text = "Odustani";
+            this.btn_odustani.UseVisualStyleBackColor = true;
+            this.btn_odustani.Click += new System.EventHandler(this.btn_odustani_Click);
             // 
             // btn_dodaj_zaposlenog
             // 
-            this.btn_dodaj_zaposlenog.Location = new System.Drawing.Point(13, 497);
+            this.btn_dodaj_zaposlenog.Location = new System.Drawing.Point(198, 497);
             this.btn_dodaj_zaposlenog.Name = "btn_dodaj_zaposlenog";
             this.btn_dodaj_zaposlenog.Size = new System.Drawing.Size(75, 23);
             this.btn_dodaj_zaposlenog.TabIndex = 24;
@@ -93,7 +105,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             // btn_sacuvaj
             // 
-            this.btn_sacuvaj.Location = new System.Drawing.Point(832, 521);
+            this.btn_sacuvaj.Location = new System.Drawing.Point(832, 548);
             this.btn_sacuvaj.Name = "btn_sacuvaj";
             this.btn_sacuvaj.Size = new System.Drawing.Size(88, 35);
             this.btn_sacuvaj.TabIndex = 23;
@@ -155,15 +167,16 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.lab_greska.AutoSize = true;
             this.lab_greska.ForeColor = System.Drawing.Color.Red;
-            this.lab_greska.Location = new System.Drawing.Point(13, 541);
+            this.lab_greska.Location = new System.Drawing.Point(111, 568);
             this.lab_greska.Name = "lab_greska";
             this.lab_greska.Size = new System.Drawing.Size(41, 15);
             this.lab_greska.TabIndex = 12;
             this.lab_greska.Text = "greska";
+            this.lab_greska.Visible = false;
             // 
             // btn_ukloni_zaposlenog
             // 
-            this.btn_ukloni_zaposlenog.Location = new System.Drawing.Point(293, 497);
+            this.btn_ukloni_zaposlenog.Location = new System.Drawing.Point(528, 497);
             this.btn_ukloni_zaposlenog.Name = "btn_ukloni_zaposlenog";
             this.btn_ukloni_zaposlenog.Size = new System.Drawing.Size(75, 23);
             this.btn_ukloni_zaposlenog.TabIndex = 11;
@@ -273,7 +286,7 @@ namespace SIMS_Projekat_Rampe.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 597);
+            this.ClientSize = new System.Drawing.Size(967, 624);
             this.Controls.Add(this.panel1);
             this.Name = "CUStaniceView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -311,5 +324,6 @@ namespace SIMS_Projekat_Rampe.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_sacuvaj;
         private System.Windows.Forms.Button btn_dodaj_zaposlenog;
+        private System.Windows.Forms.Button btn_odustani;
     }
 }
